@@ -1,0 +1,728 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LibraryDb.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="COMPETENCES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="KEY" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EVALUATION_TEMPLATES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="QUALIFICATION_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="EXCEL_TEMPLATE" Type="blob" />
+          <Property Name="EXCEL_DATA_MAPPING" Type="blob" />
+        </EntityType>
+        <EntityType Name="EVALUATIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="USER_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="EVALUATION_TEMPLATE_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="EVAL_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="EVALUATIONS_EVALUATORS">
+          <Key>
+            <PropertyRef Name="EVALUATION_ID" />
+            <PropertyRef Name="EVALUATOR_ID" />
+          </Key>
+          <Property Name="EVALUATION_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="EVALUATOR_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POSITIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QUESTION_TEMPLATES">
+          <Key>
+            <PropertyRef Name="QUESTION_ID" />
+            <PropertyRef Name="EVAL_TEMPLATE_ID" />
+          </Key>
+          <Property Name="QUESTION_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="EVAL_TEMPLATE_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QUESTIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="CONTENT" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="COMPETENCE_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RATINGS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="RAITING" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="EXPLANATION" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RESULTS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="EVALUATION_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="EVALUATOR_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="RATING_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="IS_FINAL" Type="number" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ROLE_NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="LAST_NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="ROLE_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="SYS_C007107">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007124">
+          <End Role="COMPETENCES" Type="Self.COMPETENCES" Multiplicity="1" />
+          <End Role="QUESTIONS" Type="Self.QUESTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPETENCES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QUESTIONS">
+              <PropertyRef Name="COMPETENCE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007132">
+          <End Role="POSITIONS" Type="Self.POSITIONS" Multiplicity="1" />
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EVALUATION_TEMPLATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSITIONS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVALUATION_TEMPLATES">
+              <PropertyRef Name="QUALIFICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007138">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="EVALUATIONS" Type="Self.EVALUATIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVALUATIONS">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007192">
+          <End Role="EVALUATIONS" Type="Self.EVALUATIONS" Multiplicity="1" />
+          <End Role="EVALUATIONS_EVALUATORS" Type="Self.EVALUATIONS_EVALUATORS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVALUATIONS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVALUATIONS_EVALUATORS">
+              <PropertyRef Name="EVALUATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007193">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="EVALUATIONS_EVALUATORS" Type="Self.EVALUATIONS_EVALUATORS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVALUATIONS_EVALUATORS">
+              <PropertyRef Name="EVALUATOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007227">
+          <End Role="QUESTIONS" Type="Self.QUESTIONS" Multiplicity="1" />
+          <End Role="QUESTION_TEMPLATES" Type="Self.QUESTION_TEMPLATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUESTIONS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QUESTION_TEMPLATES">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007228">
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EVALUATION_TEMPLATES" Multiplicity="1" />
+          <End Role="QUESTION_TEMPLATES" Type="Self.QUESTION_TEMPLATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVALUATION_TEMPLATES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QUESTION_TEMPLATES">
+              <PropertyRef Name="EVAL_TEMPLATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007229">
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EVALUATION_TEMPLATES" Multiplicity="1" />
+          <End Role="EVALUATIONS" Type="Self.EVALUATIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVALUATION_TEMPLATES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVALUATIONS">
+              <PropertyRef Name="EVALUATION_TEMPLATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007234">
+          <End Role="EVALUATIONS" Type="Self.EVALUATIONS" Multiplicity="1" />
+          <End Role="RESULTS" Type="Self.RESULTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVALUATIONS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RESULTS">
+              <PropertyRef Name="EVALUATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007235">
+          <End Role="QUESTIONS" Type="Self.QUESTIONS" Multiplicity="1" />
+          <End Role="RESULTS" Type="Self.RESULTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUESTIONS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RESULTS">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007236">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="RESULTS" Type="Self.RESULTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RESULTS">
+              <PropertyRef Name="EVALUATOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007237">
+          <End Role="RATINGS" Type="Self.RATINGS" Multiplicity="1" />
+          <End Role="RESULTS" Type="Self.RESULTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RATINGS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RESULTS">
+              <PropertyRef Name="RATING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LibraryDbStoreContainer">
+          <EntitySet Name="COMPETENCES" EntityType="Self.COMPETENCES" Schema="APPRAISALSYSTEM" store:Type="Tables" />
+          <EntitySet Name="EVALUATION_TEMPLATES" EntityType="Self.EVALUATION_TEMPLATES" Schema="APPRAISALSYSTEM" store:Type="Tables" />
+          <EntitySet Name="EVALUATIONS" EntityType="Self.EVALUATIONS" Schema="APPRAISALSYSTEM" store:Type="Tables" />
+          <EntitySet Name="EVALUATIONS_EVALUATORS" EntityType="Self.EVALUATIONS_EVALUATORS" Schema="APPRAISALSYSTEM" store:Type="Tables" />
+          <EntitySet Name="POSITIONS" EntityType="Self.POSITIONS" Schema="APPRAISALSYSTEM" store:Type="Tables" />
+          <EntitySet Name="QUESTION_TEMPLATES" EntityType="Self.QUESTION_TEMPLATES" Schema="APPRAISALSYSTEM" store:Type="Tables" />
+          <EntitySet Name="QUESTIONS" EntityType="Self.QUESTIONS" Schema="APPRAISALSYSTEM" store:Type="Tables" />
+          <EntitySet Name="RATINGS" EntityType="Self.RATINGS" Schema="APPRAISALSYSTEM" store:Type="Tables" />
+          <EntitySet Name="RESULTS" EntityType="Self.RESULTS" Schema="APPRAISALSYSTEM" store:Type="Tables" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="APPRAISALSYSTEM" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="APPRAISALSYSTEM" store:Type="Tables" />
+          <AssociationSet Name="SYS_C007107" Association="Self.SYS_C007107">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007124" Association="Self.SYS_C007124">
+            <End Role="COMPETENCES" EntitySet="COMPETENCES" />
+            <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007132" Association="Self.SYS_C007132">
+            <End Role="POSITIONS" EntitySet="POSITIONS" />
+            <End Role="EVALUATION_TEMPLATES" EntitySet="EVALUATION_TEMPLATES" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007138" Association="Self.SYS_C007138">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="EVALUATIONS" EntitySet="EVALUATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007192" Association="Self.SYS_C007192">
+            <End Role="EVALUATIONS" EntitySet="EVALUATIONS" />
+            <End Role="EVALUATIONS_EVALUATORS" EntitySet="EVALUATIONS_EVALUATORS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007193" Association="Self.SYS_C007193">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="EVALUATIONS_EVALUATORS" EntitySet="EVALUATIONS_EVALUATORS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007227" Association="Self.SYS_C007227">
+            <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+            <End Role="QUESTION_TEMPLATES" EntitySet="QUESTION_TEMPLATES" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007228" Association="Self.SYS_C007228">
+            <End Role="EVALUATION_TEMPLATES" EntitySet="EVALUATION_TEMPLATES" />
+            <End Role="QUESTION_TEMPLATES" EntitySet="QUESTION_TEMPLATES" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007229" Association="Self.SYS_C007229">
+            <End Role="EVALUATION_TEMPLATES" EntitySet="EVALUATION_TEMPLATES" />
+            <End Role="EVALUATIONS" EntitySet="EVALUATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007234" Association="Self.SYS_C007234">
+            <End Role="EVALUATIONS" EntitySet="EVALUATIONS" />
+            <End Role="RESULTS" EntitySet="RESULTS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007235" Association="Self.SYS_C007235">
+            <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+            <End Role="RESULTS" EntitySet="RESULTS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007236" Association="Self.SYS_C007236">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="RESULTS" EntitySet="RESULTS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007237" Association="Self.SYS_C007237">
+            <End Role="RATINGS" EntitySet="RATINGS" />
+            <End Role="RESULTS" EntitySet="RESULTS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LibraryDb" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="COMPETENCE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="KEY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="QUESTIONS" Relationship="Self.SYS_C007124" FromRole="COMPETENCES" ToRole="QUESTIONS" />
+        </EntityType>
+        <EntityType Name="EVALUATION_TEMPLATES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="QUALIFICATION_ID" Type="Int32" Nullable="false" />
+          <Property Name="EXCEL_TEMPLATE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="EXCEL_DATA_MAPPING" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="POSITION" Relationship="Self.SYS_C007132" FromRole="EVALUATION_TEMPLATES" ToRole="POSITIONS" />
+          <NavigationProperty Name="EVALUATIONS" Relationship="Self.SYS_C007229" FromRole="EVALUATION_TEMPLATES" ToRole="EVALUATIONS" />
+          <NavigationProperty Name="QUESTIONS" Relationship="Self.QUESTION_TEMPLATES" FromRole="EVALUATION_TEMPLATES" ToRole="QUESTIONS" />
+        </EntityType>
+        <EntityType Name="EVALUATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="EVALUATION_TEMPLATE_ID" Type="Int32" Nullable="false" />
+          <Property Name="EVAL_DATE" Type="DateTime" />
+          <NavigationProperty Name="EVALUATION_TEMPLATES" Relationship="Self.SYS_C007229" FromRole="EVALUATIONS" ToRole="EVALUATION_TEMPLATES" />
+          <NavigationProperty Name="USER" Relationship="Self.SYS_C007138" FromRole="EVALUATIONS" ToRole="USERS" />
+          <NavigationProperty Name="RESULTS" Relationship="Self.SYS_C007234" FromRole="EVALUATIONS" ToRole="RESULTS" />
+          <NavigationProperty Name="USERS" Relationship="Self.EVALUATIONS_EVALUATORS" FromRole="EVALUATIONS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="POSITION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EVALUATION_TEMPLATES" Relationship="Self.SYS_C007132" FromRole="POSITIONS" ToRole="EVALUATION_TEMPLATES" />
+        </EntityType>
+        <EntityType Name="QUESTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CONTENT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COMPETENCE_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="COMPETENCE" Relationship="Self.SYS_C007124" FromRole="QUESTIONS" ToRole="COMPETENCES" />
+          <NavigationProperty Name="RESULTS" Relationship="Self.SYS_C007235" FromRole="QUESTIONS" ToRole="RESULTS" />
+          <NavigationProperty Name="EVALUATION_TEMPLATES" Relationship="Self.QUESTION_TEMPLATES" FromRole="QUESTIONS" ToRole="EVALUATION_TEMPLATES" />
+        </EntityType>
+        <EntityType Name="RATING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RAITING" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EXPLANATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RESULTS" Relationship="Self.SYS_C007237" FromRole="RATINGS" ToRole="RESULTS" />
+        </EntityType>
+        <EntityType Name="RESULT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="EVALUATION_ID" Type="Int32" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="Int32" Nullable="false" />
+          <Property Name="EVALUATOR_ID" Type="Int32" Nullable="false" />
+          <Property Name="RATING_ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IS_FINAL" Type="Boolean" />
+          <NavigationProperty Name="EVALUATION" Relationship="Self.SYS_C007234" FromRole="RESULTS" ToRole="EVALUATIONS" />
+          <NavigationProperty Name="QUESTION" Relationship="Self.SYS_C007235" FromRole="RESULTS" ToRole="QUESTIONS" />
+          <NavigationProperty Name="RATING" Relationship="Self.SYS_C007237" FromRole="RESULTS" ToRole="RATINGS" />
+          <NavigationProperty Name="USER" Relationship="Self.SYS_C007236" FromRole="RESULTS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="ROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ROLE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USERS" Relationship="Self.SYS_C007107" FromRole="ROLES" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ROLE_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EVALUATIONS" Relationship="Self.SYS_C007138" FromRole="USERS" ToRole="EVALUATIONS" />
+          <NavigationProperty Name="RESULTS" Relationship="Self.SYS_C007236" FromRole="USERS" ToRole="RESULTS" />
+          <NavigationProperty Name="ROLE" Relationship="Self.SYS_C007107" FromRole="USERS" ToRole="ROLES" />
+          <NavigationProperty Name="EVALUATIONS1" Relationship="Self.EVALUATIONS_EVALUATORS" FromRole="USERS" ToRole="EVALUATIONS" />
+        </EntityType>
+        <Association Name="SYS_C007124">
+          <End Role="COMPETENCES" Type="Self.COMPETENCE" Multiplicity="1" />
+          <End Role="QUESTIONS" Type="Self.QUESTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPETENCES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QUESTIONS">
+              <PropertyRef Name="COMPETENCE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007132">
+          <End Role="POSITIONS" Type="Self.POSITION" Multiplicity="1" />
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EVALUATION_TEMPLATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSITIONS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVALUATION_TEMPLATES">
+              <PropertyRef Name="QUALIFICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007229">
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EVALUATION_TEMPLATES" Multiplicity="1" />
+          <End Role="EVALUATIONS" Type="Self.EVALUATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVALUATION_TEMPLATES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVALUATIONS">
+              <PropertyRef Name="EVALUATION_TEMPLATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007138">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="EVALUATIONS" Type="Self.EVALUATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVALUATIONS">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007234">
+          <End Role="EVALUATIONS" Type="Self.EVALUATION" Multiplicity="1" />
+          <End Role="RESULTS" Type="Self.RESULT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVALUATIONS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RESULTS">
+              <PropertyRef Name="EVALUATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007235">
+          <End Role="QUESTIONS" Type="Self.QUESTION" Multiplicity="1" />
+          <End Role="RESULTS" Type="Self.RESULT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUESTIONS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RESULTS">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007237">
+          <End Role="RATINGS" Type="Self.RATING" Multiplicity="1" />
+          <End Role="RESULTS" Type="Self.RESULT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RATINGS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RESULTS">
+              <PropertyRef Name="RATING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007236">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="RESULTS" Type="Self.RESULT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RESULTS">
+              <PropertyRef Name="EVALUATOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007107">
+          <End Role="ROLES" Type="Self.ROLE" Multiplicity="1" />
+          <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EVALUATIONS_EVALUATORS">
+          <End Role="EVALUATIONS" Type="Self.EVALUATION" Multiplicity="*" />
+          <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+        </Association>
+        <Association Name="QUESTION_TEMPLATES">
+          <End Role="QUESTIONS" Type="Self.QUESTION" Multiplicity="*" />
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EVALUATION_TEMPLATES" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AppraisalDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="COMPETENCES" EntityType="Self.COMPETENCE" />
+          <EntitySet Name="EVALUATION_TEMPLATES" EntityType="Self.EVALUATION_TEMPLATES" />
+          <EntitySet Name="EVALUATIONS" EntityType="Self.EVALUATION" />
+          <EntitySet Name="POSITIONS" EntityType="Self.POSITION" />
+          <EntitySet Name="QUESTIONS" EntityType="Self.QUESTION" />
+          <EntitySet Name="RATINGS" EntityType="Self.RATING" />
+          <EntitySet Name="RESULTS" EntityType="Self.RESULT" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLE" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <AssociationSet Name="SYS_C007124" Association="Self.SYS_C007124">
+            <End Role="COMPETENCES" EntitySet="COMPETENCES" />
+            <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007132" Association="Self.SYS_C007132">
+            <End Role="POSITIONS" EntitySet="POSITIONS" />
+            <End Role="EVALUATION_TEMPLATES" EntitySet="EVALUATION_TEMPLATES" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007229" Association="Self.SYS_C007229">
+            <End Role="EVALUATION_TEMPLATES" EntitySet="EVALUATION_TEMPLATES" />
+            <End Role="EVALUATIONS" EntitySet="EVALUATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007138" Association="Self.SYS_C007138">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="EVALUATIONS" EntitySet="EVALUATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007234" Association="Self.SYS_C007234">
+            <End Role="EVALUATIONS" EntitySet="EVALUATIONS" />
+            <End Role="RESULTS" EntitySet="RESULTS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007235" Association="Self.SYS_C007235">
+            <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+            <End Role="RESULTS" EntitySet="RESULTS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007237" Association="Self.SYS_C007237">
+            <End Role="RATINGS" EntitySet="RATINGS" />
+            <End Role="RESULTS" EntitySet="RESULTS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007236" Association="Self.SYS_C007236">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="RESULTS" EntitySet="RESULTS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007107" Association="Self.SYS_C007107">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="EVALUATIONS_EVALUATORS" Association="Self.EVALUATIONS_EVALUATORS">
+            <End Role="EVALUATIONS" EntitySet="EVALUATIONS" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="QUESTION_TEMPLATES" Association="Self.QUESTION_TEMPLATES">
+            <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+            <End Role="EVALUATION_TEMPLATES" EntitySet="EVALUATION_TEMPLATES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LibraryDbStoreContainer" CdmEntityContainer="AppraisalDbContext">
+          <EntitySetMapping Name="COMPETENCES">
+            <EntityTypeMapping TypeName="LibraryDb.COMPETENCE">
+              <MappingFragment StoreEntitySet="COMPETENCES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KEY" ColumnName="KEY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EVALUATION_TEMPLATES">
+            <EntityTypeMapping TypeName="LibraryDb.EVALUATION_TEMPLATES">
+              <MappingFragment StoreEntitySet="EVALUATION_TEMPLATES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="QUALIFICATION_ID" ColumnName="QUALIFICATION_ID" />
+                <ScalarProperty Name="EXCEL_TEMPLATE" ColumnName="EXCEL_TEMPLATE" />
+                <ScalarProperty Name="EXCEL_DATA_MAPPING" ColumnName="EXCEL_DATA_MAPPING" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EVALUATIONS">
+            <EntityTypeMapping TypeName="LibraryDb.EVALUATION">
+              <MappingFragment StoreEntitySet="EVALUATIONS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="EVALUATION_TEMPLATE_ID" ColumnName="EVALUATION_TEMPLATE_ID" />
+                <ScalarProperty Name="EVAL_DATE" ColumnName="EVAL_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POSITIONS">
+            <EntityTypeMapping TypeName="LibraryDb.POSITION">
+              <MappingFragment StoreEntitySet="POSITIONS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUESTIONS">
+            <EntityTypeMapping TypeName="LibraryDb.QUESTION">
+              <MappingFragment StoreEntitySet="QUESTIONS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="COMPETENCE_ID" ColumnName="COMPETENCE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RATINGS">
+            <EntityTypeMapping TypeName="LibraryDb.RATING">
+              <MappingFragment StoreEntitySet="RATINGS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RAITING" ColumnName="RAITING" />
+                <ScalarProperty Name="EXPLANATION" ColumnName="EXPLANATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESULTS">
+            <EntityTypeMapping TypeName="LibraryDb.RESULT">
+              <MappingFragment StoreEntitySet="RESULTS">
+                <ScalarProperty Name="EVALUATION_ID" ColumnName="EVALUATION_ID" />
+                <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+                <ScalarProperty Name="EVALUATOR_ID" ColumnName="EVALUATOR_ID" />
+                <ScalarProperty Name="RATING_ID" ColumnName="RATING_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IS_FINAL" ColumnName="IS_FINAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLES">
+            <EntityTypeMapping TypeName="LibraryDb.ROLE">
+              <MappingFragment StoreEntitySet="ROLES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="LibraryDb.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="EVALUATIONS_EVALUATORS" TypeName="LibraryDb.EVALUATIONS_EVALUATORS" StoreEntitySet="EVALUATIONS_EVALUATORS">
+            <EndProperty Name="EVALUATIONS">
+              <ScalarProperty Name="ID" ColumnName="EVALUATION_ID" />
+            </EndProperty>
+            <EndProperty Name="USERS">
+              <ScalarProperty Name="ID" ColumnName="EVALUATOR_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="QUESTION_TEMPLATES" TypeName="LibraryDb.QUESTION_TEMPLATES" StoreEntitySet="QUESTION_TEMPLATES">
+            <EndProperty Name="QUESTIONS">
+              <ScalarProperty Name="ID" ColumnName="QUESTION_ID" />
+            </EndProperty>
+            <EndProperty Name="EVALUATION_TEMPLATES">
+              <ScalarProperty Name="ID" ColumnName="EVAL_TEMPLATE_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
