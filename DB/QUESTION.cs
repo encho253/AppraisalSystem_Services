@@ -12,23 +12,23 @@ namespace DB
     using System;
     using System.Collections.Generic;
     
-    public partial class QUESTION
+    public partial class Question
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public QUESTION()
+        public Question()
         {
-            this.RESULTS = new HashSet<RESULT>();
-            this.EVALUATION_TEMPLATES = new HashSet<EVALUATION_TEMPLATES>();
+            this.Results = new HashSet<RESULT>();
+            this.EvaluationTemplates = new HashSet<EvaluationTemplates>();
         }
     
-        public int ID { get; set; }
-        public string CONTENT { get; set; }
-        public int COMPETENCE_ID { get; set; }
+        public int Id { get; set; }
+        public string Content { get; set; }
+        public int CompetenceId { get; set; }
     
-        public virtual COMPETENCE COMPETENCE { get; set; }
+        public virtual COMPETENCE Competence { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESULT> RESULTS { get; set; }
+        public virtual ICollection<RESULT> Results { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EVALUATION_TEMPLATES> EVALUATION_TEMPLATES { get; set; }
+        public virtual ICollection<EvaluationTemplates> EvaluationTemplates { get; set; }
     }
 }

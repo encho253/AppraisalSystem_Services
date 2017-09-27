@@ -332,17 +332,17 @@
           <Property Name="KEY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="QUESTIONS" Relationship="Self.SYS_C007124" FromRole="COMPETENCES" ToRole="QUESTIONS" />
         </EntityType>
-        <EntityType Name="EVALUATION_TEMPLATES">
+        <EntityType Name="EvaluationTemplates">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="QUALIFICATION_ID" Type="Int32" Nullable="false" />
-          <Property Name="EXCEL_TEMPLATE" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="EXCEL_DATA_MAPPING" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="POSITION" Relationship="Self.SYS_C007132" FromRole="EVALUATION_TEMPLATES" ToRole="POSITIONS" />
-          <NavigationProperty Name="EVALUATIONS" Relationship="Self.SYS_C007229" FromRole="EVALUATION_TEMPLATES" ToRole="EVALUATIONS" />
-          <NavigationProperty Name="QUESTIONS" Relationship="Self.QUESTION_TEMPLATES" FromRole="EVALUATION_TEMPLATES" ToRole="QUESTIONS" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="QualificationId" Type="Int32" Nullable="false" />
+          <Property Name="ExcelTemplate" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ExcelDataMapping" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Position" Relationship="Self.SYS_C007132" FromRole="EVALUATION_TEMPLATES" ToRole="POSITIONS" />
+          <NavigationProperty Name="Evaluations" Relationship="Self.SYS_C007229" FromRole="EVALUATION_TEMPLATES" ToRole="EVALUATIONS" />
+          <NavigationProperty Name="Questions" Relationship="Self.QUESTION_TEMPLATES" FromRole="EVALUATION_TEMPLATES" ToRole="QUESTIONS" />
         </EntityType>
         <EntityType Name="EVALUATION">
           <Key>
@@ -365,16 +365,16 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="EvaluationTemplates" Relationship="Self.SYS_C007132" FromRole="POSITIONS" ToRole="EVALUATION_TEMPLATES" />
         </EntityType>
-        <EntityType Name="QUESTION">
+        <EntityType Name="Question">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="CONTENT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="COMPETENCE_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="COMPETENCE" Relationship="Self.SYS_C007124" FromRole="QUESTIONS" ToRole="COMPETENCES" />
-          <NavigationProperty Name="RESULTS" Relationship="Self.SYS_C007235" FromRole="QUESTIONS" ToRole="RESULTS" />
-          <NavigationProperty Name="EVALUATION_TEMPLATES" Relationship="Self.QUESTION_TEMPLATES" FromRole="QUESTIONS" ToRole="EVALUATION_TEMPLATES" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompetenceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Competence" Relationship="Self.SYS_C007124" FromRole="QUESTIONS" ToRole="COMPETENCES" />
+          <NavigationProperty Name="Results" Relationship="Self.SYS_C007235" FromRole="QUESTIONS" ToRole="RESULTS" />
+          <NavigationProperty Name="EvaluationTemplates" Relationship="Self.QUESTION_TEMPLATES" FromRole="QUESTIONS" ToRole="EVALUATION_TEMPLATES" />
         </EntityType>
         <EntityType Name="RATING">
           <Key>
@@ -425,34 +425,34 @@
         </EntityType>
         <Association Name="SYS_C007124">
           <End Role="COMPETENCES" Type="Self.COMPETENCE" Multiplicity="1" />
-          <End Role="QUESTIONS" Type="Self.QUESTION" Multiplicity="*" />
+          <End Role="QUESTIONS" Type="Self.Question" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="COMPETENCES">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="QUESTIONS">
-              <PropertyRef Name="COMPETENCE_ID" />
+              <PropertyRef Name="CompetenceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007132">
           <End Role="POSITIONS" Type="Self.Position" Multiplicity="1" />
-          <End Role="EVALUATION_TEMPLATES" Type="Self.EVALUATION_TEMPLATES" Multiplicity="*" />
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EvaluationTemplates" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="POSITIONS">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="EVALUATION_TEMPLATES">
-              <PropertyRef Name="QUALIFICATION_ID" />
+              <PropertyRef Name="QualificationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007229">
-          <End Role="EVALUATION_TEMPLATES" Type="Self.EVALUATION_TEMPLATES" Multiplicity="1" />
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EvaluationTemplates" Multiplicity="1" />
           <End Role="EVALUATIONS" Type="Self.EVALUATION" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EVALUATION_TEMPLATES">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="EVALUATIONS">
               <PropertyRef Name="EVALUATION_TEMPLATE_ID" />
@@ -484,11 +484,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007235">
-          <End Role="QUESTIONS" Type="Self.QUESTION" Multiplicity="1" />
+          <End Role="QUESTIONS" Type="Self.Question" Multiplicity="1" />
           <End Role="RESULTS" Type="Self.RESULT" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="QUESTIONS">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="RESULTS">
               <PropertyRef Name="QUESTION_ID" />
@@ -536,15 +536,15 @@
           <End Role="USERS" Type="Self.User" Multiplicity="*" />
         </Association>
         <Association Name="QUESTION_TEMPLATES">
-          <End Role="QUESTIONS" Type="Self.QUESTION" Multiplicity="*" />
-          <End Role="EVALUATION_TEMPLATES" Type="Self.EVALUATION_TEMPLATES" Multiplicity="*" />
+          <End Role="QUESTIONS" Type="Self.Question" Multiplicity="*" />
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EvaluationTemplates" Multiplicity="*" />
         </Association>
         <EntityContainer Name="AppraisalDbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="COMPETENCES" EntityType="Self.COMPETENCE" />
-          <EntitySet Name="EVALUATION_TEMPLATES" EntityType="Self.EVALUATION_TEMPLATES" />
+          <EntitySet Name="EVALUATION_TEMPLATES" EntityType="Self.EvaluationTemplates" />
           <EntitySet Name="EVALUATIONS" EntityType="Self.EVALUATION" />
           <EntitySet Name="POSITIONS" EntityType="Self.Position" />
-          <EntitySet Name="QUESTIONS" EntityType="Self.QUESTION" />
+          <EntitySet Name="QUESTIONS" EntityType="Self.Question" />
           <EntitySet Name="RATINGS" EntityType="Self.RATING" />
           <EntitySet Name="RESULTS" EntityType="Self.RESULT" />
           <EntitySet Name="ROLES" EntityType="Self.Role" />
@@ -609,12 +609,12 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EVALUATION_TEMPLATES">
-            <EntityTypeMapping TypeName="LibraryDb.EVALUATION_TEMPLATES">
+            <EntityTypeMapping TypeName="LibraryDb.EvaluationTemplates">
               <MappingFragment StoreEntitySet="EVALUATION_TEMPLATES">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="QUALIFICATION_ID" ColumnName="QUALIFICATION_ID" />
-                <ScalarProperty Name="EXCEL_TEMPLATE" ColumnName="EXCEL_TEMPLATE" />
-                <ScalarProperty Name="EXCEL_DATA_MAPPING" ColumnName="EXCEL_DATA_MAPPING" />
+                <ScalarProperty Name="Id" ColumnName="ID" />
+                <ScalarProperty Name="QualificationId" ColumnName="QUALIFICATION_ID" />
+                <ScalarProperty Name="ExcelTemplate" ColumnName="EXCEL_TEMPLATE" />
+                <ScalarProperty Name="ExcelDataMapping" ColumnName="EXCEL_DATA_MAPPING" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -637,11 +637,11 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="QUESTIONS">
-            <EntityTypeMapping TypeName="LibraryDb.QUESTION">
+            <EntityTypeMapping TypeName="LibraryDb.Question">
               <MappingFragment StoreEntitySet="QUESTIONS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
-                <ScalarProperty Name="COMPETENCE_ID" ColumnName="COMPETENCE_ID" />
+                <ScalarProperty Name="Id" ColumnName="ID" />
+                <ScalarProperty Name="Content" ColumnName="CONTENT" />
+                <ScalarProperty Name="CompetenceId" ColumnName="COMPETENCE_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -696,10 +696,10 @@
           </AssociationSetMapping>
           <AssociationSetMapping Name="QUESTION_TEMPLATES" TypeName="LibraryDb.QUESTION_TEMPLATES" StoreEntitySet="QUESTION_TEMPLATES">
             <EndProperty Name="QUESTIONS">
-              <ScalarProperty Name="ID" ColumnName="QUESTION_ID" />
+              <ScalarProperty Name="Id" ColumnName="QUESTION_ID" />
             </EndProperty>
             <EndProperty Name="EVALUATION_TEMPLATES">
-              <ScalarProperty Name="ID" ColumnName="EVAL_TEMPLATE_ID" />
+              <ScalarProperty Name="Id" ColumnName="EVAL_TEMPLATE_ID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

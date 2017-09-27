@@ -17,13 +17,13 @@ namespace DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Position()
         {
-            this.EvaluationTemplates = new HashSet<EVALUATION_TEMPLATES>();
+            this.EvaluationTemplates = new HashSet<EvaluationTemplates>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EVALUATION_TEMPLATES> EvaluationTemplates { get; set; }
+        public virtual ICollection<EvaluationTemplates> EvaluationTemplates { get; set; }
     }
 }

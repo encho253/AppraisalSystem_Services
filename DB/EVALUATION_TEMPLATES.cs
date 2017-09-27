@@ -12,24 +12,24 @@ namespace DB
     using System;
     using System.Collections.Generic;
     
-    public partial class EVALUATION_TEMPLATES
+    public partial class EvaluationTemplates
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EVALUATION_TEMPLATES()
+        public EvaluationTemplates()
         {
-            this.EVALUATIONS = new HashSet<EVALUATION>();
-            this.QUESTIONS = new HashSet<QUESTION>();
+            this.Evaluations = new HashSet<EVALUATION>();
+            this.Questions = new HashSet<Question>();
         }
     
-        public int ID { get; set; }
-        public int QUALIFICATION_ID { get; set; }
-        public byte[] EXCEL_TEMPLATE { get; set; }
-        public byte[] EXCEL_DATA_MAPPING { get; set; }
+        public int Id { get; set; }
+        public int QualificationId { get; set; }
+        public byte[] ExcelTemplate { get; set; }
+        public byte[] ExcelDataMapping { get; set; }
     
-        public virtual Position POSITION { get; set; }
+        public virtual Position Position { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EVALUATION> EVALUATIONS { get; set; }
+        public virtual ICollection<EVALUATION> Evaluations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<QUESTION> QUESTIONS { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
     }
 }
