@@ -357,13 +357,13 @@
           <NavigationProperty Name="RESULTS" Relationship="Self.SYS_C007234" FromRole="EVALUATIONS" ToRole="RESULTS" />
           <NavigationProperty Name="USERS" Relationship="Self.EVALUATIONS_EVALUATORS" FromRole="EVALUATIONS" ToRole="USERS" />
         </EntityType>
-        <EntityType Name="POSITION">
+        <EntityType Name="Position">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="EVALUATION_TEMPLATES" Relationship="Self.SYS_C007132" FromRole="POSITIONS" ToRole="EVALUATION_TEMPLATES" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EvaluationTemplates" Relationship="Self.SYS_C007132" FromRole="POSITIONS" ToRole="EVALUATION_TEMPLATES" />
         </EntityType>
         <EntityType Name="QUESTION">
           <Key>
@@ -418,10 +418,10 @@
           <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="EVALUATIONS" Relationship="Self.SYS_C007138" FromRole="USERS" ToRole="EVALUATIONS" />
-          <NavigationProperty Name="RESULTS" Relationship="Self.SYS_C007236" FromRole="USERS" ToRole="RESULTS" />
-          <NavigationProperty Name="ROLE" Relationship="Self.SYS_C007107" FromRole="USERS" ToRole="ROLES" />
-          <NavigationProperty Name="EVALUATIONS1" Relationship="Self.EVALUATIONS_EVALUATORS" FromRole="USERS" ToRole="EVALUATIONS" />
+          <NavigationProperty Name="Evaluations" Relationship="Self.SYS_C007138" FromRole="USERS" ToRole="EVALUATIONS" />
+          <NavigationProperty Name="Results" Relationship="Self.SYS_C007236" FromRole="USERS" ToRole="RESULTS" />
+          <NavigationProperty Name="Role" Relationship="Self.SYS_C007107" FromRole="USERS" ToRole="ROLES" />
+          <NavigationProperty Name="Evaluations1" Relationship="Self.EVALUATIONS_EVALUATORS" FromRole="USERS" ToRole="EVALUATIONS" />
         </EntityType>
         <Association Name="SYS_C007124">
           <End Role="COMPETENCES" Type="Self.COMPETENCE" Multiplicity="1" />
@@ -436,11 +436,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007132">
-          <End Role="POSITIONS" Type="Self.POSITION" Multiplicity="1" />
+          <End Role="POSITIONS" Type="Self.Position" Multiplicity="1" />
           <End Role="EVALUATION_TEMPLATES" Type="Self.EVALUATION_TEMPLATES" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="POSITIONS">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="EVALUATION_TEMPLATES">
               <PropertyRef Name="QUALIFICATION_ID" />
@@ -543,7 +543,7 @@
           <EntitySet Name="COMPETENCES" EntityType="Self.COMPETENCE" />
           <EntitySet Name="EVALUATION_TEMPLATES" EntityType="Self.EVALUATION_TEMPLATES" />
           <EntitySet Name="EVALUATIONS" EntityType="Self.EVALUATION" />
-          <EntitySet Name="POSITIONS" EntityType="Self.POSITION" />
+          <EntitySet Name="POSITIONS" EntityType="Self.Position" />
           <EntitySet Name="QUESTIONS" EntityType="Self.QUESTION" />
           <EntitySet Name="RATINGS" EntityType="Self.RATING" />
           <EntitySet Name="RESULTS" EntityType="Self.RESULT" />
@@ -629,10 +629,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="POSITIONS">
-            <EntityTypeMapping TypeName="LibraryDb.POSITION">
+            <EntityTypeMapping TypeName="LibraryDb.Position">
               <MappingFragment StoreEntitySet="POSITIONS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="Id" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="NAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

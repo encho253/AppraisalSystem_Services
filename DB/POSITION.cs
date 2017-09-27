@@ -12,18 +12,18 @@ namespace DB
     using System;
     using System.Collections.Generic;
     
-    public partial class POSITION
+    public partial class Position
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public POSITION()
+        public Position()
         {
-            this.EVALUATION_TEMPLATES = new HashSet<EVALUATION_TEMPLATES>();
+            this.EvaluationTemplates = new HashSet<EVALUATION_TEMPLATES>();
         }
     
-        public int ID { get; set; }
-        public string NAME { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EVALUATION_TEMPLATES> EVALUATION_TEMPLATES { get; set; }
+        public virtual ICollection<EVALUATION_TEMPLATES> EvaluationTemplates { get; set; }
     }
 }

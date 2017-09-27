@@ -30,7 +30,7 @@ namespace DB
         public virtual DbSet<COMPETENCE> COMPETENCES { get; set; }
         public virtual DbSet<EVALUATION_TEMPLATES> EVALUATION_TEMPLATES { get; set; }
         public virtual DbSet<EVALUATION> EVALUATIONS { get; set; }
-        public virtual DbSet<POSITION> POSITIONS { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<QUESTION> QUESTIONS { get; set; }
         public virtual DbSet<RATING> RATINGS { get; set; }
         public virtual DbSet<RESULT> RESULTS { get; set; }

@@ -26,7 +26,7 @@ namespace DB
         public byte[] EXCEL_TEMPLATE { get; set; }
         public byte[] EXCEL_DATA_MAPPING { get; set; }
     
-        public virtual POSITION POSITION { get; set; }
+        public virtual Position POSITION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EVALUATION> EVALUATIONS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
