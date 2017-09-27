@@ -17,9 +17,9 @@ namespace DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Evaluations = new HashSet<EVALUATION>();
+            this.Evaluations = new HashSet<Evaluation>();
             this.Results = new HashSet<RESULT>();
-            this.Evaluations1 = new HashSet<EVALUATION>();
+            this.Evaluations1 = new HashSet<Evaluation>();
         }
     
         public int Id { get; set; }
@@ -30,11 +30,11 @@ namespace DB
         public int RoleId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EVALUATION> Evaluations { get; set; }
+        public virtual ICollection<Evaluation> Evaluations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RESULT> Results { get; set; }
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EVALUATION> Evaluations1 { get; set; }
+        public virtual ICollection<Evaluation> Evaluations1 { get; set; }
     }
 }

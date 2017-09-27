@@ -12,25 +12,25 @@ namespace DB
     using System;
     using System.Collections.Generic;
     
-    public partial class EVALUATION
+    public partial class Evaluation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EVALUATION()
+        public Evaluation()
         {
-            this.RESULTS = new HashSet<RESULT>();
-            this.USERS = new HashSet<User>();
+            this.Results = new HashSet<RESULT>();
+            this.Users = new HashSet<User>();
         }
     
-        public int ID { get; set; }
-        public int USER_ID { get; set; }
-        public int EVALUATION_TEMPLATE_ID { get; set; }
-        public Nullable<System.DateTime> EVAL_DATE { get; set; }
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public int EvaluationTemplateId { get; set; }
+        public Nullable<System.DateTime> EvalDate { get; set; }
     
-        public virtual EvaluationTemplates EVALUATION_TEMPLATES { get; set; }
-        public virtual User USER { get; set; }
+        public virtual EvaluationTemplates EvaluationTemplates { get; set; }
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESULT> RESULTS { get; set; }
+        public virtual ICollection<RESULT> Results { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> USERS { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

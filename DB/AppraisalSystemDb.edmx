@@ -344,18 +344,18 @@
           <NavigationProperty Name="Evaluations" Relationship="Self.SYS_C007229" FromRole="EVALUATION_TEMPLATES" ToRole="EVALUATIONS" />
           <NavigationProperty Name="Questions" Relationship="Self.QUESTION_TEMPLATES" FromRole="EVALUATION_TEMPLATES" ToRole="QUESTIONS" />
         </EntityType>
-        <EntityType Name="EVALUATION">
+        <EntityType Name="Evaluation">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="USER_ID" Type="Int32" Nullable="false" />
-          <Property Name="EVALUATION_TEMPLATE_ID" Type="Int32" Nullable="false" />
-          <Property Name="EVAL_DATE" Type="DateTime" />
-          <NavigationProperty Name="EVALUATION_TEMPLATES" Relationship="Self.SYS_C007229" FromRole="EVALUATIONS" ToRole="EVALUATION_TEMPLATES" />
-          <NavigationProperty Name="USER" Relationship="Self.SYS_C007138" FromRole="EVALUATIONS" ToRole="USERS" />
-          <NavigationProperty Name="RESULTS" Relationship="Self.SYS_C007234" FromRole="EVALUATIONS" ToRole="RESULTS" />
-          <NavigationProperty Name="USERS" Relationship="Self.EVALUATIONS_EVALUATORS" FromRole="EVALUATIONS" ToRole="USERS" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="EvaluationTemplateId" Type="Int32" Nullable="false" />
+          <Property Name="EvalDate" Type="DateTime" />
+          <NavigationProperty Name="EvaluationTemplates" Relationship="Self.SYS_C007229" FromRole="EVALUATIONS" ToRole="EVALUATION_TEMPLATES" />
+          <NavigationProperty Name="User" Relationship="Self.SYS_C007138" FromRole="EVALUATIONS" ToRole="USERS" />
+          <NavigationProperty Name="Results" Relationship="Self.SYS_C007234" FromRole="EVALUATIONS" ToRole="RESULTS" />
+          <NavigationProperty Name="Users" Relationship="Self.EVALUATIONS_EVALUATORS" FromRole="EVALUATIONS" ToRole="USERS" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
@@ -449,34 +449,34 @@
         </Association>
         <Association Name="SYS_C007229">
           <End Role="EVALUATION_TEMPLATES" Type="Self.EvaluationTemplates" Multiplicity="1" />
-          <End Role="EVALUATIONS" Type="Self.EVALUATION" Multiplicity="*" />
+          <End Role="EVALUATIONS" Type="Self.Evaluation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EVALUATION_TEMPLATES">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="EVALUATIONS">
-              <PropertyRef Name="EVALUATION_TEMPLATE_ID" />
+              <PropertyRef Name="EvaluationTemplateId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007138">
           <End Role="USERS" Type="Self.User" Multiplicity="1" />
-          <End Role="EVALUATIONS" Type="Self.EVALUATION" Multiplicity="*" />
+          <End Role="EVALUATIONS" Type="Self.Evaluation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USERS">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="EVALUATIONS">
-              <PropertyRef Name="USER_ID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007234">
-          <End Role="EVALUATIONS" Type="Self.EVALUATION" Multiplicity="1" />
+          <End Role="EVALUATIONS" Type="Self.Evaluation" Multiplicity="1" />
           <End Role="RESULTS" Type="Self.RESULT" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EVALUATIONS">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="RESULTS">
               <PropertyRef Name="EVALUATION_ID" />
@@ -532,7 +532,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="EVALUATIONS_EVALUATORS">
-          <End Role="EVALUATIONS" Type="Self.EVALUATION" Multiplicity="*" />
+          <End Role="EVALUATIONS" Type="Self.Evaluation" Multiplicity="*" />
           <End Role="USERS" Type="Self.User" Multiplicity="*" />
         </Association>
         <Association Name="QUESTION_TEMPLATES">
@@ -542,7 +542,7 @@
         <EntityContainer Name="AppraisalDbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="COMPETENCES" EntityType="Self.Competence" />
           <EntitySet Name="EVALUATION_TEMPLATES" EntityType="Self.EvaluationTemplates" />
-          <EntitySet Name="EVALUATIONS" EntityType="Self.EVALUATION" />
+          <EntitySet Name="EVALUATIONS" EntityType="Self.Evaluation" />
           <EntitySet Name="POSITIONS" EntityType="Self.Position" />
           <EntitySet Name="QUESTIONS" EntityType="Self.Question" />
           <EntitySet Name="RATINGS" EntityType="Self.RATING" />
@@ -619,12 +619,12 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EVALUATIONS">
-            <EntityTypeMapping TypeName="LibraryDb.EVALUATION">
+            <EntityTypeMapping TypeName="LibraryDb.Evaluation">
               <MappingFragment StoreEntitySet="EVALUATIONS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
-                <ScalarProperty Name="EVALUATION_TEMPLATE_ID" ColumnName="EVALUATION_TEMPLATE_ID" />
-                <ScalarProperty Name="EVAL_DATE" ColumnName="EVAL_DATE" />
+                <ScalarProperty Name="Id" ColumnName="ID" />
+                <ScalarProperty Name="UserId" ColumnName="USER_ID" />
+                <ScalarProperty Name="EvaluationTemplateId" ColumnName="EVALUATION_TEMPLATE_ID" />
+                <ScalarProperty Name="EvalDate" ColumnName="EVAL_DATE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -688,7 +688,7 @@
           </EntitySetMapping>
           <AssociationSetMapping Name="EVALUATIONS_EVALUATORS" TypeName="LibraryDb.EVALUATIONS_EVALUATORS" StoreEntitySet="EVALUATIONS_EVALUATORS">
             <EndProperty Name="EVALUATIONS">
-              <ScalarProperty Name="ID" ColumnName="EVALUATION_ID" />
+              <ScalarProperty Name="Id" ColumnName="EVALUATION_ID" />
             </EndProperty>
             <EndProperty Name="USERS">
               <ScalarProperty Name="Id" ColumnName="EVALUATOR_ID" />

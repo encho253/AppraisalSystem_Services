@@ -21,7 +21,7 @@ namespace DB
         public int ID { get; set; }
         public Nullable<bool> IS_FINAL { get; set; }
     
-        public virtual EVALUATION EVALUATION { get; set; }
+        public virtual Evaluation EVALUATION { get; set; }
         public virtual Question QUESTION { get; set; }
         public virtual RATING RATING { get; set; }
         public virtual User USER { get; set; }
