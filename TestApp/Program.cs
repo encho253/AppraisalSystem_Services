@@ -8,7 +8,7 @@ namespace TestApp
         public static void Main()
         {
             var db = new AppraisalDbContext();
-            var e = db.Results.Select(x => x.QuestionId).ToList();
+            var e = db.Ratings.Select(x => x.Explanation).ToList();
         }
     }
 }

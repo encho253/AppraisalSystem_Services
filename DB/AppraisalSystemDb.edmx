@@ -376,14 +376,14 @@
           <NavigationProperty Name="Results" Relationship="Self.SYS_C007235" FromRole="QUESTIONS" ToRole="RESULTS" />
           <NavigationProperty Name="EvaluationTemplates" Relationship="Self.QUESTION_TEMPLATES" FromRole="QUESTIONS" ToRole="EVALUATION_TEMPLATES" />
         </EntityType>
-        <EntityType Name="RATING">
+        <EntityType Name="Rating">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="RAITING" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EXPLANATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="RESULTS" Relationship="Self.SYS_C007237" FromRole="RATINGS" ToRole="RESULTS" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RatingValue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Explanation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Results" Relationship="Self.SYS_C007237" FromRole="RATINGS" ToRole="RESULTS" />
         </EntityType>
         <EntityType Name="Result">
           <Key>
@@ -496,11 +496,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007237">
-          <End Role="RATINGS" Type="Self.RATING" Multiplicity="1" />
+          <End Role="RATINGS" Type="Self.Rating" Multiplicity="1" />
           <End Role="RESULTS" Type="Self.Result" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RATINGS">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="RESULTS">
               <PropertyRef Name="RatingId" />
@@ -545,7 +545,7 @@
           <EntitySet Name="EVALUATIONS" EntityType="Self.Evaluation" />
           <EntitySet Name="POSITIONS" EntityType="Self.Position" />
           <EntitySet Name="QUESTIONS" EntityType="Self.Question" />
-          <EntitySet Name="RATINGS" EntityType="Self.RATING" />
+          <EntitySet Name="RATINGS" EntityType="Self.Rating" />
           <EntitySet Name="RESULTS" EntityType="Self.Result" />
           <EntitySet Name="ROLES" EntityType="Self.Role" />
           <EntitySet Name="USERS" EntityType="Self.User" />
@@ -646,11 +646,11 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RATINGS">
-            <EntityTypeMapping TypeName="LibraryDb.RATING">
+            <EntityTypeMapping TypeName="LibraryDb.Rating">
               <MappingFragment StoreEntitySet="RATINGS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="RAITING" ColumnName="RAITING" />
-                <ScalarProperty Name="EXPLANATION" ColumnName="EXPLANATION" />
+                <ScalarProperty Name="Id" ColumnName="ID" />
+                <ScalarProperty Name="RatingValue" ColumnName="RAITING" />
+                <ScalarProperty Name="Explanation" ColumnName="EXPLANATION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

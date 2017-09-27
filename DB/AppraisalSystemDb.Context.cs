@@ -32,7 +32,7 @@ namespace DB
         public virtual DbSet<Evaluation> Evaluation { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
-        public virtual DbSet<RATING> RATINGS { get; set; }
+        public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<Result> Results { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }

@@ -23,7 +23,7 @@ namespace DB
     
         public virtual Evaluation Evaluation { get; set; }
         public virtual Question Question { get; set; }
-        public virtual RATING Rating { get; set; }
+        public virtual Rating Rating { get; set; }
         public virtual User User { get; set; }
     }
 }

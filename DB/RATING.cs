@@ -12,19 +12,19 @@ namespace DB
     using System;
     using System.Collections.Generic;
     
-    public partial class RATING
+    public partial class Rating
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RATING()
+        public Rating()
         {
-            this.RESULTS = new HashSet<Result>();
+            this.Results = new HashSet<Result>();
         }
     
-        public int ID { get; set; }
-        public string RAITING { get; set; }
-        public string EXPLANATION { get; set; }
+        public int Id { get; set; }
+        public string RatingValue { get; set; }
+        public string Explanation { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Result> RESULTS { get; set; }
+        public virtual ICollection<Result> Results { get; set; }
     }
 }
