@@ -18,6 +18,8 @@ namespace DB
         public AppraisalDbContext()
             : base("name=AppraisalDbContext")
         {
+    	this.Configuration.LazyLoadingEnabled = false;
+    	this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
