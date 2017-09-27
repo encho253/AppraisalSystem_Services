@@ -385,20 +385,20 @@
           <Property Name="EXPLANATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="RESULTS" Relationship="Self.SYS_C007237" FromRole="RATINGS" ToRole="RESULTS" />
         </EntityType>
-        <EntityType Name="RESULT">
+        <EntityType Name="Result">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="EVALUATION_ID" Type="Int32" Nullable="false" />
-          <Property Name="QUESTION_ID" Type="Int32" Nullable="false" />
-          <Property Name="EVALUATOR_ID" Type="Int32" Nullable="false" />
-          <Property Name="RATING_ID" Type="Int32" Nullable="false" />
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="IS_FINAL" Type="Boolean" />
-          <NavigationProperty Name="EVALUATION" Relationship="Self.SYS_C007234" FromRole="RESULTS" ToRole="EVALUATIONS" />
-          <NavigationProperty Name="QUESTION" Relationship="Self.SYS_C007235" FromRole="RESULTS" ToRole="QUESTIONS" />
-          <NavigationProperty Name="RATING" Relationship="Self.SYS_C007237" FromRole="RESULTS" ToRole="RATINGS" />
-          <NavigationProperty Name="USER" Relationship="Self.SYS_C007236" FromRole="RESULTS" ToRole="USERS" />
+          <Property Name="EvaluationId" Type="Int32" Nullable="false" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Name="EvaluatorId" Type="Int32" Nullable="false" />
+          <Property Name="RatingId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IsFinal" Type="Boolean" />
+          <NavigationProperty Name="Evaluation" Relationship="Self.SYS_C007234" FromRole="RESULTS" ToRole="EVALUATIONS" />
+          <NavigationProperty Name="Question" Relationship="Self.SYS_C007235" FromRole="RESULTS" ToRole="QUESTIONS" />
+          <NavigationProperty Name="Rating" Relationship="Self.SYS_C007237" FromRole="RESULTS" ToRole="RATINGS" />
+          <NavigationProperty Name="User" Relationship="Self.SYS_C007236" FromRole="RESULTS" ToRole="USERS" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -473,49 +473,49 @@
         </Association>
         <Association Name="SYS_C007234">
           <End Role="EVALUATIONS" Type="Self.Evaluation" Multiplicity="1" />
-          <End Role="RESULTS" Type="Self.RESULT" Multiplicity="*" />
+          <End Role="RESULTS" Type="Self.Result" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EVALUATIONS">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="RESULTS">
-              <PropertyRef Name="EVALUATION_ID" />
+              <PropertyRef Name="EvaluationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007235">
           <End Role="QUESTIONS" Type="Self.Question" Multiplicity="1" />
-          <End Role="RESULTS" Type="Self.RESULT" Multiplicity="*" />
+          <End Role="RESULTS" Type="Self.Result" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="QUESTIONS">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="RESULTS">
-              <PropertyRef Name="QUESTION_ID" />
+              <PropertyRef Name="QuestionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007237">
           <End Role="RATINGS" Type="Self.RATING" Multiplicity="1" />
-          <End Role="RESULTS" Type="Self.RESULT" Multiplicity="*" />
+          <End Role="RESULTS" Type="Self.Result" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RATINGS">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="RESULTS">
-              <PropertyRef Name="RATING_ID" />
+              <PropertyRef Name="RatingId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007236">
           <End Role="USERS" Type="Self.User" Multiplicity="1" />
-          <End Role="RESULTS" Type="Self.RESULT" Multiplicity="*" />
+          <End Role="RESULTS" Type="Self.Result" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USERS">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="RESULTS">
-              <PropertyRef Name="EVALUATOR_ID" />
+              <PropertyRef Name="EvaluatorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -546,7 +546,7 @@
           <EntitySet Name="POSITIONS" EntityType="Self.Position" />
           <EntitySet Name="QUESTIONS" EntityType="Self.Question" />
           <EntitySet Name="RATINGS" EntityType="Self.RATING" />
-          <EntitySet Name="RESULTS" EntityType="Self.RESULT" />
+          <EntitySet Name="RESULTS" EntityType="Self.Result" />
           <EntitySet Name="ROLES" EntityType="Self.Role" />
           <EntitySet Name="USERS" EntityType="Self.User" />
           <AssociationSet Name="SYS_C007124" Association="Self.SYS_C007124">
@@ -655,14 +655,14 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RESULTS">
-            <EntityTypeMapping TypeName="LibraryDb.RESULT">
+            <EntityTypeMapping TypeName="LibraryDb.Result">
               <MappingFragment StoreEntitySet="RESULTS">
-                <ScalarProperty Name="EVALUATION_ID" ColumnName="EVALUATION_ID" />
-                <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
-                <ScalarProperty Name="EVALUATOR_ID" ColumnName="EVALUATOR_ID" />
-                <ScalarProperty Name="RATING_ID" ColumnName="RATING_ID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IS_FINAL" ColumnName="IS_FINAL" />
+                <ScalarProperty Name="EvaluationId" ColumnName="EVALUATION_ID" />
+                <ScalarProperty Name="QuestionId" ColumnName="QUESTION_ID" />
+                <ScalarProperty Name="EvaluatorId" ColumnName="EVALUATOR_ID" />
+                <ScalarProperty Name="RatingId" ColumnName="RATING_ID" />
+                <ScalarProperty Name="Id" ColumnName="ID" />
+                <ScalarProperty Name="IsFinal" ColumnName="IS_FINAL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

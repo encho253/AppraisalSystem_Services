@@ -17,7 +17,7 @@ namespace DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Question()
         {
-            this.Results = new HashSet<RESULT>();
+            this.Results = new HashSet<Result>();
             this.EvaluationTemplates = new HashSet<EvaluationTemplates>();
         }
     
@@ -27,7 +27,7 @@ namespace DB
     
         public virtual Competence Competence { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESULT> Results { get; set; }
+        public virtual ICollection<Result> Results { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EvaluationTemplates> EvaluationTemplates { get; set; }
     }

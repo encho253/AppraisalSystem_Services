@@ -12,18 +12,18 @@ namespace DB
     using System;
     using System.Collections.Generic;
     
-    public partial class RESULT
+    public partial class Result
     {
-        public int EVALUATION_ID { get; set; }
-        public int QUESTION_ID { get; set; }
-        public int EVALUATOR_ID { get; set; }
-        public int RATING_ID { get; set; }
-        public int ID { get; set; }
-        public Nullable<bool> IS_FINAL { get; set; }
+        public int EvaluationId { get; set; }
+        public int QuestionId { get; set; }
+        public int EvaluatorId { get; set; }
+        public int RatingId { get; set; }
+        public int Id { get; set; }
+        public Nullable<bool> IsFinal { get; set; }
     
-        public virtual Evaluation EVALUATION { get; set; }
-        public virtual Question QUESTION { get; set; }
-        public virtual RATING RATING { get; set; }
-        public virtual User USER { get; set; }
+        public virtual Evaluation Evaluation { get; set; }
+        public virtual Question Question { get; set; }
+        public virtual RATING Rating { get; set; }
+        public virtual User User { get; set; }
     }
 }
