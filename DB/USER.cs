@@ -33,7 +33,7 @@ namespace DB
         public virtual ICollection<EVALUATION> EVALUATIONS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RESULT> RESULTS { get; set; }
-        public virtual ROLE ROLE { get; set; }
+        public virtual Role ROLE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EVALUATION> EVALUATIONS1 { get; set; }
     }

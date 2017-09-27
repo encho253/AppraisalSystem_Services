@@ -400,13 +400,13 @@
           <NavigationProperty Name="RATING" Relationship="Self.SYS_C007237" FromRole="RESULTS" ToRole="RATINGS" />
           <NavigationProperty Name="USER" Relationship="Self.SYS_C007236" FromRole="RESULTS" ToRole="USERS" />
         </EntityType>
-        <EntityType Name="ROLE">
+        <EntityType Name="Role">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="ROLE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="USERS" Relationship="Self.SYS_C007107" FromRole="ROLES" ToRole="USERS" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.SYS_C007107" FromRole="ROLES" ToRole="USERS" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -520,11 +520,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007107">
-          <End Role="ROLES" Type="Self.ROLE" Multiplicity="1" />
+          <End Role="ROLES" Type="Self.Role" Multiplicity="1" />
           <End Role="USERS" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ROLES">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="USERS">
               <PropertyRef Name="RoleId" />
@@ -547,7 +547,7 @@
           <EntitySet Name="QUESTIONS" EntityType="Self.QUESTION" />
           <EntitySet Name="RATINGS" EntityType="Self.RATING" />
           <EntitySet Name="RESULTS" EntityType="Self.RESULT" />
-          <EntitySet Name="ROLES" EntityType="Self.ROLE" />
+          <EntitySet Name="ROLES" EntityType="Self.Role" />
           <EntitySet Name="USERS" EntityType="Self.User" />
           <AssociationSet Name="SYS_C007124" Association="Self.SYS_C007124">
             <End Role="COMPETENCES" EntitySet="COMPETENCES" />
@@ -667,10 +667,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ROLES">
-            <EntityTypeMapping TypeName="LibraryDb.ROLE">
+            <EntityTypeMapping TypeName="LibraryDb.Role">
               <MappingFragment StoreEntitySet="ROLES">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+                <ScalarProperty Name="Id" ColumnName="ID" />
+                <ScalarProperty Name="RoleName" ColumnName="ROLE_NAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
