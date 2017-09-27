@@ -43,11 +43,11 @@
   <ItemGroup>
     <Compile Include="BS\Ilogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="WCF\IAccountService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DB\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

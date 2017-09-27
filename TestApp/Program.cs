@@ -1,4 +1,5 @@
 ﻿using DB;
+using Repository;
 using System.Linq;
 
 namespace TestApp
@@ -8,7 +9,9 @@ namespace TestApp
         public static void Main()
         {
             var db = new AppraisalDbContext();
-            var e = db.Ratings.Select(x => x.Explanation).ToList();
+            var repo = new GenericRepository<User>(db);
+
+            var p = repo.GetAllRecords();
         }
     }
 }
