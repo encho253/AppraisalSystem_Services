@@ -24,6 +24,6 @@ namespace DB
         public virtual EVALUATION EVALUATION { get; set; }
         public virtual QUESTION QUESTION { get; set; }
         public virtual RATING RATING { get; set; }
-        public virtual USER USER { get; set; }
+        public virtual User USER { get; set; }
     }
 }

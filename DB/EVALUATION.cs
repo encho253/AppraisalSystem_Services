@@ -18,7 +18,7 @@ namespace DB
         public EVALUATION()
         {
             this.RESULTS = new HashSet<RESULT>();
-            this.USERS = new HashSet<USER>();
+            this.USERS = new HashSet<User>();
         }
     
         public int ID { get; set; }
@@ -27,10 +27,10 @@ namespace DB
         public Nullable<System.DateTime> EVAL_DATE { get; set; }
     
         public virtual EVALUATION_TEMPLATES EVALUATION_TEMPLATES { get; set; }
-        public virtual USER USER { get; set; }
+        public virtual User USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RESULT> RESULTS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USER> USERS { get; set; }
+        public virtual ICollection<User> USERS { get; set; }
     }
 }

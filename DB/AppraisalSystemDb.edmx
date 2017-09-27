@@ -408,16 +408,16 @@
           <Property Name="ROLE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="USERS" Relationship="Self.SYS_C007107" FromRole="ROLES" ToRole="USERS" />
         </EntityType>
-        <EntityType Name="USER">
+        <EntityType Name="User">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="FIRST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LAST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PASSWORD" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ROLE_ID" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="EVALUATIONS" Relationship="Self.SYS_C007138" FromRole="USERS" ToRole="EVALUATIONS" />
           <NavigationProperty Name="RESULTS" Relationship="Self.SYS_C007236" FromRole="USERS" ToRole="RESULTS" />
           <NavigationProperty Name="ROLE" Relationship="Self.SYS_C007107" FromRole="USERS" ToRole="ROLES" />
@@ -460,11 +460,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007138">
-          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="USERS" Type="Self.User" Multiplicity="1" />
           <End Role="EVALUATIONS" Type="Self.EVALUATION" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USERS">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="EVALUATIONS">
               <PropertyRef Name="USER_ID" />
@@ -508,11 +508,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007236">
-          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="USERS" Type="Self.User" Multiplicity="1" />
           <End Role="RESULTS" Type="Self.RESULT" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USERS">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="RESULTS">
               <PropertyRef Name="EVALUATOR_ID" />
@@ -521,19 +521,19 @@
         </Association>
         <Association Name="SYS_C007107">
           <End Role="ROLES" Type="Self.ROLE" Multiplicity="1" />
-          <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+          <End Role="USERS" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ROLES">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="USERS">
-              <PropertyRef Name="ROLE_ID" />
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="EVALUATIONS_EVALUATORS">
           <End Role="EVALUATIONS" Type="Self.EVALUATION" Multiplicity="*" />
-          <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+          <End Role="USERS" Type="Self.User" Multiplicity="*" />
         </Association>
         <Association Name="QUESTION_TEMPLATES">
           <End Role="QUESTIONS" Type="Self.QUESTION" Multiplicity="*" />
@@ -548,7 +548,7 @@
           <EntitySet Name="RATINGS" EntityType="Self.RATING" />
           <EntitySet Name="RESULTS" EntityType="Self.RESULT" />
           <EntitySet Name="ROLES" EntityType="Self.ROLE" />
-          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <EntitySet Name="USERS" EntityType="Self.User" />
           <AssociationSet Name="SYS_C007124" Association="Self.SYS_C007124">
             <End Role="COMPETENCES" EntitySet="COMPETENCES" />
             <End Role="QUESTIONS" EntitySet="QUESTIONS" />
@@ -675,14 +675,14 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USERS">
-            <EntityTypeMapping TypeName="LibraryDb.USER">
+            <EntityTypeMapping TypeName="LibraryDb.User">
               <MappingFragment StoreEntitySet="USERS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
-                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
-                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="Id" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LastName" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="Password" ColumnName="PASSWORD" />
+                <ScalarProperty Name="Email" ColumnName="EMAIL" />
+                <ScalarProperty Name="RoleId" ColumnName="ROLE_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -691,7 +691,7 @@
               <ScalarProperty Name="ID" ColumnName="EVALUATION_ID" />
             </EndProperty>
             <EndProperty Name="USERS">
-              <ScalarProperty Name="ID" ColumnName="EVALUATOR_ID" />
+              <ScalarProperty Name="Id" ColumnName="EVALUATOR_ID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="QUESTION_TEMPLATES" TypeName="LibraryDb.QUESTION_TEMPLATES" StoreEntitySet="QUESTION_TEMPLATES">

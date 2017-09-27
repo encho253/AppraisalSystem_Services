@@ -12,22 +12,22 @@ namespace DB
     using System;
     using System.Collections.Generic;
     
-    public partial class USER
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USER()
+        public User()
         {
             this.EVALUATIONS = new HashSet<EVALUATION>();
             this.RESULTS = new HashSet<RESULT>();
             this.EVALUATIONS1 = new HashSet<EVALUATION>();
         }
     
-        public int ID { get; set; }
-        public string FIRST_NAME { get; set; }
-        public string LAST_NAME { get; set; }
-        public string PASSWORD { get; set; }
-        public string EMAIL { get; set; }
-        public int ROLE_ID { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public int RoleId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EVALUATION> EVALUATIONS { get; set; }
