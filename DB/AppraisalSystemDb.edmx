@@ -324,13 +324,13 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LibraryDb" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="COMPETENCE">
+        <EntityType Name="Competence">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="KEY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="QUESTIONS" Relationship="Self.SYS_C007124" FromRole="COMPETENCES" ToRole="QUESTIONS" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Questions" Relationship="Self.SYS_C007124" FromRole="COMPETENCES" ToRole="QUESTIONS" />
         </EntityType>
         <EntityType Name="EvaluationTemplates">
           <Key>
@@ -424,11 +424,11 @@
           <NavigationProperty Name="Evaluations1" Relationship="Self.EVALUATIONS_EVALUATORS" FromRole="USERS" ToRole="EVALUATIONS" />
         </EntityType>
         <Association Name="SYS_C007124">
-          <End Role="COMPETENCES" Type="Self.COMPETENCE" Multiplicity="1" />
+          <End Role="COMPETENCES" Type="Self.Competence" Multiplicity="1" />
           <End Role="QUESTIONS" Type="Self.Question" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="COMPETENCES">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="QUESTIONS">
               <PropertyRef Name="CompetenceId" />
@@ -540,7 +540,7 @@
           <End Role="EVALUATION_TEMPLATES" Type="Self.EvaluationTemplates" Multiplicity="*" />
         </Association>
         <EntityContainer Name="AppraisalDbContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="COMPETENCES" EntityType="Self.COMPETENCE" />
+          <EntitySet Name="COMPETENCES" EntityType="Self.Competence" />
           <EntitySet Name="EVALUATION_TEMPLATES" EntityType="Self.EvaluationTemplates" />
           <EntitySet Name="EVALUATIONS" EntityType="Self.EVALUATION" />
           <EntitySet Name="POSITIONS" EntityType="Self.Position" />
@@ -601,10 +601,10 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="LibraryDbStoreContainer" CdmEntityContainer="AppraisalDbContext">
           <EntitySetMapping Name="COMPETENCES">
-            <EntityTypeMapping TypeName="LibraryDb.COMPETENCE">
+            <EntityTypeMapping TypeName="LibraryDb.Competence">
               <MappingFragment StoreEntitySet="COMPETENCES">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="KEY" ColumnName="KEY" />
+                <ScalarProperty Name="Id" ColumnName="ID" />
+                <ScalarProperty Name="Key" ColumnName="KEY" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

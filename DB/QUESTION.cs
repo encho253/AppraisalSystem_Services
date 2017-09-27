@@ -25,7 +25,7 @@ namespace DB
         public string Content { get; set; }
         public int CompetenceId { get; set; }
     
-        public virtual COMPETENCE Competence { get; set; }
+        public virtual Competence Competence { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RESULT> Results { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -12,18 +12,18 @@ namespace DB
     using System;
     using System.Collections.Generic;
     
-    public partial class COMPETENCE
+    public partial class Competence
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public COMPETENCE()
+        public Competence()
         {
-            this.QUESTIONS = new HashSet<Question>();
+            this.Questions = new HashSet<Question>();
         }
     
-        public int ID { get; set; }
-        public string KEY { get; set; }
+        public int Id { get; set; }
+        public string Key { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Question> QUESTIONS { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
     }
 }

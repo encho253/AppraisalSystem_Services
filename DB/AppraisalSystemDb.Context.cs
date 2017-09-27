@@ -27,7 +27,7 @@ namespace DB
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<COMPETENCE> COMPETENCES { get; set; }
+        public virtual DbSet<Competence> Competences { get; set; }
         public virtual DbSet<EvaluationTemplates> EvaluationTemplates { get; set; }
         public virtual DbSet<EVALUATION> EVALUATIONS { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
