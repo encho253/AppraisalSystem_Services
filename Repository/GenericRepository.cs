@@ -21,5 +21,30 @@ namespace Repository
         {
             return this.dbSet.ToList();
         }
+
+        public TEntity GetFirstOrDefault(int recordId)
+        {
+            return this.dbSet.Find();
+        }
+
+        public void Add(TEntity entity)
+        {
+            this.dbSet.Add(entity);
+        }
+
+        public void Update(TEntity entity)
+        {
+            this.dbSet.Attach(entity);
+            this.dbContext.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void Delete(TEntity entity)
+        {
+            if (this.dbContext.Entry(entity).State == EntityState.Detached)
+            {
+                this.dbSet.Attach(entity);
+                this.dbSet.Remove(entity);
+            }
+        }
     }
 }

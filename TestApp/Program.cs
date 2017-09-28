@@ -1,6 +1,5 @@
 ﻿using DB;
 using Repository;
-using System.Linq;
 
 namespace TestApp
 {
@@ -10,8 +9,11 @@ namespace TestApp
         {
             var db = new AppraisalDbContext();
             var repo = new GenericRepository<User>(db);
+            var user = new User { FirstName = "Dinko", LastName = "Dinkov", Id = 123, Email = "dinko@abv.bg", Password = "dinko123", RoleId = 2 };
 
-            var p = repo.GetAllRecords();
+            repo.Add(user);
+
+            db.SaveChanges();
         }
     }
 }
