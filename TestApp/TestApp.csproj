@@ -68,6 +68,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BS\BS.csproj">
+      <Project>{B44DDEFA-C577-475A-B366-0F240F249405}</Project>
+      <Name>BS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DB\DB.csproj">
       <Project>{56C9B46C-575A-4056-8394-6D79415467E0}</Project>
       <Name>DB</Name>

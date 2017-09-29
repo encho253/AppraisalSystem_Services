@@ -1,6 +1,6 @@
 ﻿namespace Interfaces.BS
 {
-    public interface Ilogin
+    public interface ILogin
     {
     }
 }

@@ -73,7 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountServices\LoginServices.cs" />
+    <Compile Include="AccountServices\LoginService.cs" />
     <Compile Include="Configs\BaseService.cs" />
     <Compile Include="Configs\UnityManagerModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,6 +81,20 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DB\DB.csproj">
+      <Project>{56C9B46C-575A-4056-8394-6D79415467E0}</Project>
+      <Name>DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{ECA8015E-35E2-4F9C-B56A-27E9F2013EF2}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{F52256CF-2DA9-405E-AA1E-82DF266B8D95}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
