@@ -11,11 +11,16 @@ namespace Repository
             this.DbContext = dbContext;
         }
 
-        public AppraisalDbContext DbContext { get; set; }
+        public AppraisalDbContext DbContext { get; }
 
         public User FindUser(string email, string password)
         {
             return this.DbContext.Users.FirstOrDefault(x => x.Email == email && x.Password == password);
+        }
+
+        public void AddUser(string firstName, string lastName, string password, string email, int roleId)
+        {
+            this.DbContext.Users.Add(new User { FirstName = firstName, LastName = lastName, Password = password, Email = email, RoleId = roleId });
         }
     }
 }

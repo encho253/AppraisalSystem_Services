@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountServices\LoginService.cs" />
+    <Compile Include="AccountServices\RegisterService.cs" />
     <Compile Include="Configs\BaseService.cs" />
     <Compile Include="Configs\UnityManagerModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

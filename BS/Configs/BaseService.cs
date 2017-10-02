@@ -1,12 +1,28 @@
-﻿namespace BS.Configs
+﻿using Interfaces.BS;
+using Interfaces.Repository;
+
+namespace BS.Configs
 {
-    public abstract class BaseService
+    public abstract class BaseService : IBaseService
     {
-        public BaseService(UnityManagerModule container)
+        private IUnitOfWork unitOfWork;
+
+        public BaseService(IUnitOfWork unitOfWork)
         {
-            this.IocContainer = container;
+            this.UnitOfWork = unitOfWork;
         }
 
-        public UnityManagerModule IocContainer { get; }
+        public IUnitOfWork UnitOfWork
+        {
+            get
+            {
+                return this.unitOfWork;
+            }
+
+            set
+            {
+                this.unitOfWork = value;
+            }
+        }
     }
 }

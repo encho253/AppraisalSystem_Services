@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DB;
+using Interfaces.BS;
+using Interfaces.Repository;
 
 namespace BS.AccountServices
 {
-    class RegisterService
+    public class RegisterService : IRegisterService
     {
+        private IUnitOfWork unitOfWork;
+
+        public RegisterService(IUnitOfWork unitOfWork)
+        {
+            this.unitOfWork = unitOfWork;
+        }
+
+        public void CreateUser(string firstName, string lastName, string password, string email, int roleId)
+        {
+            this.unitOfWork.AccountRepository.AddUser(firstName, lastName, password, email, roleId);
+        }
     }
 }

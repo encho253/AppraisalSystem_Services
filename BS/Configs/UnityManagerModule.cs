@@ -21,8 +21,9 @@ namespace BS.Configs
         public void Init()
         {
             this.container.RegisterType<IUnitOfWork, UnitOfWork>();
+            this.container.RegisterType<IBaseService, BaseService>(new InjectionConstructor(this.container.Resolve<IUnitOfWork>()));
             this.container.RegisterType<IAccountRepository, AccountRepository>();
-            this.container.RegisterType<ILoginService, LoginService>(new InjectionConstructor(this.container.Resolve<IUnitOfWork>()));
+            this.container.RegisterType<ILoginService, LoginService>();
         }
 
         public T Resolve<T>()
