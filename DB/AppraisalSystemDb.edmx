@@ -332,7 +332,7 @@
           <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Questions" Relationship="Self.SYS_C007124" FromRole="COMPETENCES" ToRole="QUESTIONS" />
         </EntityType>
-        <EntityType Name="EvaluationTemplates">
+        <EntityType Name="EvaluationTemplate">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -437,7 +437,7 @@
         </Association>
         <Association Name="SYS_C007132">
           <End Role="POSITIONS" Type="Self.Position" Multiplicity="1" />
-          <End Role="EVALUATION_TEMPLATES" Type="Self.EvaluationTemplates" Multiplicity="*" />
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EvaluationTemplate" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="POSITIONS">
               <PropertyRef Name="Id" />
@@ -448,7 +448,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="SYS_C007229">
-          <End Role="EVALUATION_TEMPLATES" Type="Self.EvaluationTemplates" Multiplicity="1" />
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EvaluationTemplate" Multiplicity="1" />
           <End Role="EVALUATIONS" Type="Self.Evaluation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EVALUATION_TEMPLATES">
@@ -537,11 +537,11 @@
         </Association>
         <Association Name="QUESTION_TEMPLATES">
           <End Role="QUESTIONS" Type="Self.Question" Multiplicity="*" />
-          <End Role="EVALUATION_TEMPLATES" Type="Self.EvaluationTemplates" Multiplicity="*" />
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EvaluationTemplate" Multiplicity="*" />
         </Association>
         <EntityContainer Name="AppraisalDbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="COMPETENCES" EntityType="Self.Competence" />
-          <EntitySet Name="EVALUATION_TEMPLATES" EntityType="Self.EvaluationTemplates" />
+          <EntitySet Name="EVALUATION_TEMPLATES" EntityType="Self.EvaluationTemplate" />
           <EntitySet Name="EVALUATIONS" EntityType="Self.Evaluation" />
           <EntitySet Name="POSITIONS" EntityType="Self.Position" />
           <EntitySet Name="QUESTIONS" EntityType="Self.Question" />
@@ -609,7 +609,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EVALUATION_TEMPLATES">
-            <EntityTypeMapping TypeName="LibraryDb.EvaluationTemplates">
+            <EntityTypeMapping TypeName="LibraryDb.EvaluationTemplate">
               <MappingFragment StoreEntitySet="EVALUATION_TEMPLATES">
                 <ScalarProperty Name="Id" ColumnName="ID" />
                 <ScalarProperty Name="QualificationId" ColumnName="QUALIFICATION_ID" />

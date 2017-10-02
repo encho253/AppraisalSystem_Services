@@ -2,7 +2,7 @@
 {
     public interface IRegisterService
     {
-        void CreateUser(string firstName, string lastName, string password, string email, int roleId);
+        void CreateUser(int id, string firstName, string lastName, string password, string email, int roleId);
         void SaveChanges();
     }
 }

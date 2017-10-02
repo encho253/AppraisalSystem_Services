@@ -11,10 +11,10 @@ namespace DB
 {
     using System.Collections.Generic;
     
-    public partial class EvaluationTemplates
+    public partial class EvaluationTemplate
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EvaluationTemplates()
+        public EvaluationTemplate()
         {
             this.Evaluations = new HashSet<Evaluation>();
             this.Questions = new HashSet<Question>();

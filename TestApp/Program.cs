@@ -20,7 +20,7 @@ namespace TestApp
             {
                 u.Init();
                 var registerService = u.Resolve<IRegisterService>();
-                registerService.CreateUser("lilo", "lilkov", "lilo@abv.bg", "10101010", 2);
+                registerService.CreateUser(22,"pesho", "stoilov", "99999999", "pstoilov@abv.bg", 1);
 
                 registerService.SaveChanges();
             }

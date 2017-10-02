@@ -26,7 +26,7 @@ namespace DB
         public int EvaluationTemplateId { get; set; }
         public Nullable<System.DateTime> EvalDate { get; set; }
     
-        public virtual EvaluationTemplates EvaluationTemplates { get; set; }
+        public virtual EvaluationTemplate EvaluationTemplates { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
