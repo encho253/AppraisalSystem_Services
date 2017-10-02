@@ -1,23 +1,26 @@
 ﻿using BS.Configs;
+using DB;
 using Interfaces.BS;
-using Repository;
+using Interfaces.Repository;
 
 namespace BS.AccountServices
 {
-    public class LoginService
-    {    
+    public class LoginService : ILoginService
+    {
+        private IUnitOfWork unitOfWork;
+
+        public LoginService(IUnitOfWork unitOfWork)
+        {
+            this.unitOfWork = unitOfWork;
+        }
+
         public bool ValidateUser(string email, string password)
         {
-            UnitOfWork unitOfWork = new UnitOfWork();
-
-            var user = unitOfWork.AccountRepository.FindUser(email, password);
-
+            User user = this.unitOfWork.AccountRepository.FindUser(email, password);
             if (user == null)
             {
                 return false;
             }
-
-            //var p = repo.GetFirstOrDefault();
 
             return true;
         }

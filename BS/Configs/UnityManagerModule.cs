@@ -1,30 +1,57 @@
-﻿using Microsoft.Practices.Unity;
+﻿using BS.AccountServices;
+using Interfaces.BS;
+using Interfaces.Repository;
+using Microsoft.Practices.Unity;
+using Repository;
 using System;
 
 namespace BS.Configs
 {
-    public class UnityManagerModule
+    public class UnityManagerModule : IDisposable
     {
+        private IUnityContainer container;
+        private bool disposed = false;
+
         public UnityManagerModule()
         {
-            this.Container = new UnityContainer();
+            this.container = new UnityContainer();
         }
 
-        public IUnityContainer Container { get; private set; }
 
         public void Init()
         {
-
+            this.container.RegisterType<IUnitOfWork, UnitOfWork>();
+            this.container.RegisterType<IAccountRepository, AccountRepository>();
+            this.container.RegisterType<ILoginService, LoginService>(new InjectionConstructor(this.container.Resolve<IUnitOfWork>()));
         }
 
         public T Resolve<T>()
         {
-            return this.Container.Resolve<T>();
+            return this.container.Resolve<T>();
         }
 
         public void RegisterInstance<T>(T instance)
         {
-            this.Container.RegisterInstance<T>(instance);
+            this.container.RegisterInstance<T>(instance);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                this.container.Dispose();
+            }
+
+            disposed = true;
         }
     }
 }

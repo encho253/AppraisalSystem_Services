@@ -6,6 +6,6 @@ namespace Interfaces.WCF
     public interface IAccountService
     {
         [OperationContract]
-        void DoWork();
+        bool ValidateUser(string email, string password);
     }
 }

@@ -76,6 +76,10 @@
       <Project>{56C9B46C-575A-4056-8394-6D79415467E0}</Project>
       <Name>DB</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{ECA8015E-35E2-4F9C-B56A-27E9F2013EF2}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{f52256cf-2da9-405e-aa1e-82df266b8d95}</Project>
       <Name>Repository</Name>

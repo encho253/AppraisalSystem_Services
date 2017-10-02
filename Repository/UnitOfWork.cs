@@ -1,13 +1,14 @@
 ﻿using DB;
+using Interfaces.Repository;
 using System;
 
 
 namespace Repository
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
         private AppraisalDbContext dbContext = null;
-        AccountRepository<User> accountRepository = null;
+        IAccountRepository accountRepository = null;
 
         private bool disposed = false;
 
@@ -24,13 +25,13 @@ namespace Repository
             }
         }
 
-        public AccountRepository<User> AccountRepository
+        public IAccountRepository AccountRepository
         {
             get
             {
                 if (this.accountRepository == null)
                 {
-                    this.accountRepository = new AccountRepository<User>(this.DbContext);
+                    this.accountRepository = new AccountRepository(this.DbContext);
                 }
 
                 return this.accountRepository;

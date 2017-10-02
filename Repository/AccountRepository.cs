@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Repository
 {
-    public class AccountRepository<TEntity> : GenericRepository<TEntity>, IAccountRepository where TEntity : class
+    public class AccountRepository : GenericRepository<User>, IAccountRepository
     {
         public AccountRepository(AppraisalDbContext dbContext) : base(dbContext)
         {
