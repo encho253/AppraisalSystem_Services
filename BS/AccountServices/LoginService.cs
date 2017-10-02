@@ -5,7 +5,7 @@ using Interfaces.Repository;
 
 namespace BS.AccountServices
 {
-    public class LoginService : BaseService, ILoginService
+    public class LoginService : BaseService, IBaseService, ILoginService
     {
         public LoginService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {

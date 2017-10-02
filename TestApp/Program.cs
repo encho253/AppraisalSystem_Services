@@ -9,7 +9,7 @@ namespace TestApp
     {
         public static void Main()
         {
-            var db = new AppraisalDbContext();
+            //var db = new AppraisalDbContext();
             //var repo = new GenericRepository<User>(db);
             //var user = new User { FirstName = "Dinko", LastName = "Dinkov", Id = 123, Email = "dinko@abv.bg", Password = "dinko123", RoleId = 2 };
 
@@ -19,13 +19,11 @@ namespace TestApp
             using (UnityManagerModule u = new UnityManagerModule())
             {
                 u.Init();
-                ILoginService loginService = u.Resolve<ILoginService>();
-                var p = loginService.ValidateUser("dinko@abv.bg", "dinko123");
+                var registerService = u.Resolve<IRegisterService>();
+                registerService.CreateUser("lilo", "lilkov", "lilo@abv.bg", "10101010", 2);
+
+                registerService.SaveChanges();
             }
-
-            //Console.WriteLine(p);
-
-            //db.SaveChanges();
         }
     }
 }

@@ -6,5 +6,6 @@ namespace Interfaces.Repository
     {
         IAccountRepository AccountRepository { get; }
         AppraisalDbContext DbContext { get; }
+        void SaveChanges();
     }
 }
