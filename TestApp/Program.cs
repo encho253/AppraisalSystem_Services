@@ -16,13 +16,20 @@ namespace TestApp
             //repo.Add(user);
 
             //var p = repo.GetFirstOrDefault<int>(1);
+            //using (UnityManagerModule u = new UnityManagerModule())
+            //{
+            //    u.Init();
+            //    var registerService = u.Resolve<IRegisterService>();
+            //    registerService.CreateUser(22,"pesho", "stoilov", "99999999", "pstoilov@abv.bg", 1);
+
+            //    registerService.SaveChanges();
+            //}
+
             using (UnityManagerModule u = new UnityManagerModule())
             {
                 u.Init();
-                var registerService = u.Resolve<IRegisterService>();
-                registerService.CreateUser(22,"pesho", "stoilov", "99999999", "pstoilov@abv.bg", 1);
-
-                registerService.SaveChanges();
+                var registerService = u.Resolve<ILoginService>();
+                var p = registerService.ValidateUser("pstoilov@abv.bg", "99999999");
             }
         }
     }
