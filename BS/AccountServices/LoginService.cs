@@ -13,7 +13,7 @@ namespace BS.AccountServices
 
         public bool ValidateUser(string email, string password)
         {
-            User user = this.UnitOfWork.AccountRepository.FindUser(email, password);
+            User user = this.UnitOfWork.UserRepository.FindUserByEmailAndPassword(email, password);
             if (user == null)
             {
                 return false;

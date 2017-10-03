@@ -8,7 +8,8 @@ namespace Repository
     public class UnitOfWork : IDisposable, IUnitOfWork
     {
         private AppraisalDbContext dbContext = null;
-        IAccountRepository accountRepository = null;
+        IUserRepository userRepository = null;
+        IEvaluationTemplateRepository evaluationTemplateRepository = null;
 
         private bool disposed = false;
 
@@ -25,19 +26,32 @@ namespace Repository
             }
         }
 
-        public IAccountRepository AccountRepository
+        public IUserRepository UserRepository
         {
             get
             {
-                if (this.accountRepository == null)
+                if (this.userRepository == null)
                 {
-                    this.accountRepository = new AccountRepository(this.DbContext);
+                    this.userRepository = new UserRepository(this.DbContext);
                 }
 
-                return this.accountRepository;
+                return this.userRepository;
             }
         }
 
+        public IEvaluationTemplateRepository EvaluationTemplateRepository
+        {
+            get
+            {
+                if (this.evaluationTemplateRepository == null)
+                {
+                    this.evaluationTemplateRepository = new EvaluationTemplateRepository(this.DbContext);
+                }
+
+                return this.evaluationTemplateRepository;
+            }
+        }
+         
 
         public void SaveChanges()
         {

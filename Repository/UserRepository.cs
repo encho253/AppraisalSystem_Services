@@ -4,16 +4,16 @@ using System.Linq;
 
 namespace Repository
 {
-    public class AccountRepository : GenericRepository<User>, IAccountRepository
+    public class UserRepository : GenericRepository<User>, IUserRepository
     {
-        public AccountRepository(AppraisalDbContext dbContext) : base(dbContext)
+        public UserRepository(AppraisalDbContext dbContext) : base(dbContext)
         {
             this.DbContext = dbContext;
         }
 
         public AppraisalDbContext DbContext { get; }
 
-        public User FindUser(string email, string password)
+        public User FindUserByEmailAndPassword(string email, string password)
         {
             return this.DbContext.Users.FirstOrDefault(x => x.Email == email && x.Password == password);
         }

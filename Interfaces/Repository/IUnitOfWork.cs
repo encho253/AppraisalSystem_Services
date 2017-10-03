@@ -4,7 +4,7 @@ namespace Interfaces.Repository
 {
     public interface IUnitOfWork
     {
-        IAccountRepository AccountRepository { get; }
+        IUserRepository UserRepository { get; }
         AppraisalDbContext DbContext { get; }
         void SaveChanges();
     }

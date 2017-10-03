@@ -22,7 +22,7 @@ namespace BS.Configs
         {
             this.container.RegisterType<IUnitOfWork, UnitOfWork>();
             this.container.RegisterType<IBaseService, BaseService>(new InjectionConstructor(this.container.Resolve<IUnitOfWork>()));
-            this.container.RegisterType<IAccountRepository, AccountRepository>();
+            this.container.RegisterType<IUserRepository, UserRepository>();
             this.container.RegisterType<ILoginService, LoginService>();
             this.container.RegisterType<IRegisterService, RegisterService>();
         }

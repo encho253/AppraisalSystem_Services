@@ -12,7 +12,7 @@ namespace BS.AccountServices
 
         public void CreateUser(int id, string firstName, string lastName, string password, string email, int roleId)
         {
-            this.UnitOfWork.AccountRepository.AddUser(id, firstName, lastName, password, email, roleId);
+            this.UnitOfWork.UserRepository.AddUser(id, firstName, lastName, password, email, roleId);
         }
 
         public void SaveChanges()

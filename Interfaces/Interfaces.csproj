@@ -44,9 +44,12 @@
     <Compile Include="BS\IBaseService.cs" />
     <Compile Include="BS\IEvaluationTemplateService.cs" />
     <Compile Include="BS\ILoginService.cs" />
+    <Compile Include="BS\IPositionService.cs" />
     <Compile Include="BS\IRegisterService.cs" />
+    <Compile Include="BS\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\IAccountRepository.cs" />
+    <Compile Include="Repository\IEvaluationTemplateRepository.cs" />
+    <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />
     <Compile Include="WCF\IAccountService.cs" />
