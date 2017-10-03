@@ -4,6 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
+      <Diagram DiagramId="41ba01848d4d4c31b2d02587c109279b" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryDb.Competence" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDb.EvaluationTemplate" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDb.Evaluation" Width="1.5" PointX="10.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDb.Position" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDb.Question" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDb.Rating" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDb.Result" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDb.Role" Width="1.5" PointX="10.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDb.User" Width="1.5" PointX="12.75" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="LibraryDb.SYS_C007124" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDb.SYS_C007132" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDb.SYS_C007229" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDb.SYS_C007138" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDb.SYS_C007234" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDb.SYS_C007235" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDb.SYS_C007237" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDb.SYS_C007236" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDb.SYS_C007107" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDb.EVALUATIONS_EVALUATORS" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDb.QUESTION_TEMPLATES" ManuallyRouted="false" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

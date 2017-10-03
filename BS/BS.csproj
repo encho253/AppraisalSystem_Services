@@ -77,6 +77,7 @@
     <Compile Include="AccountServices\RegisterService.cs" />
     <Compile Include="Configs\BaseService.cs" />
     <Compile Include="Configs\UnityManagerModule.cs" />
+    <Compile Include="EvaluationTemplateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

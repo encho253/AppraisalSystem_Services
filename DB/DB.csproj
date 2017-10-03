@@ -74,32 +74,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppraisalSystemDb.edmx</DependentUpon>
     </Compile>
-    <Compile Include="COMPETENCE.cs">
+    <Compile Include="Competence.cs">
       <DependentUpon>AppraisalSystemDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="EVALUATION.cs">
+    <Compile Include="Evaluation.cs">
       <DependentUpon>AppraisalSystemDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="EVALUATION_TEMPLATES.cs">
+    <Compile Include="EvaluationTemplate.cs">
       <DependentUpon>AppraisalSystemDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="POSITION.cs">
+    <Compile Include="Position.cs">
       <DependentUpon>AppraisalSystemDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QUESTION.cs">
+    <Compile Include="Question.cs">
       <DependentUpon>AppraisalSystemDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="RATING.cs">
+    <Compile Include="Rating.cs">
       <DependentUpon>AppraisalSystemDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="RESULT.cs">
+    <Compile Include="Result.cs">
       <DependentUpon>AppraisalSystemDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="ROLE.cs">
+    <Compile Include="Role.cs">
       <DependentUpon>AppraisalSystemDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="USER.cs">
+    <Compile Include="User.cs">
       <DependentUpon>AppraisalSystemDb.tt</DependentUpon>
     </Compile>
   </ItemGroup>

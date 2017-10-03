@@ -10,6 +10,7 @@
 namespace DB
 {
     using System;
+    using System.Collections.Generic;
     
     public partial class Result
     {
