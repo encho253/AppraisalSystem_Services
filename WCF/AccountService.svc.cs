@@ -4,7 +4,7 @@ using Interfaces.WCF;
 
 namespace WCF
 {
-    public class AccountService : IAccountService
+    public class AccountService : IAccountWcfService
     {
         public bool ValidateUser(string email, string password)
         {

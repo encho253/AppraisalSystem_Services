@@ -3,7 +3,7 @@
 namespace Interfaces.WCF
 {
     [ServiceContract]
-    public interface IAccountService
+    public interface IAccountWcfService
     {
         [OperationContract]
         bool ValidateUser(string email, string password);
