@@ -49,6 +49,7 @@
     <Compile Include="BS\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IEvaluationTemplateRepository.cs" />
+    <Compile Include="Repository\IPositionRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />

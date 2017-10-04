@@ -25,11 +25,19 @@ namespace TestApp
             //    registerService.SaveChanges();
             //}
 
+            //using (UnityManagerModule u = new UnityManagerModule())
+            //{
+            //    u.Init();
+            //    var registerService = u.Resolve<ILoginService>();
+            //    var p = registerService.ValidateUser("pstoilov@abv.bg", "99999999");
+            //}
+
             using (UnityManagerModule u = new UnityManagerModule())
             {
                 u.Init();
-                var registerService = u.Resolve<ILoginService>();
-                var p = registerService.ValidateUser("pstoilov@abv.bg", "99999999");
+                var registerService = u.Resolve<IPositionService>();
+
+                var results = registerService.GetAll();
             }
         }
     }

@@ -6,6 +6,7 @@ namespace Interfaces.Repository
     {
         IUserRepository UserRepository { get; }
         AppraisalDbContext DbContext { get; }
+        IPositionRepository PositionRepository { get; }
         void SaveChanges();
     }
 }

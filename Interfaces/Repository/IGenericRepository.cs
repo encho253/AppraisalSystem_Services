@@ -2,7 +2,7 @@
 
 namespace Interfaces.Repository
 {
-    public interface IGenericRepository<TEntity>
+    public interface IGenericRepository<TEntity> where TEntity : class
     {
         IEnumerable<TEntity> GetAllRecords();
 

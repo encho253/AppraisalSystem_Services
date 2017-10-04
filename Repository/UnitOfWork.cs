@@ -10,7 +10,7 @@ namespace Repository
         private AppraisalDbContext dbContext = null;
         IUserRepository userRepository = null;
         IEvaluationTemplateRepository evaluationTemplateRepository = null;
-
+        IPositionRepository positionRepository = null;
         private bool disposed = false;
 
         public AppraisalDbContext DbContext
@@ -51,7 +51,19 @@ namespace Repository
                 return this.evaluationTemplateRepository;
             }
         }
-         
+
+        public IPositionRepository PositionRepository
+        {
+            get
+            {
+                if (this.positionRepository == null)
+                {
+                    this.positionRepository = new PositionRepository(this.DbContext);
+                }
+                return this.positionRepository;
+            }       
+        }
+
 
         public void SaveChanges()
         {

@@ -3,7 +3,7 @@ using Interfaces.Repository;
 
 namespace Repository
 {
-    public class EvaluationTemplateRepository : GenericRepository<Position>, IEvaluationTemplateRepository
+    public class EvaluationTemplateRepository : GenericRepository<PositionRepository>, IEvaluationTemplateRepository
     {
         private AppraisalDbContext dbContext;
 

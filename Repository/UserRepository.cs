@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Repository
 {
-    public class UserRepository : GenericRepository<User>, IUserRepository
+    public class UserRepository : GenericRepository<User>, IGenericRepository<User>, IUserRepository
     {
         public UserRepository(AppraisalDbContext dbContext) : base(dbContext)
         {

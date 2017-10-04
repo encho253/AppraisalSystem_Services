@@ -25,6 +25,8 @@ namespace BS.Configs
             this.container.RegisterType<IUserRepository, UserRepository>();
             this.container.RegisterType<ILoginService, LoginService>();
             this.container.RegisterType<IRegisterService, RegisterService>();
+            this.container.RegisterType<IPositionRepository, PositionRepository>();
+            this.container.RegisterType<IPositionService, PositionService>();
         }
 
         public T Resolve<T>()
