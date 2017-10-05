@@ -33,9 +33,9 @@ namespace TestApp
             using (UnityManagerModule u = new UnityManagerModule())
             {
                 u.Init();
-                var registerService = u.Resolve<IEvaluationTemplateService>();
+                var registerService = u.Resolve<IQuestionService>();
 
-                registerService.CreateEvaluationTemplate(1, 2);
+                registerService.AddQuestion(4, "Test Question", 3);
 
                 registerService.SaveChanges();
             }

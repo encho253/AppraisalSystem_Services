@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace Repository
+namespace Repository.Configs
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {

@@ -3,6 +3,7 @@ using Interfaces.BS;
 using Interfaces.Repository;
 using Microsoft.Practices.Unity;
 using Repository;
+using Repository.Configs;
 using System;
 
 namespace BS.Configs
@@ -32,6 +33,12 @@ namespace BS.Configs
 
             this.container.RegisterType<IEvaluationTemplateRepository, EvaluationTemplateRepository>();
             this.container.RegisterType<IEvaluationTemplateService, EvaluationTemplateService>();
+
+            this.container.RegisterType<ICompetenceRepository, CompetenceRepository>();
+            this.container.RegisterType<ICompetenceService, CompetenceService>();
+
+            this.container.RegisterType<IQuestionRepository, QuestionRepository>();
+            this.container.RegisterType<IQuestionService, QuestionService>();
         }
 
         public T Resolve<T>()

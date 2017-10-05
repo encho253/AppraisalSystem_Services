@@ -1,5 +1,6 @@
 ﻿using DB;
 using Interfaces.Repository;
+using Repository.Configs;
 using System.Linq;
 
 namespace Repository

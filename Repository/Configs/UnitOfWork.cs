@@ -3,7 +3,7 @@ using Interfaces.Repository;
 using System;
 
 
-namespace Repository
+namespace Repository.Configs
 {
     public class UnitOfWork : IDisposable, IUnitOfWork
     {
@@ -11,9 +11,11 @@ namespace Repository
         IUserRepository userRepository = null;
         IEvaluationTemplateRepository evaluationTemplateRepository = null;
         IPositionRepository positionRepository = null;
+        ICompetenceRepository competenceRepository = null;
+        IQuestionRepository questionRepository = null;
         private bool disposed = false;
 
-        public AppraisalDbContext DbContext
+        private AppraisalDbContext DbContext
         {
             get
             {
@@ -64,6 +66,29 @@ namespace Repository
             }       
         }
 
+        public ICompetenceRepository CompetenceRepository
+        {
+            get
+            {
+                if (this.competenceRepository == null)
+                {
+                    this.competenceRepository = new CompetenceRepository(this.DbContext);
+                }
+                return this.competenceRepository;
+            }
+        }
+
+        public IQuestionRepository QuestionRepository
+        {
+            get
+            {
+                if (this.questionRepository == null)
+                {
+                    this.questionRepository = new QuestionRepository(this.DbContext);
+                }
+                return this.questionRepository;
+            }
+        }
 
         public void SaveChanges()
         {
