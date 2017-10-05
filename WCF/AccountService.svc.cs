@@ -23,8 +23,6 @@ namespace WCF
                 dataContainer.Init();
                 IRegisterService customerRegisterService = dataContainer.Resolve<IRegisterService>();
                 customerRegisterService.CreateUser(id, firstName, lastName, password, email, roleId);
-
-                customerRegisterService.SaveChanges();
             }
         }
     }

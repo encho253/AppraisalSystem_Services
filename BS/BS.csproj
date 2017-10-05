@@ -75,11 +75,13 @@
   <ItemGroup>
     <Compile Include="AccountServices\LoginService.cs" />
     <Compile Include="AccountServices\RegisterService.cs" />
+    <Compile Include="CompetenceService.cs" />
     <Compile Include="Configs\BaseService.cs" />
     <Compile Include="Configs\UnityManagerModule.cs" />
     <Compile Include="EvaluationTemplateService.cs" />
     <Compile Include="PositionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

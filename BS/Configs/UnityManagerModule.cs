@@ -22,11 +22,16 @@ namespace BS.Configs
         {
             this.container.RegisterType<IUnitOfWork, UnitOfWork>();
             this.container.RegisterType<IBaseService, BaseService>(new InjectionConstructor(this.container.Resolve<IUnitOfWork>()));
+
             this.container.RegisterType<IUserRepository, UserRepository>();
             this.container.RegisterType<ILoginService, LoginService>();
             this.container.RegisterType<IRegisterService, RegisterService>();
+
             this.container.RegisterType<IPositionRepository, PositionRepository>();
             this.container.RegisterType<IPositionService, PositionService>();
+
+            this.container.RegisterType<IEvaluationTemplateRepository, EvaluationTemplateRepository>();
+            this.container.RegisterType<IEvaluationTemplateService, EvaluationTemplateService>();
         }
 
         public T Resolve<T>()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Interfaces.BS
 {
-    public interface IUserService
+    public interface IUserService : IBaseService
     {
         IEnumerable<User> GetAllUsers();
         User SearchByFirstName();

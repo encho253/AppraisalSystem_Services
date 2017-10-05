@@ -24,5 +24,10 @@ namespace BS.Configs
                 this.unitOfWork = value;
             }
         }
+
+        public void SaveChanges()
+        {
+            this.UnitOfWork.SaveChanges();
+        }
     }
 }

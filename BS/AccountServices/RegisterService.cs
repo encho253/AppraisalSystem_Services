@@ -15,10 +15,5 @@ namespace BS.AccountServices
         {
             this.UnitOfWork.UserRepository.Add(new User { Id = id, FirstName = firstName, LastName = lastName, Password = password, Email = email, RoleId = roleId });
         }
-
-        public void SaveChanges()
-        {
-            this.UnitOfWork.SaveChanges();
-        }
     }
 }

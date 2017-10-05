@@ -1,6 +1,6 @@
 ﻿namespace Interfaces.BS
 {
-    public interface IEvaluationTemplateService
+    public interface IEvaluationTemplateService : IBaseService
     {
         void CreateEvaluationTemplate(int id, int positionId);
     }

@@ -1,6 +1,4 @@
-﻿using BS.AccountServices;
-using BS.Configs;
-using DB;
+﻿using BS.Configs;
 using Interfaces.BS;
 
 namespace TestApp
@@ -35,9 +33,11 @@ namespace TestApp
             using (UnityManagerModule u = new UnityManagerModule())
             {
                 u.Init();
-                var registerService = u.Resolve<IPositionService>();
+                var registerService = u.Resolve<IEvaluationTemplateService>();
 
-                var results = registerService.GetAll();
+                registerService.CreateEvaluationTemplate(1, 2);
+
+                registerService.SaveChanges();
             }
         }
     }
