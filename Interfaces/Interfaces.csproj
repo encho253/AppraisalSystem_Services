@@ -43,17 +43,21 @@
   <ItemGroup>
     <Compile Include="BS\IBaseService.cs" />
     <Compile Include="BS\ICompetenceService.cs" />
+    <Compile Include="BS\IEvaluationService.cs" />
     <Compile Include="BS\IEvaluationTemplateService.cs" />
     <Compile Include="BS\ILoginService.cs" />
     <Compile Include="BS\IPositionService.cs" />
     <Compile Include="BS\IQuestionService.cs" />
     <Compile Include="BS\IRegisterService.cs" />
+    <Compile Include="BS\IRoleService.cs" />
     <Compile Include="BS\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ICompetenceRepository.cs" />
+    <Compile Include="Repository\IEvaluationRepository.cs" />
     <Compile Include="Repository\IEvaluationTemplateRepository.cs" />
     <Compile Include="Repository\IPositionRepository.cs" />
     <Compile Include="Repository\IQuestionRepository.cs" />
+    <Compile Include="Repository\IRoleRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />

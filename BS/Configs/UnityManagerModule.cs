@@ -39,6 +39,9 @@ namespace BS.Configs
 
             this.container.RegisterType<IQuestionRepository, QuestionRepository>();
             this.container.RegisterType<IQuestionService, QuestionService>();
+
+            this.container.RegisterType<IEvaluationRepository, EvaluationRepository>();
+            this.container.RegisterType<IEvaluationService, EvaluationService>();
         }
 
         public T Resolve<T>()

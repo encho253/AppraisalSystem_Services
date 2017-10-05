@@ -13,6 +13,9 @@ namespace Repository.Configs
         IPositionRepository positionRepository = null;
         ICompetenceRepository competenceRepository = null;
         IQuestionRepository questionRepository = null;
+        IEvaluationRepository evaluationRepository = null;
+        IResultRepository resultRepository = null;
+
         private bool disposed = false;
 
         private AppraisalDbContext DbContext
@@ -87,6 +90,30 @@ namespace Repository.Configs
                     this.questionRepository = new QuestionRepository(this.DbContext);
                 }
                 return this.questionRepository;
+            }
+        }
+
+        public IEvaluationRepository EvaluationRepository
+        {
+            get
+            {
+                if (this.evaluationRepository == null)
+                {
+                    this.evaluationRepository = new EvaluationRepository(this.DbContext);
+                }
+                return this.evaluationRepository;
+            }
+        }
+
+        public IResultRepository ResultRepository
+        {
+            get
+            {
+                if (this.resultRepository == null)
+                {
+                    this.resultRepository = new ResultRepository(this.DbContext);
+                }
+                return this.resultRepository;
             }
         }
 

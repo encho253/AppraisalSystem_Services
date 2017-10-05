@@ -1,5 +1,6 @@
 ﻿using BS.Configs;
 using Interfaces.BS;
+using System;
 
 namespace TestApp
 {
@@ -33,9 +34,9 @@ namespace TestApp
             using (UnityManagerModule u = new UnityManagerModule())
             {
                 u.Init();
-                var registerService = u.Resolve<IQuestionService>();
+                var registerService = u.Resolve<IEvaluationService>();
 
-                registerService.AddQuestion(4, "Test Question", 3);
+                registerService.CreateEvaluation(1, 1, 1);
 
                 registerService.SaveChanges();
             }

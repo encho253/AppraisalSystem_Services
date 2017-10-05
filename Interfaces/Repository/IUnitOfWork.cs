@@ -7,6 +7,7 @@
         IPositionRepository PositionRepository { get; }
         ICompetenceRepository CompetenceRepository { get; }
         IQuestionRepository QuestionRepository { get; }
+        IEvaluationRepository EvaluationRepository { get; }
 
         void SaveChanges();
     }

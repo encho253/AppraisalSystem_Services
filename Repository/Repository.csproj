@@ -58,9 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompetenceRepository.cs" />
+    <Compile Include="EvaluationRepository.cs" />
     <Compile Include="EvaluationTemplateRepository.cs" />
     <Compile Include="PositionRepository.cs" />
     <Compile Include="QuestionRepository.cs" />
+    <Compile Include="RoleRepository.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Configs\GenericRepository.cs" />
