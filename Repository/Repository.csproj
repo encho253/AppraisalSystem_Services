@@ -62,6 +62,7 @@
     <Compile Include="EvaluationTemplateRepository.cs" />
     <Compile Include="PositionRepository.cs" />
     <Compile Include="QuestionRepository.cs" />
+    <Compile Include="ResultRepository.cs" />
     <Compile Include="RoleRepository.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

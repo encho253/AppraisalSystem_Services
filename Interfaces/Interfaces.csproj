@@ -49,6 +49,7 @@
     <Compile Include="BS\IPositionService.cs" />
     <Compile Include="BS\IQuestionService.cs" />
     <Compile Include="BS\IRegisterService.cs" />
+    <Compile Include="BS\IResultService.cs" />
     <Compile Include="BS\IRoleService.cs" />
     <Compile Include="BS\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />
+    <Compile Include="Repository\ResultRepository.cs" />
     <Compile Include="WCF\IAccountWcfService.cs" />
   </ItemGroup>
   <ItemGroup>
