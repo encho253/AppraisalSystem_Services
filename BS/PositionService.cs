@@ -8,18 +8,20 @@ namespace BS
 {
     public class PositionService : BaseService, IBaseService, IPositionService
     {
-        private IUnitOfWork unitOfWork;
-
         public PositionService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<Position> GetAll()
         {
-            IEnumerable<Position> positions = this.unitOfWork.PositionRepository.GetAllRecords();
+            IEnumerable<Position> positions = this.UnitOfWork.PositionRepository.GetAllRecords();
 
             return positions;
+        }
+
+        public Position FindPositon(int id)
+        {
+            return this.UnitOfWork.PositionRepository.GetFirstOrDefault(id);
         }
     }
 }

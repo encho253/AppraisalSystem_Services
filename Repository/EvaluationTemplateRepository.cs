@@ -3,18 +3,15 @@ using Interfaces.Repository;
 
 namespace Repository
 {
-    public class EvaluationTemplateRepository : GenericRepository<PositionRepository>, IEvaluationTemplateRepository
+    public class EvaluationTemplateRepository : GenericRepository<EvaluationTemplate>, IGenericRepository<EvaluationTemplate>, IEvaluationTemplateRepository
     {
-        private AppraisalDbContext dbContext;
-
         public EvaluationTemplateRepository(AppraisalDbContext dbContext) : base(dbContext)
         {
-            this.dbContext = dbContext;
         }
 
-        public void AddPosition(int id, int positionId)
+        public void AddPosition(EvaluationTemplate evaluationTemplate)
         {
-            this.dbContext.EvaluationsTemplates.Add( new EvaluationTemplate { Id = id, QualificationId = positionId});
+            this.DbContext.EvaluationsTemplates.Add(evaluationTemplate);
         }
     }
 }

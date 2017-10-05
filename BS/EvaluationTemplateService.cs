@@ -11,8 +11,9 @@ namespace BS
         {
         }
 
-        public void AddPosition(Position position)
+        public void CreateEvaluationTemplate(int id, int positionId)
         {
+            this.UnitOfWork.EvaluationTemplateRepository.Add(new EvaluationTemplate { Id = id, QualificationId = id });
         }
     }
 }

@@ -53,7 +53,7 @@
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />
-    <Compile Include="WCF\IAccountService.cs" />
+    <Compile Include="WCF\IAccountWcfService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DB\" />

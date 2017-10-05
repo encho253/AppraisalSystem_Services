@@ -9,13 +9,14 @@ namespace Repository
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         private DbSet<TEntity> dbSet;
-        private AppraisalDbContext dbContext;
 
         public GenericRepository(AppraisalDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            this.DbContext = dbContext;
             this.dbSet = dbContext.Set<TEntity>();
         }
+
+        public AppraisalDbContext DbContext { get; private set; }
 
         public IEnumerable<TEntity> GetAllRecords()
         {
@@ -35,12 +36,12 @@ namespace Repository
         public void Update(TEntity entity)
         {
             this.dbSet.Attach(entity);
-            this.dbContext.Entry(entity).State = EntityState.Modified;
+            this.DbContext.Entry(entity).State = EntityState.Modified;
         }
 
         public void Delete(TEntity entity)
         {
-            if (this.dbContext.Entry(entity).State == EntityState.Detached)
+            if (this.DbContext.Entry(entity).State == EntityState.Detached)
             {
                 this.dbSet.Attach(entity);
                 this.dbSet.Remove(entity);

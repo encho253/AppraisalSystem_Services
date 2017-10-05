@@ -1,6 +1,8 @@
-﻿namespace Interfaces.Repository
+﻿using DB;
+
+namespace Interfaces.Repository
 {
-    public interface IEvaluationTemplateRepository
+    public interface IEvaluationTemplateRepository : IGenericRepository<EvaluationTemplate>
     {
     }
 }
