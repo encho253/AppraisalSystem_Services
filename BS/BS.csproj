@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="AccountServices\LoginService.cs" />
     <Compile Include="AccountServices\RegisterService.cs" />
+    <Compile Include="AccountServices\UserService.cs" />
     <Compile Include="CompetenceService.cs" />
     <Compile Include="Configs\BaseService.cs" />
     <Compile Include="Configs\UnityManagerModule.cs" />

@@ -15,5 +15,10 @@ namespace Repository
         {
             return this.DbContext.Users.FirstOrDefault(x => x.Email == email && x.Password == password);
         }
+
+        public string[] GetRolesForUser(string userName)
+        {
+            return this.DbContext.Users.Where(u => u.Email == userName).Select(r => r.Role.RoleName).ToArray();
+        }
     }
 }

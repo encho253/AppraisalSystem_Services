@@ -7,5 +7,6 @@ namespace Interfaces.BS
     {
         IEnumerable<User> GetAllUsers();
         User SearchByFirstName();
+        string[] GetRolesForUser(string userName);
     }
 }

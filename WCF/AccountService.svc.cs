@@ -25,5 +25,17 @@ namespace WCF
                 customerRegisterService.CreateUser(id, firstName, lastName, password, email, roleId);
             }
         }
+
+        public string[] GetRolesForUser(string userName)
+        {
+            using (UnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IUserService customerUserService = dataContainer.Resolve<IUserService>();
+                string[] roles = customerUserService.GetRolesForUser(userName);
+
+                return roles;
+            }
+        }
     }
 }

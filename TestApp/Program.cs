@@ -34,9 +34,9 @@ namespace TestApp
             using (UnityManagerModule u = new UnityManagerModule())
             {
                 u.Init();
-                var registerService = u.Resolve<IEvaluationService>();
+                var registerService = u.Resolve<IUserService>();
 
-                registerService.CreateEvaluation(1, 1, 1);
+                var p = registerService.GetRolesForUser("pesho@gmail.com");
 
                 registerService.SaveChanges();
             }

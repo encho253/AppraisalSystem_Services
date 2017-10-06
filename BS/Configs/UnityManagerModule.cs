@@ -42,6 +42,8 @@ namespace BS.Configs
 
             this.container.RegisterType<IEvaluationRepository, EvaluationRepository>();
             this.container.RegisterType<IEvaluationService, EvaluationService>();
+
+            this.container.RegisterType<IUserService, UserService>();
         }
 
         public T Resolve<T>()
