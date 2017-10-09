@@ -10,13 +10,13 @@ namespace Repository.Configs
     {
         private DbSet<TEntity> dbSet;
 
-        public GenericRepository(AppraisalDbContext dbContext)
+        public GenericRepository(IUnitOfWork unitOfWork)
         {
-            this.DbContext = dbContext;
-            this.dbSet = dbContext.Set<TEntity>();
+            this.UnitOfWork = unitOfWork;
+            this.dbSet = this.UnitOfWork.DbContext.Set<TEntity>();
         }
 
-        public AppraisalDbContext DbContext { get; private set; }
+        public IUnitOfWork UnitOfWork { get; set; }
 
         public IEnumerable<TEntity> GetAllRecords()
         {
@@ -36,12 +36,12 @@ namespace Repository.Configs
         public void Update(TEntity entity)
         {
             this.dbSet.Attach(entity);
-            this.DbContext.Entry(entity).State = EntityState.Modified;
+            this.UnitOfWork.DbContext.Entry(entity).State = EntityState.Modified;
         }
 
         public void Delete(TEntity entity)
         {
-            if (this.DbContext.Entry(entity).State == EntityState.Detached)
+            if (this.UnitOfWork.DbContext.Entry(entity).State == EntityState.Detached)
             {
                 this.dbSet.Attach(entity);
                 this.dbSet.Remove(entity);

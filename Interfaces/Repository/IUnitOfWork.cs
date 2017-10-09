@@ -1,14 +1,10 @@
-﻿namespace Interfaces.Repository
+﻿using DB;
+
+namespace Interfaces.Repository
 {
     public interface IUnitOfWork
     {
-        IUserRepository UserRepository { get; }
-        IEvaluationTemplateRepository EvaluationTemplateRepository { get; }
-        IPositionRepository PositionRepository { get; }
-        ICompetenceRepository CompetenceRepository { get; }
-        IQuestionRepository QuestionRepository { get; }
-        IEvaluationRepository EvaluationRepository { get; }
-
+        AppraisalDbContext DbContext { get; }
         void SaveChanges();
     }
 }

@@ -6,13 +6,13 @@ namespace Repository
 {
     public class EvaluationTemplateRepository : GenericRepository<EvaluationTemplate>, IGenericRepository<EvaluationTemplate>, IEvaluationTemplateRepository
     {
-        public EvaluationTemplateRepository(AppraisalDbContext dbContext) : base(dbContext)
+        public EvaluationTemplateRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
 
         public void AddPosition(EvaluationTemplate evaluationTemplate)
         {
-            this.DbContext.EvaluationsTemplates.Add(evaluationTemplate);
+            this.UnitOfWork.DbContext.EvaluationsTemplates.Add(evaluationTemplate);
         }
     }
 }

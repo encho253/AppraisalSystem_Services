@@ -1,33 +1,14 @@
 ﻿using Interfaces.BS;
-using Interfaces.Repository;
 
 namespace BS.Configs
 {
     public abstract class BaseService : IBaseService
     {
-        private IUnitOfWork unitOfWork;
-
-        public BaseService(IUnitOfWork unitOfWork)
+        public BaseService(IUnityManagerModule unityManager)
         {
-            this.UnitOfWork = unitOfWork;
+            this.UnityManager = unityManager;
         }
 
-        public IUnitOfWork UnitOfWork
-        {
-            get
-            {
-                return this.unitOfWork;
-            }
-
-            set
-            {
-                this.unitOfWork = value;
-            }
-        }
-
-        public void SaveChanges()
-        {
-            this.UnitOfWork.SaveChanges();
-        }
+        public IUnityManagerModule UnityManager { get; set; }
     }
 }

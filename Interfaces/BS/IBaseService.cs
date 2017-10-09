@@ -4,7 +4,6 @@ namespace Interfaces.BS
 {
     public interface IBaseService
     {
-        IUnitOfWork UnitOfWork { get; }
-        void SaveChanges();
+        IUnityManagerModule UnityManager { get; set; }
     }
 }

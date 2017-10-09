@@ -6,7 +6,7 @@ namespace Repository
 {
     public class CompetenceRepository : GenericRepository<Competence>, IGenericRepository<Competence>, ICompetenceRepository
     {
-        public CompetenceRepository(AppraisalDbContext dbContext) : base(dbContext)
+        public CompetenceRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
     }

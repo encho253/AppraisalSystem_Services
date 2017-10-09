@@ -1,5 +1,6 @@
 ﻿using BS.Configs;
 using Interfaces.BS;
+using Repository.Configs;
 using System;
 
 namespace TestApp
@@ -37,8 +38,14 @@ namespace TestApp
                 var registerService = u.Resolve<IUserService>();
 
                 var p = registerService.GetRolesForUser("pesho@gmail.com");
+            }
 
-                registerService.SaveChanges();
+            using (UnityManagerModule u = new UnityManagerModule())
+            {
+                u.Init();
+                var p = u.Resolve<ILoginService>();
+
+                var c = p.ValidateUser("pstoilov@abv.bg", "99999999");
             }
         }
     }

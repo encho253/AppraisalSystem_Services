@@ -6,7 +6,7 @@ namespace Repository
 {
     public class EvaluationRepository : GenericRepository<Evaluation>, IGenericRepository<Evaluation>, IEvaluationRepository
     {
-        public EvaluationRepository(AppraisalDbContext dbContext) : base(dbContext)
+        public EvaluationRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
     }

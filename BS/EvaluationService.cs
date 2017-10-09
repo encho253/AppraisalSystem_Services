@@ -8,13 +8,16 @@ namespace BS
 {
     public class EvaluationService : BaseService, IBaseService, IEvaluationService
     {
-        public EvaluationService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public EvaluationService(IUnityManagerModule unityManager) : base(unityManager)
         {
+            this.EvaluationRepository = this.UnityManager.Resolve<IEvaluationRepository>();
         }
+
+        public IEvaluationRepository EvaluationRepository { get; set; }
 
         public void CreateEvaluation(int id, int userId, int evaluationTemplateId)
         {
-            this.UnitOfWork.EvaluationRepository.Add(new Evaluation { Id = id, UserId = userId, EvaluationTemplateId = evaluationTemplateId });
+            this.EvaluationRepository.Add(new Evaluation { Id = id, UserId = userId, EvaluationTemplateId = evaluationTemplateId });
         }
     }
 }

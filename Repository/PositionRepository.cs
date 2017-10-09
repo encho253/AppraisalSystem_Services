@@ -6,7 +6,7 @@ namespace Repository
 {
     public class PositionRepository : GenericRepository<Position>, IGenericRepository<Position>, IPositionRepository
     {
-        public PositionRepository(AppraisalDbContext dbContext) : base(dbContext)
+        public PositionRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
     }

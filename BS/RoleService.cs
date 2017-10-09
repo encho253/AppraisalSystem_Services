@@ -6,7 +6,7 @@ namespace BS
 {
     public class RoleService : BaseService, IBaseService, IRoleService
     {
-        public RoleService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public RoleService(IUnityManagerModule unityManager) : base(unityManager)
         {
         }
     }

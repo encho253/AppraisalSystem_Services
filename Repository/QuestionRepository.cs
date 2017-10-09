@@ -6,7 +6,7 @@ namespace Repository
 {
     public class QuestionRepository : GenericRepository<Question>, IGenericRepository<Question>, IQuestionRepository
     {
-        public QuestionRepository(AppraisalDbContext dbContext) : base(dbContext)
+        public QuestionRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
     }

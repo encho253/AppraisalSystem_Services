@@ -1,16 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using BS.Configs;
+﻿using BS.Configs;
 using DB;
 using Interfaces.BS;
 using Interfaces.Repository;
+using System;
+using System.Collections.Generic;
 
 namespace BS.AccountServices
 {
-    public class UserService : BaseService, IBaseService, IUserService
+    public class UserService : BaseService, IUserService
     {
-        public UserService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        private IUserRepository userRepository;
+
+        public UserService(IUnityManagerModule unityManager) : base(unityManager)
         {
+            userRepository = this.UnityManager.Resolve<IUserRepository>();
+        }
+
+        public IUserRepository UserRepository
+        {
+            get
+            {
+                return this.userRepository;
+            }
         }
 
         public IEnumerable<User> GetAllUsers()
@@ -20,7 +31,7 @@ namespace BS.AccountServices
 
         public string[] GetRolesForUser(string userName)
         {
-            return this.UnitOfWork.UserRepository.GetRolesForUser(userName);
+            return this.userRepository.GetRolesForUser(userName);
         }
 
         public User SearchByFirstName()

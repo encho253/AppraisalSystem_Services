@@ -5,15 +5,18 @@ using Interfaces.Repository;
 
 namespace BS.AccountServices
 {
-    public class LoginService : BaseService, IBaseService, ILoginService
+    public class LoginService : BaseService, ILoginService 
     {
-        public LoginService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public LoginService(IUnityManagerModule unityManager) : base(unityManager)
         {
+            this.UserRepository = this.UnityManager.Resolve<IUserRepository>();
         }
+
+        public IUserRepository UserRepository { get; set; }
 
         public bool ValidateUser(string email, string password)
         {
-            User user = this.UnitOfWork.UserRepository.FindUserByEmailAndPassword(email, password);
+            User user = this.UserRepository.FindUserByEmailAndPassword(email, password);
             if (user == null)
             {
                 return false;
