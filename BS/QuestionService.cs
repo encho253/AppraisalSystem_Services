@@ -2,6 +2,7 @@
 using DB;
 using Interfaces.BS;
 using Interfaces.Repository;
+using System.Collections.Generic;
 
 namespace BS
 {
@@ -17,6 +18,11 @@ namespace BS
         public void AddQuestion(int id, string questionContent, int competenceId)
         {
             this.QuestionRepository.Add(new Question { Id = id, Content = questionContent, CompetenceId = competenceId });
+        }
+
+        public ICollection<Question> GetQuestionsByCompetence(string competence)
+        {
+            return this.QuestionRepository.GetQuestionsByCompetence(competence);
         }
     }
 }

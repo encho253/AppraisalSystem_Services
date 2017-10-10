@@ -1,4 +1,5 @@
-﻿using BS.Configs;
+﻿using BS;
+using BS.Configs;
 using Interfaces.BS;
 using Repository.Configs;
 using System;
@@ -32,20 +33,28 @@ namespace TestApp
             //    var p = registerService.ValidateUser("pstoilov@abv.bg", "99999999");
             //}
 
+            //using (UnityManagerModule u = new UnityManagerModule())
+            //{
+            //    u.Init();
+            //    var registerService = u.Resolve<IUserService>();
+
+            //    var p = registerService.GetRolesForUser("pesho@gmail.com");
+            //}
+
+            //using (UnityManagerModule u = new UnityManagerModule())
+            //{
+            //    u.Init();
+            //    var p = u.Resolve<ILoginService>();
+
+            //    var c = p.ValidateUser("pstoilov@abv.bg", "99999999");
+            //}
+
             using (UnityManagerModule u = new UnityManagerModule())
             {
                 u.Init();
-                var registerService = u.Resolve<IUserService>();
+                var p = u.Resolve<IQuestionService>();
 
-                var p = registerService.GetRolesForUser("pesho@gmail.com");
-            }
-
-            using (UnityManagerModule u = new UnityManagerModule())
-            {
-                u.Init();
-                var p = u.Resolve<ILoginService>();
-
-                var c = p.ValidateUser("pstoilov@abv.bg", "99999999");
+                var c = p.GetQuestionsByCompetence("Core");
             }
         }
     }

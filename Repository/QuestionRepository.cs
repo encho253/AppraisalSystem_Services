@@ -1,6 +1,9 @@
 ﻿using DB;
 using Interfaces.Repository;
 using Repository.Configs;
+using System.Collections.Generic;
+using System;
+using System.Linq;
 
 namespace Repository
 {
@@ -8,6 +11,13 @@ namespace Repository
     {
         public QuestionRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
+        }
+
+        public ICollection<Question> GetQuestionsByCompetence(string competence)
+        {
+            ICollection<Question> questions = this.UnitOfWork.DbContext.Questions.Where(x => x.Competence.Key == competence).ToList();
+
+            return questions;
         }
     }
 }

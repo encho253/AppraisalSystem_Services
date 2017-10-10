@@ -49,6 +49,7 @@
     <Compile Include="BS\IPositionService.cs" />
     <Compile Include="BS\IQuestionService.cs" />
     <Compile Include="BS\IRegisterService.cs" />
+    <Compile Include="BS\IRegisterWcfServices.cs" />
     <Compile Include="BS\IResultService.cs" />
     <Compile Include="BS\IRoleService.cs" />
     <Compile Include="BS\IUnityManagerModule.cs" />
@@ -65,6 +66,8 @@
     <Compile Include="Repository\IUnitOfWork.cs" />
     <Compile Include="Repository\IResultRepository.cs" />
     <Compile Include="WCF\IAccountWcfService.cs" />
+    <Compile Include="WCF\ICompetenceWcfService.cs" />
+    <Compile Include="WCF\IQuestionWcfService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DB\" />
