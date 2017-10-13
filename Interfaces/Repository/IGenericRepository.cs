@@ -13,5 +13,7 @@ namespace Interfaces.Repository
         void Update(TEntity entity);
 
         void Delete(TEntity entity);
+
+        void SaveChanges();
     }
 }

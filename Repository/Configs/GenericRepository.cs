@@ -47,5 +47,10 @@ namespace Repository.Configs
                 this.dbSet.Remove(entity);
             }
         }
+
+        public void SaveChanges()
+        {
+            this.UnitOfWork.SaveChanges();
+        }
     }
 }
