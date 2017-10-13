@@ -16,5 +16,8 @@ namespace Interfaces.WCF
 
         [OperationContract]
         IEnumerable<Question> GetAll();
+
+        [OperationContract]
+        void AddQuestion(string questionContent, string competence);
     }
 }

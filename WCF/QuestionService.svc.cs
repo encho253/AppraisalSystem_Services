@@ -49,5 +49,19 @@ namespace WCF
                 questionRepo.SaveChanges();
             }
         }
+
+        public void AddQuestion(string questionContent, string competence)
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IQuestionService questionService = dataContainer.Resolve<IQuestionService>();
+                IQuestionRepository questionRepo = dataContainer.Resolve<IQuestionRepository>();
+
+                questionService.AddQuestion(questionContent, competence);
+
+                questionRepo.SaveChanges();
+            }
+        }
     }
 }

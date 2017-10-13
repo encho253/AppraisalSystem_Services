@@ -21,9 +21,11 @@ namespace BS
         public void AddQuestion(string questionContent, string competence)
         {
             Competence competenceObj = this.CompetenceRepository.GetCompetenceByName(competence);
-            //int testValue = Int32.Parse(DateTime.Now.Second);
+            questionContent = questionContent.Trim().ToString();
+            var random = new Random();
+            int testId = random.Next();
 
-            this.QuestionRepository.Add(new Question { Id = 444, Content = questionContent, CompetenceId = competenceObj.Id });
+            this.QuestionRepository.Add(new Question { Id = testId, Content = questionContent, CompetenceId = competenceObj.Id });
         }
 
         public IEnumerable<Question> GetQuestionsByCompetence(string competence)
