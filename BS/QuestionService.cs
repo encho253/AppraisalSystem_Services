@@ -23,7 +23,7 @@ namespace BS
             Competence competenceObj = this.CompetenceRepository.GetCompetenceByName(competence);
             questionContent = questionContent.Trim().ToString();
             var random = new Random();
-            int testId = random.Next();
+            int testId = random.Next(0, 10000);
 
             this.QuestionRepository.Add(new Question { Id = testId, Content = questionContent, CompetenceId = competenceObj.Id });
         }
@@ -55,6 +55,13 @@ namespace BS
             updatedQuestion.Content = content;
 
             this.QuestionRepository.Update(updatedQuestion);
+        }
+
+        public void Delete(int questionId)
+        {
+            Question question = this.QuestionRepository.GetFirstOrDefault(questionId);
+
+            this.QuestionRepository.Delete(question);
         }
     }
 }

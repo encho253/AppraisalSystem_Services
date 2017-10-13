@@ -19,5 +19,8 @@ namespace Interfaces.WCF
 
         [OperationContract]
         void AddQuestion(string questionContent, string competence);
+
+        [OperationContract]
+        void Delete(int questionId);
     }
 }

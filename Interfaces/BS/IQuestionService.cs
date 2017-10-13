@@ -9,5 +9,6 @@ namespace Interfaces.BS
         IEnumerable<Question> GetQuestionsByCompetence(string competence);
         IEnumerable<Question> GetAll();
         void UpdateQuestion(int questionId, string content);
+        void Delete(int questionId);
     }
 }

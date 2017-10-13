@@ -1,6 +1,7 @@
 ﻿using BS;
 using BS.Configs;
 using Interfaces.BS;
+using Interfaces.Repository;
 using Repository;
 using Repository.Configs;
 using System;
@@ -52,9 +53,14 @@ namespace TestApp
 
             using (UnityManagerModule u = new UnityManagerModule())
             {
-                QuestionRepository r = new QuestionRepository(new UnitOfWork());
+                u.Init();
+                var p = u.Resolve<IQuestionService>();
+                //var unitofwork = u.Resolve<UnitOfWork>();
+                var questionRepo = u.Resolve<IQuestionRepository>();
 
-                var c = r.GetQuestionsByCompetence("Core");             
+                p.AddQuestion("testest", "test");
+
+                questionRepo.SaveChanges();
             }
         }
     }

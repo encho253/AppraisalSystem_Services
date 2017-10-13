@@ -63,5 +63,19 @@ namespace WCF
                 questionRepo.SaveChanges();
             }
         }
+
+        public void Delete(int questionId)
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IQuestionService questionService = dataContainer.Resolve<IQuestionService>();
+                IQuestionRepository questionRepo = dataContainer.Resolve<IQuestionRepository>();
+
+                questionService.Delete(questionId);
+
+                questionRepo.SaveChanges();
+            }
+        }
     }
 }
