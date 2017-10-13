@@ -41,11 +41,7 @@ namespace Repository.Configs
 
         public void Delete(TEntity entity)
         {
-            if (this.UnitOfWork.DbContext.Entry(entity).State == EntityState.Detached)
-            {
-                this.dbSet.Attach(entity);
-                this.dbSet.Remove(entity);
-            }
+            this.dbSet.Remove(entity);
         }
 
         public void SaveChanges()
