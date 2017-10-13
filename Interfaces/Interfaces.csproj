@@ -49,7 +49,6 @@
     <Compile Include="BS\IPositionService.cs" />
     <Compile Include="BS\IQuestionService.cs" />
     <Compile Include="BS\IRegisterService.cs" />
-    <Compile Include="BS\IRegisterWcfServices.cs" />
     <Compile Include="BS\IResultService.cs" />
     <Compile Include="BS\IRoleService.cs" />
     <Compile Include="BS\IUnityManagerModule.cs" />

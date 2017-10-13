@@ -25,7 +25,7 @@ namespace Repository.Configs
 
         public TEntity GetFirstOrDefault(int recordId)
         {
-            return this.dbSet.Find();
+            return this.dbSet.Find(recordId);
         }
 
         public void Add(TEntity entity)

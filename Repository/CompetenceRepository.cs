@@ -1,6 +1,7 @@
 ﻿using DB;
 using Interfaces.Repository;
 using Repository.Configs;
+using System.Linq;
 
 namespace Repository
 {
@@ -8,6 +9,13 @@ namespace Repository
     {
         public CompetenceRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
+        }
+
+        public Competence GetCompetenceByName(string competence)
+        {
+             Competence  competenceObj = this.UnitOfWork.DbContext.Competences.FirstOrDefault(x => x.Key == competence);
+
+            return competenceObj;
         }
     }
 }

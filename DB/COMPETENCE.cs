@@ -11,7 +11,10 @@ namespace DB
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
+    [Serializable]
+    [DataContract]
     public partial class Competence
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,10 +22,12 @@ namespace DB
         {
             this.Questions = new HashSet<Question>();
         }
-    
+
+        [DataMember]
         public int Id { get; set; }
+        [DataMember]
         public string Key { get; set; }
-    
+        [IgnoreDataMember]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Question> Questions { get; set; }
     }

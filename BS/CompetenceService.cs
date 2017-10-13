@@ -3,6 +3,7 @@ using Interfaces.BS;
 using Interfaces.Repository;
 using DB;
 using System.Linq;
+using System;
 
 namespace BS
 {
@@ -23,6 +24,13 @@ namespace BS
         public string[] GetAllCompetence()
         {
             return this.CompetenceRepository.GetAllRecords().Select(x => x.Key).ToArray();
+        }
+
+        public Competence GetCompetenceByName(string competence)
+        {
+            Competence competenceObj = this.CompetenceRepository.GetCompetenceByName(competence);
+
+            return competenceObj;
         }
     }
 }

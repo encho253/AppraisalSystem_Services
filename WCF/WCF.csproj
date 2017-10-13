@@ -153,6 +153,10 @@
       <Project>{ECA8015E-35E2-4F9C-B56A-27E9F2013EF2}</Project>
       <Name>Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{F52256CF-2DA9-405E-AA1E-82DF266B8D95}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

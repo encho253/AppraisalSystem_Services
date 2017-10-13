@@ -9,6 +9,12 @@ namespace Interfaces.WCF
     public interface IQuestionWcfService
     {
         [OperationContract]
-        ICollection<Question> GetQuestionsByCompetence(string competence);
+        IEnumerable<Question> GetQuestionsByCompetence(string competence);
+
+        [OperationContract]
+        void UpdateQuestion(int questionId, string content);
+
+        [OperationContract]
+        IEnumerable<Question> GetAll();
     }
 }

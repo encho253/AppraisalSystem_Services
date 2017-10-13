@@ -5,7 +5,9 @@ namespace Interfaces.BS
 {
     public interface IQuestionService : IBaseService
     {
-        void AddQuestion(int id, string questionContent, int competenceId);
-        ICollection<Question> GetQuestionsByCompetence(string competence);
+        void AddQuestion(string questionContent, string competence);
+        IEnumerable<Question> GetQuestionsByCompetence(string competence);
+        IEnumerable<Question> GetAll();
+        void UpdateQuestion(int questionId, string content);
     }
 }
