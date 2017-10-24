@@ -18,5 +18,16 @@ namespace Repository
 
             return questions;
         }
+
+        public IEnumerable<Question> GetQuestionByPositionAndCompetence(string position, string competence)
+        {
+            ICollection<Question> questions = this.UnitOfWork.DbContext.EvaluationsTemplates
+               .Where(c => c.Position.Name == position)
+               .SelectMany(q => q.Questions)
+               .Where(x => x.Competence.Key == competence)
+               .ToList();
+
+            return questions;
+        }
     }
 }

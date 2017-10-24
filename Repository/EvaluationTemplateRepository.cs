@@ -1,6 +1,7 @@
 ﻿using DB;
 using Interfaces.Repository;
 using Repository.Configs;
+using System.Linq;
 
 namespace Repository
 {
@@ -13,6 +14,11 @@ namespace Repository
         public void AddPosition(EvaluationTemplate evaluationTemplate)
         {
             this.UnitOfWork.DbContext.EvaluationsTemplates.Add(evaluationTemplate);
+        }
+
+        public EvaluationTemplate GetEvaluationTemplateByPosition(string postion)
+        {
+            return this.UnitOfWork.DbContext.EvaluationsTemplates.FirstOrDefault(x => x.Position.Name == postion);
         }
     }
 }

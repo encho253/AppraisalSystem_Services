@@ -1,8 +1,8 @@
-﻿using System;
-using DB;
+﻿using DB;
 using Interfaces.BS;
 using BS.Configs;
 using Interfaces.Repository;
+using System;
 
 namespace BS.AccountServices
 {
@@ -15,9 +15,22 @@ namespace BS.AccountServices
 
         public IUserRepository UserRepository { get; set; }
 
-        public void CreateUser(int id, string firstName, string lastName, string password, string email, int roleId)
+        public void CreateUser(string firstName, string lastName, string password, string email)
         {
-            this.UserRepository.Add(new User { Id = id, FirstName = firstName, LastName = lastName, Password = password, Email = email, RoleId = roleId });
+            var random = new Random();
+            int id = random.Next(0, 10000);
+
+            int roleId = random.Next(1, 3);
+
+            this.UserRepository.Add(new User
+            {
+                Id = id,
+                FirstName = firstName,
+                LastName = lastName,
+                Password = password,
+                Email = email,
+                RoleId = roleId
+            });
         }
     }
 }

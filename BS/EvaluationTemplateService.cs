@@ -1,4 +1,5 @@
-﻿using BS.Configs;
+﻿using System;
+using BS.Configs;
 using DB;
 using Interfaces.BS;
 using Interfaces.Repository;
@@ -17,6 +18,11 @@ namespace BS
         public void CreateEvaluationTemplate(int id, int positionId)
         {
             this.EvaluationTemplateRepository.Add(new EvaluationTemplate { Id = id, QualificationId = id });
+        }
+
+        public EvaluationTemplate GetEvaluationTemplateByPosition(string position)
+        {
+            return this.EvaluationTemplateRepository.GetEvaluationTemplateByPosition(position);
         }
     }
 }

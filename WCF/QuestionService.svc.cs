@@ -3,7 +3,6 @@ using DB;
 using Interfaces.BS;
 using Interfaces.Repository;
 using Interfaces.WCF;
-using Repository.Configs;
 using System.Collections.Generic;
 
 namespace WCF
@@ -23,13 +22,22 @@ namespace WCF
             }
         }
 
+        public IEnumerable<Question> GetQuestionByPositionAndCompetence(string position, string competence)
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IQuestionService questionService = dataContainer.Resolve<IQuestionService>();
+                return questionService.GetQuestionByPositionAndCompetence(position, competence);
+            }
+        }
+
         public IEnumerable<Question> GetAll()
         {
             using (IUnityManagerModule dataContainer = new UnityManagerModule())
             {
                 dataContainer.Init();
                 IQuestionService questionService = dataContainer.Resolve<IQuestionService>();
-
                 IEnumerable<Question> questions = questionService.GetAll();
 
                 return questions;
@@ -50,7 +58,7 @@ namespace WCF
             }
         }
 
-        public void AddQuestion(string questionContent, string competence)
+        public void AddQuestion(string questionContent, string position, string competence)
         {
             using (IUnityManagerModule dataContainer = new UnityManagerModule())
             {
@@ -58,7 +66,7 @@ namespace WCF
                 IQuestionService questionService = dataContainer.Resolve<IQuestionService>();
                 IQuestionRepository questionRepo = dataContainer.Resolve<IQuestionRepository>();
 
-                questionService.AddQuestion(questionContent, competence);
+                questionService.AddQuestion(questionContent, position, competence);
 
                 questionRepo.SaveChanges();
             }

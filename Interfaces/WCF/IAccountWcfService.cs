@@ -9,7 +9,7 @@ namespace Interfaces.WCF
         bool ValidateUser(string email, string password);
 
         [OperationContract]
-        void CreateUser(int id, string firstName, string lastName, string password, string email, int roleId);
+        void CreateUser(string firstName, string lastName, string password, string email);
 
         [OperationContract]
         string[] GetRolesForUser(string userName);

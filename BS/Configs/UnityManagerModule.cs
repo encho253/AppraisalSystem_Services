@@ -37,7 +37,7 @@ namespace BS.Configs
             this.UnitOfWork = this.container.Resolve<IUnitOfWork>();
 
             this.container.RegisterType<IBaseService, BaseService>(new InjectionConstructor(this));
-         
+
             this.container.RegisterType<IUserRepository, UserRepository>();
             this.container.RegisterType<ILoginService, LoginService>(new InjectionConstructor(this));
             this.container.RegisterType<IRegisterService, RegisterService>(new InjectionConstructor(this));

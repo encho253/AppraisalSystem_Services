@@ -54,13 +54,9 @@ namespace TestApp
             using (UnityManagerModule u = new UnityManagerModule())
             {
                 u.Init();
-                var p = u.Resolve<IQuestionService>();
-                //var unitofwork = u.Resolve<UnitOfWork>();
-                var questionRepo = u.Resolve<IQuestionRepository>();
+                var p = u.Resolve<IPositionService>();
 
-                p.AddQuestion("testest", "test");
-
-                questionRepo.SaveChanges();
+                var c = p.GetAll();
             }
         }
     }

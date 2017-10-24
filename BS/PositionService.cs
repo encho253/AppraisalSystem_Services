@@ -3,6 +3,7 @@ using DB;
 using Interfaces.BS;
 using Interfaces.Repository;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BS
 {
@@ -15,11 +16,11 @@ namespace BS
 
         public IPositionRepository PositionRepository { get; set; }
 
-        public IEnumerable<Position> GetAll()
+        public string[] GetAll()
         {
             IEnumerable<Position> positions = this.PositionRepository.GetAllRecords();
 
-            return positions;
+            return positions.Select(p => p.Name).ToArray();
         }
 
         public Position FindPositon(int id)

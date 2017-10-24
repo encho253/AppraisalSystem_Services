@@ -4,12 +4,14 @@ using System.ServiceModel;
 
 namespace Interfaces.WCF
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IQuestionService" in both code and config file together.
     [ServiceContract]
     public interface IQuestionWcfService
     {
         [OperationContract]
         IEnumerable<Question> GetQuestionsByCompetence(string competence);
+
+        [OperationContract]
+        IEnumerable<Question> GetQuestionByPositionAndCompetence(string position, string competence);
 
         [OperationContract]
         void UpdateQuestion(int questionId, string content);
@@ -18,7 +20,7 @@ namespace Interfaces.WCF
         IEnumerable<Question> GetAll();
 
         [OperationContract]
-        void AddQuestion(string questionContent, string competence);
+        void AddQuestion(string questionContent, string position, string competence);
 
         [OperationContract]
         void Delete(int questionId);
