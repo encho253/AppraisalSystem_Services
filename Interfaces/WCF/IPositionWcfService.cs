@@ -1,8 +1,6 @@
-﻿using DB;
-using System.Collections.Generic;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 
-namespace Interfaces.WCF
+namespace WCF.Interfaces.WCF
 {
     [ServiceContract]
     public interface IPositionWcfService

@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="WCF.Position" CodeBehind="PositionService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WCF.PositionService" CodeBehind="PositionService.svc.cs" %>
