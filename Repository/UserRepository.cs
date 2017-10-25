@@ -16,6 +16,11 @@ namespace Repository
             return this.UnitOfWork.DbContext.Users.FirstOrDefault(x => x.Email == email && x.Password == password);
         }
 
+        public User FindUserByName(string userName)
+        {
+            return this.UnitOfWork.DbContext.Users.FirstOrDefault(x => x.Email == userName);
+        }
+
         public string[] GetRolesForUser(string userName)
         {
             return this.UnitOfWork.DbContext.Users.Where(u => u.Email == userName).Select(r => r.Role.RoleName).ToArray();

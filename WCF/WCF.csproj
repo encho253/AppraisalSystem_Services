@@ -108,6 +108,7 @@
   <ItemGroup>
     <Content Include="AccountService.svc" />
     <Content Include="CompetenceService.svc" />
+    <Content Include="EvaluationService.svc" />
     <Content Include="PositionService.svc" />
     <Content Include="QuestionService.svc" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
@@ -120,6 +121,9 @@
     </Compile>
     <Compile Include="CompetenceService.svc.cs">
       <DependentUpon>CompetenceService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="EvaluationService.svc.cs">
+      <DependentUpon>EvaluationService.svc</DependentUpon>
     </Compile>
     <Compile Include="PositionService.svc.cs">
       <DependentUpon>PositionService.svc</DependentUpon>

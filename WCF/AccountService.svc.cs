@@ -1,4 +1,5 @@
 ﻿using BS.Configs;
+using DB;
 using Interfaces.BS;
 using Interfaces.WCF;
 using Repository.Configs;
@@ -28,6 +29,18 @@ namespace WCF
                 var unity = new UnitOfWork();
 
                 unity.SaveChanges();
+            }
+        }
+
+        public User SearchUserByUserName(string userName)
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IUserService userService = dataContainer.Resolve<IUserService>();
+                User user = userService.SearchByUserName(userName);
+
+                return user;
             }
         }
 

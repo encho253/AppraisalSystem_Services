@@ -3,6 +3,7 @@ using DB;
 using Interfaces.BS;
 using Interfaces.Repository;
 using System;
+using System.Collections.Generic;
 
 namespace BS
 {
@@ -15,9 +16,31 @@ namespace BS
 
         public IEvaluationRepository EvaluationRepository { get; set; }
 
-        public void CreateEvaluation(int id, int userId, int evaluationTemplateId)
+        public void CreateEvaluation(int userId, int evaluationTemplateId)
         {
-            this.EvaluationRepository.Add(new Evaluation { Id = id, UserId = userId, EvaluationTemplateId = evaluationTemplateId });
+            var random = new Random();
+            int testId = random.Next(0, 5000) + random.Next(0, 5000);
+
+            this.EvaluationRepository.Add(new Evaluation
+            {
+                Id = testId,
+                UserId = userId,
+                EvaluationTemplateId = evaluationTemplateId
+            });
+        }
+
+        public void AddEvaluatorToEvaluation(Evaluation evaluation, User user)
+        {
+            this.EvaluationRepository.AddEvaluatorToEvaluation(evaluation, user);
+        }
+
+        public IEnumerable<User> GetAllEvaluatorsForEvaluation(int evaluationId)
+        {
+            Evaluation evaluation = this.EvaluationRepository.GetFirstOrDefault(evaluationId);
+
+            IEnumerable<User> users = this.EvaluationRepository.GetAllEvaluatorsForEvaluation(evaluation);
+
+            return users;
         }
     }
 }

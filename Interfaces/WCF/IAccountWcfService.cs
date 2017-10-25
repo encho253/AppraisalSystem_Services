@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using DB;
+using System.ServiceModel;
 
 namespace Interfaces.WCF
 {
@@ -10,6 +11,9 @@ namespace Interfaces.WCF
 
         [OperationContract]
         void CreateUser(string firstName, string lastName, string password, string email);
+
+        [OperationContract]
+        User SearchUserByUserName(string userName);
 
         [OperationContract]
         string[] GetRolesForUser(string userName);

@@ -1,15 +1,19 @@
 ﻿using DB;
-using Interfaces.Repository;
-using System;
 using System.Collections.Generic;
+using System.ServiceModel;
 
-namespace Interfaces.BS
+namespace Interfaces.WCF
 {
-    public interface IEvaluationService : IBaseService
+    [ServiceContract]
+    public interface IEvaluationWcfService
     {
-        IEvaluationRepository EvaluationRepository { get; set; }
+        [OperationContract]
         void CreateEvaluation(int userId, int evaluationTemplateId);
+
+        [OperationContract]
         void AddEvaluatorToEvaluation(Evaluation evaluation, User user);
+
+        [OperationContract]
         IEnumerable<User> GetAllEvaluatorsForEvaluation(int evaluationId);
     }
 }

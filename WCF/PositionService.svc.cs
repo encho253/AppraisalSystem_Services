@@ -1,11 +1,5 @@
 ﻿using BS.Configs;
 using Interfaces.BS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
 using WCF.Interfaces.WCF;
 
 namespace WCF

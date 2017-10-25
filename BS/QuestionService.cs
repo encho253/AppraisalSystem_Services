@@ -32,7 +32,7 @@ namespace BS
 
             questionContent = questionContent.Trim().ToString();
             var random = new Random();
-            int testId = random.Next(0, 10000);
+            int testId = random.Next(0, 5000) + random.Next(0, 5000);
 
             this.QuestionRepository.Add(new Question
             {

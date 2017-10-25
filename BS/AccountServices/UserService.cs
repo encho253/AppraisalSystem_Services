@@ -34,9 +34,9 @@ namespace BS.AccountServices
             return this.userRepository.GetRolesForUser(userName);
         }
 
-        public User SearchByFirstName()
+        public User SearchByUserName(string userName)
         {
-            throw new NotImplementedException();
+            return this.UserRepository.FindUserByName(userName);
         }
     }
 }
