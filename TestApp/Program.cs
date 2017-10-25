@@ -54,9 +54,13 @@ namespace TestApp
             using (UnityManagerModule u = new UnityManagerModule())
             {
                 u.Init();
-                var p = u.Resolve<IPositionService>();
+                var p = u.Resolve<IQuestionService>();
 
-                var c = p.GetAll();
+                p.Delete(9143);
+
+                UnitOfWork unit = new UnitOfWork();
+
+                unit.SaveChanges();
             }
         }
     }
