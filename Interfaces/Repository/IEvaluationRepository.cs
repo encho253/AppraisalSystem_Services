@@ -7,5 +7,6 @@ namespace Interfaces.Repository
     {
         void AddEvaluatorToEvaluation(Evaluation evaluation, User user);
         IEnumerable<User> GetAllEvaluatorsForEvaluation(Evaluation evaluation);
+        Evaluation GetUserEvaluation(string username);
     }
 }

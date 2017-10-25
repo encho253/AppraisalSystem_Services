@@ -3,7 +3,6 @@ using Interfaces.WCF;
 using BS.Configs;
 using Interfaces.BS;
 using Repository.Configs;
-using System;
 using System.Collections.Generic;
 
 namespace WCF
@@ -29,14 +28,14 @@ namespace WCF
             }
         }
 
-        public IEnumerable<User> GetAllEvaluatorsForEvaluation(int evaluationId)
+        public IEnumerable<User> GetAllEvaluatorsForEvaluation(string username)
         {
             using (UnityManagerModule dataContainer = new UnityManagerModule())
             {
                 dataContainer.Init();
                 IEvaluationService evaluationService = dataContainer.Resolve<IEvaluationService>();
 
-                IEnumerable<User> users = evaluationService.GetAllEvaluatorsForEvaluation(evaluationId);
+                IEnumerable<User> users = evaluationService.GetAllEvaluatorsForEvaluation(username);
 
                 return users;
             }

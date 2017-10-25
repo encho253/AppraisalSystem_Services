@@ -12,9 +12,11 @@ namespace BS
         public EvaluationService(IUnityManagerModule unityManager) : base(unityManager)
         {
             this.EvaluationRepository = this.UnityManager.Resolve<IEvaluationRepository>();
+            this.userService = this.UnityManager.Resolve<IUserService>();
         }
 
         public IEvaluationRepository EvaluationRepository { get; set; }
+        public IUserService userService { get; set; }
 
         public void CreateEvaluation(int userId, int evaluationTemplateId)
         {
@@ -34,9 +36,9 @@ namespace BS
             this.EvaluationRepository.AddEvaluatorToEvaluation(evaluation, user);
         }
 
-        public IEnumerable<User> GetAllEvaluatorsForEvaluation(int evaluationId)
+        public IEnumerable<User> GetAllEvaluatorsForEvaluation(string username)
         {
-            Evaluation evaluation = this.EvaluationRepository.GetFirstOrDefault(evaluationId);
+            Evaluation evaluation = this.EvaluationRepository.GetUserEvaluation(username);
 
             IEnumerable<User> users = this.EvaluationRepository.GetAllEvaluatorsForEvaluation(evaluation);
 

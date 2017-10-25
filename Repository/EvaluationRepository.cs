@@ -26,5 +26,12 @@ namespace Repository
 
             return users;
         }
+
+        public Evaluation GetUserEvaluation(string username)
+        {
+            Evaluation evaluation = this.UnitOfWork.DbContext.Evaluations.FirstOrDefault(x => x.User.Email == username);
+
+            return evaluation;
+        }
     }
 }

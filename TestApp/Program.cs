@@ -51,21 +51,21 @@ namespace TestApp
             //    var c = p.ValidateUser("pstoilov@abv.bg", "99999999");
             //}
 
-            //using (UnityManagerModule u = new UnityManagerModule())
-            //{
-            //    u.Init();
-            //    var p = u.Resolve<IEvaluationService>();
-            //    var us = u.Resolve<IUserService>();
-            //    var evalrepo = new EvaluationRepository(new UnitOfWork());
+            using (UnityManagerModule u = new UnityManagerModule())
+            {
+                u.Init();
+                var p = u.Resolve<IEvaluationService>();
+                var us = u.Resolve<IUserService>();
+                var evalrepo = new EvaluationRepository(new UnitOfWork());
 
-            //    var eval = evalrepo.GetFirstOrDefault(1);
+                var eval = evalrepo.GetFirstOrDefault(1);
 
-            //    var evaluation = p.GetAllEvaluatorsForEvaluation(eval);
+                var evaluation = p.GetAllEvaluatorsForEvaluation("pesho@gmail.com");
 
 
-            //    UnitOfWork unit = new UnitOfWork();
-            //    unit.SaveChanges();
-            //}
+                UnitOfWork unit = new UnitOfWork();
+                unit.SaveChanges();
+            }
         }
     }
 }

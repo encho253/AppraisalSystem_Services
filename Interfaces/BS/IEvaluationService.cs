@@ -8,8 +8,9 @@ namespace Interfaces.BS
     public interface IEvaluationService : IBaseService
     {
         IEvaluationRepository EvaluationRepository { get; set; }
+
         void CreateEvaluation(int userId, int evaluationTemplateId);
         void AddEvaluatorToEvaluation(Evaluation evaluation, User user);
-        IEnumerable<User> GetAllEvaluatorsForEvaluation(int evaluationId);
+        IEnumerable<User> GetAllEvaluatorsForEvaluation(string username);
     }
 }
