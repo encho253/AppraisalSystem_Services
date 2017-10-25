@@ -60,7 +60,7 @@ namespace TestApp
 
                 var eval = evalrepo.GetFirstOrDefault(1);
 
-                var evaluation = p.GetAllEvaluatorsForEvaluation("pesho@gmail.com");
+                var evaluation = p.GetAllEvaluatorsForEvaluation("minka@gmail.com");
 
 
                 UnitOfWork unit = new UnitOfWork();

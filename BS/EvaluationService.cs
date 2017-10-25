@@ -39,8 +39,14 @@ namespace BS
         public IEnumerable<User> GetAllEvaluatorsForEvaluation(string username)
         {
             Evaluation evaluation = this.EvaluationRepository.GetUserEvaluation(username);
+            IEnumerable<User> users = new List<User>();
 
-            IEnumerable<User> users = this.EvaluationRepository.GetAllEvaluatorsForEvaluation(evaluation);
+            if (evaluation != null)
+            {
+                users = this.EvaluationRepository.GetAllEvaluatorsForEvaluation(evaluation);
+
+                return users;
+            }
 
             return users;
         }
