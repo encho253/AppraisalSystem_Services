@@ -26,10 +26,15 @@ namespace DB
 
         [DataMember]
         public int Id { get; set; }
+
         [DataMember]
         public string Content { get; set; }
+
         [DataMember]
         public int CompetenceId { get; set; }
+
+        [DataMember]
+        public Nullable<int> PositionId { get; set; }
 
         [IgnoreDataMember]
         public virtual Competence Competence { get; set; }
@@ -41,5 +46,6 @@ namespace DB
         [IgnoreDataMember]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EvaluationTemplate> EvaluationTemplates { get; set; }
+        public virtual Position Position { get; set; }
     }
 }

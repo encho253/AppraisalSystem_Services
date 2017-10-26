@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LibraryDb.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LibraryDb.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="COMPETENCES">
           <Key>
             <PropertyRef Name="ID" />
@@ -60,6 +60,7 @@
           <Property Name="ID" Type="number" Precision="8" Scale="0" Nullable="false" />
           <Property Name="CONTENT" Type="varchar2" MaxLength="200" Nullable="false" />
           <Property Name="COMPETENCE_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="POSITIONID" Type="number" Precision="8" Scale="0" />
         </EntityType>
         <EntityType Name="RATINGS">
           <Key>
@@ -98,6 +99,48 @@
           <Property Name="EMAIL" Type="varchar2" MaxLength="40" Nullable="false" />
           <Property Name="ROLE_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
         </EntityType>
+        <Association Name="FK_EVALUATION_TEMPLATES">
+          <End Role="EVALUATION_TEMPLATES" Type="Self.EVALUATION_TEMPLATES" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QUESTION_TEMPLATES" Type="Self.QUESTION_TEMPLATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVALUATION_TEMPLATES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QUESTION_TEMPLATES">
+              <PropertyRef Name="EVAL_TEMPLATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUESTIONS">
+          <End Role="QUESTIONS" Type="Self.QUESTIONS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QUESTION_TEMPLATES" Type="Self.QUESTION_TEMPLATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUESTIONS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QUESTION_TEMPLATES">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PK_POSITIONS">
+          <End Role="POSITIONS" Type="Self.POSITIONS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QUESTIONS" Type="Self.QUESTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSITIONS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QUESTIONS">
+              <PropertyRef Name="POSITIONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="SYS_C007107">
           <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
           <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
@@ -167,30 +210,6 @@
             </Principal>
             <Dependent Role="EVALUATIONS_EVALUATORS">
               <PropertyRef Name="EVALUATOR_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="SYS_C007227">
-          <End Role="QUESTIONS" Type="Self.QUESTIONS" Multiplicity="1" />
-          <End Role="QUESTION_TEMPLATES" Type="Self.QUESTION_TEMPLATES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="QUESTIONS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="QUESTION_TEMPLATES">
-              <PropertyRef Name="QUESTION_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="SYS_C007228">
-          <End Role="EVALUATION_TEMPLATES" Type="Self.EVALUATION_TEMPLATES" Multiplicity="1" />
-          <End Role="QUESTION_TEMPLATES" Type="Self.QUESTION_TEMPLATES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EVALUATION_TEMPLATES">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="QUESTION_TEMPLATES">
-              <PropertyRef Name="EVAL_TEMPLATE_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -266,6 +285,18 @@
           <EntitySet Name="RESULTS" EntityType="Self.RESULTS" Schema="APPRAISALSYSTEM" store:Type="Tables" />
           <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="APPRAISALSYSTEM" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="APPRAISALSYSTEM" store:Type="Tables" />
+          <AssociationSet Name="FK_EVALUATION_TEMPLATES" Association="Self.FK_EVALUATION_TEMPLATES">
+            <End Role="EVALUATION_TEMPLATES" EntitySet="EVALUATION_TEMPLATES" />
+            <End Role="QUESTION_TEMPLATES" EntitySet="QUESTION_TEMPLATES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUESTIONS" Association="Self.FK_QUESTIONS">
+            <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+            <End Role="QUESTION_TEMPLATES" EntitySet="QUESTION_TEMPLATES" />
+          </AssociationSet>
+          <AssociationSet Name="PK_POSITIONS" Association="Self.PK_POSITIONS">
+            <End Role="POSITIONS" EntitySet="POSITIONS" />
+            <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+          </AssociationSet>
           <AssociationSet Name="SYS_C007107" Association="Self.SYS_C007107">
             <End Role="ROLES" EntitySet="ROLES" />
             <End Role="USERS" EntitySet="USERS" />
@@ -290,14 +321,6 @@
             <End Role="USERS" EntitySet="USERS" />
             <End Role="EVALUATIONS_EVALUATORS" EntitySet="EVALUATIONS_EVALUATORS" />
           </AssociationSet>
-          <AssociationSet Name="SYS_C007227" Association="Self.SYS_C007227">
-            <End Role="QUESTIONS" EntitySet="QUESTIONS" />
-            <End Role="QUESTION_TEMPLATES" EntitySet="QUESTION_TEMPLATES" />
-          </AssociationSet>
-          <AssociationSet Name="SYS_C007228" Association="Self.SYS_C007228">
-            <End Role="EVALUATION_TEMPLATES" EntitySet="EVALUATION_TEMPLATES" />
-            <End Role="QUESTION_TEMPLATES" EntitySet="QUESTION_TEMPLATES" />
-          </AssociationSet>
           <AssociationSet Name="SYS_C007229" Association="Self.SYS_C007229">
             <End Role="EVALUATION_TEMPLATES" EntitySet="EVALUATION_TEMPLATES" />
             <End Role="EVALUATIONS" EntitySet="EVALUATIONS" />
@@ -319,8 +342,7 @@
             <End Role="RESULTS" EntitySet="RESULTS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LibraryDb" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -364,6 +386,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="EvaluationTemplates" Relationship="Self.SYS_C007132" FromRole="POSITIONS" ToRole="EVALUATION_TEMPLATES" />
+          <NavigationProperty Name="Questions" Relationship="LibraryDb.PK_POSITIONS" FromRole="Position" ToRole="Question" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -375,6 +398,8 @@
           <NavigationProperty Name="Competence" Relationship="Self.SYS_C007124" FromRole="QUESTIONS" ToRole="COMPETENCES" />
           <NavigationProperty Name="Results" Relationship="Self.SYS_C007235" FromRole="QUESTIONS" ToRole="RESULTS" />
           <NavigationProperty Name="EvaluationTemplates" Relationship="Self.QUESTION_TEMPLATES" FromRole="QUESTIONS" ToRole="EVALUATION_TEMPLATES" />
+          <Property Name="PositionId" Type="Int32" />
+          <NavigationProperty Name="Position" Relationship="LibraryDb.PK_POSITIONS" FromRole="Question" ToRole="Position" />
         </EntityType>
         <EntityType Name="Rating">
           <Key>
@@ -593,7 +618,25 @@
             <End Role="QUESTIONS" EntitySet="QUESTIONS" />
             <End Role="EVALUATION_TEMPLATES" EntitySet="EVALUATION_TEMPLATES" />
           </AssociationSet>
+          <AssociationSet Name="PK_POSITIONS" Association="LibraryDb.PK_POSITIONS">
+            <End Role="Position" EntitySet="POSITIONS" />
+            <End Role="Question" EntitySet="QUESTIONS" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="PK_POSITIONS">
+          <End Type="LibraryDb.Position" Role="Position" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LibraryDb.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -639,6 +682,7 @@
           <EntitySetMapping Name="QUESTIONS">
             <EntityTypeMapping TypeName="LibraryDb.Question">
               <MappingFragment StoreEntitySet="QUESTIONS">
+                <ScalarProperty Name="PositionId" ColumnName="POSITIONID" />
                 <ScalarProperty Name="Id" ColumnName="ID" />
                 <ScalarProperty Name="Content" ColumnName="CONTENT" />
                 <ScalarProperty Name="CompetenceId" ColumnName="COMPETENCE_ID" />

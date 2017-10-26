@@ -5,7 +5,8 @@ namespace Interfaces.BS
 {
     public interface IPositionService : IBaseService
     {
-        string[] GetAll();
+        IEnumerable<string> GetAllPositionsByName();
+        IEnumerable<Position> GetAllPositions();
         Position FindPositon(int id);
     }
 }

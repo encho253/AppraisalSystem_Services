@@ -25,6 +25,7 @@
         <AssociationConnector Association="LibraryDb.SYS_C007107" ManuallyRouted="false" />
         <AssociationConnector Association="LibraryDb.EVALUATIONS_EVALUATORS" ManuallyRouted="false" />
         <AssociationConnector Association="LibraryDb.QUESTION_TEMPLATES" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDb.PK_POSITIONS" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

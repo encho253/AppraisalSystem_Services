@@ -1,4 +1,6 @@
-﻿using System.ServiceModel;
+﻿using DB;
+using System.Collections.Generic;
+using System.ServiceModel;
 
 namespace WCF.Interfaces.WCF
 {
@@ -6,6 +8,9 @@ namespace WCF.Interfaces.WCF
     public interface IPositionWcfService
     {
         [OperationContract]
-        string[] GetAll();
+        IEnumerable<string> GetAllPositionsByName();
+
+        [OperationContract]
+        IEnumerable<Position> GetAllPositions();
     }
 }
