@@ -4,6 +4,7 @@ using Interfaces.BS;
 using Interfaces.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BS
 {
@@ -31,14 +32,23 @@ namespace BS
             });
         }
 
-        public void AddEvaluatorToEvaluation(Evaluation evaluation, User user)
+        public void AddEvaluatorToEvaluation(string username, string usernameEvaluator)
         {
-            this.EvaluationRepository.AddEvaluatorToEvaluation(evaluation, user);
+            Evaluation evaluation = GetEvaluation(username);
+            User evaluator = this.userService.SearchByUserName(usernameEvaluator);
+
+            //User this.EvaluationRepository.GetAllEvaluatorsForEvaluation(evaluation)
+            //    .FirstOrDefault(x => x.Email == evaluator);
+
+            if (evaluation != null)
+            {
+               
+            }
         }
 
         public IEnumerable<User> GetAllEvaluatorsForEvaluation(string username)
         {
-            Evaluation evaluation = this.EvaluationRepository.GetUserEvaluation(username);
+            Evaluation evaluation = GetEvaluation(username);
             IEnumerable<User> users = new List<User>();
 
             if (evaluation != null)
@@ -49,6 +59,18 @@ namespace BS
             }
 
             return users;
+        }
+
+        public Evaluation GetEvaluation(string username)
+        {
+            Evaluation evaluation = this.EvaluationRepository.GetUserEvaluation(username);
+
+            return evaluation;
+        }
+
+        public void AddEvaluatorToEvaluation(Evaluation evaluation, User user)
+        {
+            throw new NotImplementedException();
         }
     }
 }
