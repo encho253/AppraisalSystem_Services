@@ -1,14 +1,28 @@
-﻿using System.ServiceModel;
+﻿using DB;
+using System.Collections.Generic;
+using System.ServiceModel;
 
 namespace Interfaces.WCF
 {
     [ServiceContract]
     public interface ICompetenceWcfService
-    {
+    {      
         [OperationContract]
-        void AddCompetence(int id, string competenceName);
+        IEnumerable<string> GetAllCompetence();
 
         [OperationContract]
-        string[] GetAllCompetence();
+        IEnumerable<Competence> GetAllCompetences();
+
+        [OperationContract]
+        IEnumerable<Competence> GetAllCompetenceByPosition(string positionName);
+
+        [OperationContract]
+        void AddCompetence(string competenceName);
+
+        [OperationContract]
+        void UpdateCompetence(int id, string competenceName);
+
+        [OperationContract]
+        IEnumerable<string> GetAllCompetencesNameByPosition(string positionName);
     }
 }

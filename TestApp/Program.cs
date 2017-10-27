@@ -54,17 +54,10 @@ namespace TestApp
             using (UnityManagerModule u = new UnityManagerModule())
             {
                 u.Init();
-                var p = u.Resolve<IEvaluationService>();
-                var us = u.Resolve<IUserService>();
-                var evalrepo = new EvaluationRepository(new UnitOfWork());
+                var p = u.Resolve<IPositionService>();
+                var us = u.Resolve<ICompetenceService>();
 
-                var eval = evalrepo.GetFirstOrDefault(1);
-
-                var evaluation = p.GetAllEvaluatorsForEvaluation("minka@gmail.com");
-
-
-                UnitOfWork unit = new UnitOfWork();
-                unit.SaveChanges();
+                var gggg = us.GetAllCompetencesNameByPosition("Regular");
             }
         }
     }

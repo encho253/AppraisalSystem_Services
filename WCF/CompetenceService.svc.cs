@@ -2,26 +2,83 @@
 using Interfaces.WCF;
 using Interfaces.BS;
 using BS.Configs;
+using System.Collections.Generic;
+using DB;
+using Repository.Configs;
 
 namespace WCF
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "CompetenceService" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select CompetenceService.svc or CompetenceService.svc.cs at the Solution Explorer and start debugging.
     public class CompetenceService : ICompetenceWcfService
     {
-        public void AddCompetence(int id, string competenceName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string[] GetAllCompetence()
+        public IEnumerable<string> GetAllCompetence()
         {
             using (IUnityManagerModule dataContainer = new UnityManagerModule())
             {
                 dataContainer.Init();
                 ICompetenceService competenceService = dataContainer.Resolve<ICompetenceService>();
 
-                return competenceService.GetAllCompetence();
+                return competenceService.GetAllCompetencesByName();
+            }
+        }
+
+        public IEnumerable<Competence> GetAllCompetences()
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                ICompetenceService competenceService = dataContainer.Resolve<ICompetenceService>();
+
+                return competenceService.GetAllCompetences();
+            }
+        }
+
+        public IEnumerable<Competence> GetAllCompetenceByPosition(string positionName)
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                ICompetenceService competenceService = dataContainer.Resolve<ICompetenceService>();
+
+                return competenceService.GetAllCompetenceByPosition(positionName);
+            }
+        }
+
+        public void AddCompetence(string competenceName)
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                ICompetenceService competenceService = dataContainer.Resolve<ICompetenceService>();
+
+                competenceService.AddCompetence(competenceName);
+
+                UnitOfWork unitOfWork = new UnitOfWork();
+                unitOfWork.SaveChanges();
+            }
+        }
+
+        public void UpdateCompetence(int id, string competenceName)
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                ICompetenceService competenceService = dataContainer.Resolve<ICompetenceService>();
+
+                competenceService.UpdateCompetence(id, competenceName);
+
+                UnitOfWork unitOfWork = new UnitOfWork();
+                unitOfWork.SaveChanges();
+            }
+        }
+
+        public IEnumerable<string> GetAllCompetencesNameByPosition(string positionName)
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                ICompetenceService competenceService = dataContainer.Resolve<ICompetenceService>();
+
+                return competenceService.GetAllCompetencesNameByPosition(positionName);
             }
         }
     }

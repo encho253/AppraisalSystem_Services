@@ -12,5 +12,11 @@ namespace WCF.Interfaces.WCF
 
         [OperationContract]
         IEnumerable<Position> GetAllPositions();
+
+        [OperationContract]
+        void UpdatePosition(int id, string positionName);
+
+        [OperationContract]
+        void AddPosition(string positionName);
     }
 }

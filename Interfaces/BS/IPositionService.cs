@@ -8,5 +8,7 @@ namespace Interfaces.BS
         IEnumerable<string> GetAllPositionsByName();
         IEnumerable<Position> GetAllPositions();
         Position FindPositon(int id);
+        void UpdatePosition(int id, string positionName);
+        void AddPosition(string positionName);
     }
 }
