@@ -26,6 +26,7 @@ namespace BS
         {
             Competence competenceObj = this.CompetenceRepository.GetCompetenceByName(competence);
             EvaluationTemplate evaluationTemplate = this.EvaluationTemplate.GetEvaluationTemplateByPosition(position);
+            Position positionObj = this.PositionRepository.GetPositionByName(position);
 
             ICollection<EvaluationTemplate> evalTemplate = new List<EvaluationTemplate>();
             evalTemplate.Add(evaluationTemplate);
@@ -39,7 +40,8 @@ namespace BS
                 Id = testId,
                 Content = questionContent,
                 CompetenceId = competenceObj.Id,
-                EvaluationTemplates = evalTemplate
+                EvaluationTemplates = evalTemplate,
+                PositionId = positionObj.Id
             });
         }
 
@@ -82,6 +84,11 @@ namespace BS
             Question question = this.QuestionRepository.GetFirstOrDefault(questionId);
 
             this.QuestionRepository.Delete(question);
+        }
+
+        public IEnumerable<Question> GetByPosition(string position)
+        {
+            return this.QuestionRepository.GetByPosition(position);
         }
     }
 }

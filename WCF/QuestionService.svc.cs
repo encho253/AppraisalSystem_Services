@@ -85,5 +85,17 @@ namespace WCF
                 questionRepo.SaveChanges();
             }
         }
+
+        public IEnumerable<Question> GetByPosition(string position)
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IQuestionService questionService = dataContainer.Resolve<IQuestionService>();
+                IEnumerable<Question> questions = questionService.GetByPosition(position);
+
+                return questions;
+            }
+        }
     }
 }

@@ -28,5 +28,14 @@ namespace Repository
 
             return questions;
         }
+
+        public IEnumerable<Question> GetByPosition(string position)
+        {
+            ICollection<Question> questions = this.UnitOfWork.DbContext.Questions
+              .Where(c => c.Position.Name == position)
+              .ToList();
+
+            return questions;
+        }
     }
 }

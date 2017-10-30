@@ -11,5 +11,6 @@ namespace Interfaces.BS
         IEnumerable<Question> GetAll();
         void UpdateQuestion(int questionId, string content);
         void Delete(int questionId);
+        IEnumerable<Question> GetByPosition(string position);
     }
 }

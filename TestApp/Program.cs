@@ -53,11 +53,9 @@ namespace TestApp
 
             using (UnityManagerModule u = new UnityManagerModule())
             {
-                u.Init();
-                var p = u.Resolve<IPositionService>();
-                var us = u.Resolve<ICompetenceService>();
+                QuestionRepository qq = new QuestionRepository(new UnitOfWork());
 
-                var gggg = us.GetAllCompetencesNameByPosition("Regular");
+                var cc = qq.GetByPosition("Junior");
             }
         }
     }

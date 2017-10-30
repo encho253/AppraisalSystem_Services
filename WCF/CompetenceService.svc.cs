@@ -10,7 +10,7 @@ namespace WCF
 {
     public class CompetenceService : ICompetenceWcfService
     {
-        public IEnumerable<string> GetAllCompetence()
+        public IEnumerable<string> GetAllCompetencesByName()
         {
             using (IUnityManagerModule dataContainer = new UnityManagerModule())
             {

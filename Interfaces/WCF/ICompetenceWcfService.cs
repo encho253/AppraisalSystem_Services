@@ -6,9 +6,9 @@ namespace Interfaces.WCF
 {
     [ServiceContract]
     public interface ICompetenceWcfService
-    {      
+    {
         [OperationContract]
-        IEnumerable<string> GetAllCompetence();
+        IEnumerable<string> GetAllCompetencesByName();
 
         [OperationContract]
         IEnumerable<Competence> GetAllCompetences();

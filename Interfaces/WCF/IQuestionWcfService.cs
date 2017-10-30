@@ -24,5 +24,8 @@ namespace Interfaces.WCF
 
         [OperationContract]
         void Delete(int questionId);
+
+        [OperationContract]
+        IEnumerable<Question> GetByPosition(string position);
     }
 }

@@ -7,5 +7,6 @@ namespace Interfaces.Repository
     {
         ICollection<Question> GetQuestionsByCompetence(string competence);
         IEnumerable<Question> GetQuestionByPositionAndCompetence(string position, string competence);
+        IEnumerable<Question> GetByPosition(string position);
     }
 }
