@@ -10,7 +10,7 @@ namespace Interfaces.BS
         IEvaluationRepository EvaluationRepository { get; set; }
 
         void CreateEvaluation(int userId, int evaluationTemplateId);
-        void AddEvaluatorToEvaluation(Evaluation evaluation, User user);
+        void AddEvaluatorToEvaluation(string username, string usernameEvaluator);
         IEnumerable<User> GetAllEvaluatorsForEvaluation(string username);
     }
 }

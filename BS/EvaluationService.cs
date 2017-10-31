@@ -37,13 +37,7 @@ namespace BS
             Evaluation evaluation = GetEvaluation(username);
             User evaluator = this.userService.SearchByUserName(usernameEvaluator);
 
-            //User this.EvaluationRepository.GetAllEvaluatorsForEvaluation(evaluation)
-            //    .FirstOrDefault(x => x.Email == evaluator);
-
-            if (evaluation != null)
-            {
-               
-            }
+            this.EvaluationRepository.AddEvaluatorToEvaluation(evaluation, evaluator);
         }
 
         public IEnumerable<User> GetAllEvaluatorsForEvaluation(string username)
@@ -66,11 +60,6 @@ namespace BS
             Evaluation evaluation = this.EvaluationRepository.GetUserEvaluation(username);
 
             return evaluation;
-        }
-
-        public void AddEvaluatorToEvaluation(Evaluation evaluation, User user)
-        {
-            throw new NotImplementedException();
         }
     }
 }

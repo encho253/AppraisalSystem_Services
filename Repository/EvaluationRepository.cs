@@ -12,9 +12,9 @@ namespace Repository
         {
         }
 
-        public void AddEvaluatorToEvaluation(Evaluation evaluation, User user)
+        public void AddEvaluatorToEvaluation(Evaluation evaluation, User evaluator)
         {
-            evaluation.Users.Add(user);
+            evaluation.Users.Add(evaluator);
         }
 
         public IEnumerable<User> GetAllEvaluatorsForEvaluation(Evaluation evaluation)

@@ -11,7 +11,10 @@ namespace DB
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
+    [Serializable]
+    [DataContract]
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,18 +25,36 @@ namespace DB
             this.Evaluations1 = new HashSet<Evaluation>();
         }
     
+        [DataMember]
         public int Id { get; set; }
+
+        [DataMember]
         public string FirstName { get; set; }
+
+        [DataMember]
         public string LastName { get; set; }
+
+        [DataMember]
         public string Password { get; set; }
+
+        [DataMember]
         public string Email { get; set; }
+
+        [DataMember]
         public int RoleId { get; set; }
     
+        [IgnoreDataMember]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Evaluation> Evaluations { get; set; }
+
+        [IgnoreDataMember]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
+
+        [IgnoreDataMember]
         public virtual Role Role { get; set; }
+
+        [IgnoreDataMember]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Evaluation> Evaluations1 { get; set; }
     }

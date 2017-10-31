@@ -9,11 +9,6 @@ namespace WCF
 {
     public class EvaluationService : IEvaluationWcfService
     {
-        public void AddEvaluatorToEvaluation(Evaluation evaluation, User user)
-        {
-            
-        }
-
         public void CreateEvaluation(int userId, int evaluationTemplateId)
         {
             using (UnityManagerModule dataContainer = new UnityManagerModule())
@@ -38,6 +33,21 @@ namespace WCF
                 IEnumerable<User> users = evaluationService.GetAllEvaluatorsForEvaluation(username);
 
                 return users;
+            }
+        }
+
+        public void AddEvaluatorToEvaluation(string username, string usernameEvaluator)
+        {
+            using (UnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IEvaluationService evaluationService = dataContainer.Resolve<IEvaluationService>();
+
+                evaluationService.AddEvaluatorToEvaluation(username, usernameEvaluator);
+
+                var unitofwork = new UnitOfWork();
+
+                unitofwork.SaveChanges();
             }
         }
     }

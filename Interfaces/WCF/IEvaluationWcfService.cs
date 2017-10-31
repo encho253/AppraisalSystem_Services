@@ -11,7 +11,7 @@ namespace Interfaces.WCF
         void CreateEvaluation(int userId, int evaluationTemplateId);
 
         [OperationContract]
-        void AddEvaluatorToEvaluation(Evaluation evaluation, User user);
+        void AddEvaluatorToEvaluation(string username, string usernameEvaluator);
 
         [OperationContract]
         IEnumerable<User> GetAllEvaluatorsForEvaluation(string username);
