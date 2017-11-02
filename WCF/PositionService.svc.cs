@@ -21,16 +21,16 @@ namespace WCF
             }
         }
 
-        public IEnumerable<string> GetAllPositionsByName()
-        {
-            using (IUnityManagerModule dataContainer = new UnityManagerModule())
-            {
-                dataContainer.Init();
+        //public IEnumerable<> GetAllPositionsByName()
+        //{
+        //    using (IUnityManagerModule dataContainer = new UnityManagerModule())
+        //    {
+        //        dataContainer.Init();
 
-                IPositionService positionService = dataContainer.Resolve<IPositionService>();
-                return positionService.GetAllPositionsByName();
-            }
-        }
+        //        IPositionService positionService = dataContainer.Resolve<IPositionService>();
+        //        return positionService.GetAllPositionsByName();
+        //    }
+        //}
 
         public void UpdatePosition(int id, string positionName)
         {

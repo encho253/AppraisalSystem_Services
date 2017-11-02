@@ -1,6 +1,7 @@
 ﻿using DB;
 using Interfaces.Repository;
 using Repository.Configs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,6 +16,15 @@ namespace Repository
         public void AddEvaluatorToEvaluation(Evaluation evaluation, User evaluator)
         {
             evaluation.Users.Add(evaluator);
+        }
+
+        public IEnumerable<Evaluation> GetAllEvaluationsForUser(string username)
+        {
+            IEnumerable<Evaluation> users = this.UnitOfWork.DbContext.Evaluations
+               .Where(x => x.User.Email == username)
+               .ToList();
+
+            return users;
         }
 
         public IEnumerable<User> GetAllEvaluatorsForEvaluation(Evaluation evaluation)

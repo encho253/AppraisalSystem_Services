@@ -5,6 +5,7 @@ using BS.Configs;
 using System.Collections.Generic;
 using DB;
 using Repository.Configs;
+using Interfaces.DTO.Response;
 
 namespace WCF
 {
@@ -79,6 +80,17 @@ namespace WCF
                 ICompetenceService competenceService = dataContainer.Resolve<ICompetenceService>();
 
                 return competenceService.GetAllCompetencesNameByPosition(positionName);
+            }
+        }
+
+        public IEnumerable<CompetenceDto> GetAllCompetencesByPosition(int positionId)
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                ICompetenceService competenceService = dataContainer.Resolve<ICompetenceService>();
+
+                return competenceService.GetAllCompetencesByPosition(positionId);
             }
         }
     }

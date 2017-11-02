@@ -1,4 +1,5 @@
 ﻿using DB;
+using Interfaces.DTO.Response;
 using System.Collections.Generic;
 
 namespace Interfaces.BS
@@ -12,5 +13,7 @@ namespace Interfaces.BS
         void AddCompetence(string competenceName);
         void UpdateCompetence(int id, string competenceName);
         IEnumerable<string> GetAllCompetencesNameByPosition(string positionName);
+        IEnumerable<CompetenceDto> GetAllCompetencesByPosition(int positionId);
+        Competence GetCompetenceById(int competenceId);
     }
 }

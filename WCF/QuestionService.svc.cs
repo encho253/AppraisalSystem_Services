@@ -58,7 +58,7 @@ namespace WCF
             }
         }
 
-        public void AddQuestion(string questionContent, string position, string competence)
+        public void AddQuestion(string questionContent, string position, int competenceId)
         {
             using (IUnityManagerModule dataContainer = new UnityManagerModule())
             {
@@ -66,7 +66,7 @@ namespace WCF
                 IQuestionService questionService = dataContainer.Resolve<IQuestionService>();
                 IQuestionRepository questionRepo = dataContainer.Resolve<IQuestionRepository>();
 
-                questionService.AddQuestion(questionContent, position, competence);
+                questionService.AddQuestion(questionContent, position, competenceId);
 
                 questionRepo.SaveChanges();
             }

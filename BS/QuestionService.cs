@@ -12,19 +12,16 @@ namespace BS
         public QuestionService(IUnityManagerModule unityManager) : base(unityManager)
         {
             this.QuestionRepository = this.UnityManager.Resolve<IQuestionRepository>();
-            this.CompetenceRepository = this.UnityManager.Resolve<ICompetenceRepository>();
             this.PositionRepository = this.UnityManager.Resolve<IPositionRepository>();
             this.EvaluationTemplate = this.UnityManager.Resolve<IEvaluationTemplateRepository>();
         }
 
         public IPositionRepository PositionRepository { get; set; }
         public IQuestionRepository QuestionRepository { get; set; }
-        public ICompetenceRepository CompetenceRepository { get; set; }
         public IEvaluationTemplateRepository EvaluationTemplate { get; set; }
 
-        public void AddQuestion(string questionContent, string position, string competence)
+        public void AddQuestion(string questionContent, string position, int competenceId)
         {
-            Competence competenceObj = this.CompetenceRepository.GetCompetenceByName(competence);
             EvaluationTemplate evaluationTemplate = this.EvaluationTemplate.GetEvaluationTemplateByPosition(position);
             Position positionObj = this.PositionRepository.GetPositionByName(position);
 
@@ -39,7 +36,7 @@ namespace BS
             {
                 Id = testId,
                 Content = questionContent,
-                CompetenceId = competenceObj.Id,
+                CompetenceId = competenceId,
                 EvaluationTemplates = evalTemplate,
                 PositionId = positionObj.Id
             });

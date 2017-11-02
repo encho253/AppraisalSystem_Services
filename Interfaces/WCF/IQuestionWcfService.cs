@@ -20,7 +20,7 @@ namespace Interfaces.WCF
         IEnumerable<Question> GetAll();
 
         [OperationContract]
-        void AddQuestion(string questionContent, string position, string competence);
+        void AddQuestion(string questionContent, string position, int competenceId);
 
         [OperationContract]
         void Delete(int questionId);

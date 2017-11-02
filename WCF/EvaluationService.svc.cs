@@ -50,5 +50,27 @@ namespace WCF
                 unitofwork.SaveChanges();
             }
         }
+
+        public IEnumerable<Evaluation> GetUserEvaluation(string username)
+        {
+            using (UnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IEvaluationService evaluationService = dataContainer.Resolve<IEvaluationService>();
+
+                return evaluationService.GetAllEvaluationsForUser(username);
+            }
+        }
+
+        public IEnumerable<Evaluation> GetAllEvaluationsForUser(string username)
+        {
+            using (UnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IEvaluationService evaluationService = dataContainer.Resolve<IEvaluationService>();
+
+                return evaluationService.GetAllEvaluationsForUser(username);
+            }
+        }
     }
 }

@@ -7,8 +7,8 @@ namespace WCF.Interfaces.WCF
     [ServiceContract]
     public interface IPositionWcfService
     {
-        [OperationContract]
-        IEnumerable<string> GetAllPositionsByName();
+        //[OperationContract]
+        //IEnumerable<string> GetAllPositionsByName();
 
         [OperationContract]
         IEnumerable<Position> GetAllPositions();

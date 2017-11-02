@@ -17,13 +17,6 @@ namespace BS
 
         public IPositionRepository PositionRepository { get; set; }
 
-        public IEnumerable<string> GetAllPositionsByName()
-        {
-            IEnumerable<Position> positions = GetAllPositions();
-
-            return positions.Select(p => p.Name).ToList();
-        }
-
         public IEnumerable<Position> GetAllPositions()
         {
             IEnumerable<Position> positions = this.PositionRepository.GetAllRecords();

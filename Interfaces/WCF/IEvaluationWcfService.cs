@@ -15,5 +15,8 @@ namespace Interfaces.WCF
 
         [OperationContract]
         IEnumerable<User> GetAllEvaluatorsForEvaluation(string username);
+
+        [OperationContract]
+        IEnumerable<Evaluation> GetAllEvaluationsForUser(string username);
     }
 }

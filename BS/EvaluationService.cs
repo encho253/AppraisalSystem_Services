@@ -4,7 +4,6 @@ using Interfaces.BS;
 using Interfaces.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BS
 {
@@ -60,6 +59,14 @@ namespace BS
             Evaluation evaluation = this.EvaluationRepository.GetUserEvaluation(username);
 
             return evaluation;
+        }
+
+        public IEnumerable<Evaluation> GetAllEvaluationsForUser(string username)
+        {
+            IEnumerable<Evaluation> evaluations = this.EvaluationRepository.GetAllEvaluationsForUser(username);
+
+
+            return evaluations;
         }
     }
 }

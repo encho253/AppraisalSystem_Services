@@ -1,4 +1,5 @@
 ﻿using DB;
+using Interfaces.DTO.Response;
 using System.Collections.Generic;
 using System.ServiceModel;
 
@@ -24,5 +25,8 @@ namespace Interfaces.WCF
 
         [OperationContract]
         IEnumerable<string> GetAllCompetencesNameByPosition(string positionName);
+
+        [OperationContract]
+        IEnumerable<CompetenceDto> GetAllCompetencesByPosition(int positionId);
     }
 }
