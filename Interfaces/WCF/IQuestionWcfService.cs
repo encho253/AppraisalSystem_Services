@@ -27,5 +27,8 @@ namespace Interfaces.WCF
 
         [OperationContract]
         IEnumerable<Question> GetByPosition(string position);
+
+        [OperationContract]
+        IEnumerable<Question> GetAllQuestionsByEvaluationTemplate(int evaluationTemplateId);
     }
 }

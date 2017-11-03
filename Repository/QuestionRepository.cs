@@ -37,5 +37,15 @@ namespace Repository
 
             return questions;
         }
+
+        public IEnumerable<Question> GetQuestionsByEvaluationTemplate(int evaluationTemplateId)
+        {
+            ICollection<Question> questions = this.UnitOfWork.DbContext.EvaluationsTemplates
+                .Where(e => e.Id == evaluationTemplateId)
+                .SelectMany(q => q.Questions)
+                .ToList();
+
+            return questions;
+        }
     }
 }

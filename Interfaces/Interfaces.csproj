@@ -68,6 +68,7 @@
     <Compile Include="Repository\IResultRepository.cs" />
     <Compile Include="WCF\IAccountWcfService.cs" />
     <Compile Include="WCF\ICompetenceWcfService.cs" />
+    <Compile Include="WCF\IEvaluationTemplateWcfService.cs" />
     <Compile Include="WCF\IEvaluationWcfService.cs" />
     <Compile Include="WCF\IPositionWcfService.cs" />
     <Compile Include="WCF\IQuestionWcfService.cs" />

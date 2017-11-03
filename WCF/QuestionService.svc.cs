@@ -97,5 +97,17 @@ namespace WCF
                 return questions;
             }
         }
+
+        public IEnumerable<Question> GetAllQuestionsByEvaluationTemplate(int evaluationTemplateId)
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IQuestionService questionService = dataContainer.Resolve<IQuestionService>();
+                IEnumerable<Question> questions = questionService.GetAllQuestionsByEvaluationTemplate(evaluationTemplateId);
+
+                return questions;
+            }
+        }
     }
 }

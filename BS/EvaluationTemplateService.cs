@@ -2,6 +2,8 @@
 using DB;
 using Interfaces.BS;
 using Interfaces.Repository;
+using System;
+using System.Collections.Generic;
 
 namespace BS
 {
@@ -22,6 +24,24 @@ namespace BS
         public EvaluationTemplate GetEvaluationTemplateByPosition(string position)
         {
             return this.EvaluationTemplateRepository.GetEvaluationTemplateByPosition(position);
+        }
+
+        public IEnumerable<EvaluationTemplate> GetAllTemplates()
+        {
+            return this.EvaluationTemplateRepository.GetAllRecords();
+        }
+
+        public void CreateEvaluationTemplate(int positionId, string templateName)
+        {
+            var random = new Random();
+            int testId = random.Next(0, 5000) + random.Next(0, 5000);
+
+            this.EvaluationTemplateRepository.Add(new EvaluationTemplate
+            {
+                Id = testId,
+                QualificationId = positionId,
+                Name = templateName
+            });
         }
     }
 }

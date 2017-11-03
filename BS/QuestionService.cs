@@ -87,5 +87,12 @@ namespace BS
         {
             return this.QuestionRepository.GetByPosition(position);
         }
+
+        public IEnumerable<Question> GetAllQuestionsByEvaluationTemplate(int evaluationTemplateId)
+        {
+            IEnumerable<Question> questions = this.QuestionRepository.GetQuestionsByEvaluationTemplate(evaluationTemplateId);
+
+            return questions;
+        }
     }
 }
