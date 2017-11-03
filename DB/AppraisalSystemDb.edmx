@@ -20,6 +20,7 @@
           <Property Name="QUALIFICATION_ID" Type="number" Precision="8" Scale="0" Nullable="false" />
           <Property Name="EXCEL_TEMPLATE" Type="blob" />
           <Property Name="EXCEL_DATA_MAPPING" Type="blob" />
+          <Property Name="NAME" Type="varchar2" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="EVALUATIONS">
           <Key>
@@ -365,6 +366,7 @@
           <NavigationProperty Name="Position" Relationship="Self.SYS_C007132" FromRole="EVALUATION_TEMPLATES" ToRole="POSITIONS" />
           <NavigationProperty Name="Evaluations" Relationship="Self.SYS_C007229" FromRole="EVALUATION_TEMPLATES" ToRole="EVALUATIONS" />
           <NavigationProperty Name="Questions" Relationship="Self.QUESTION_TEMPLATES" FromRole="EVALUATION_TEMPLATES" ToRole="QUESTIONS" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Evaluation">
           <Key>
@@ -654,6 +656,7 @@
           <EntitySetMapping Name="EVALUATION_TEMPLATES">
             <EntityTypeMapping TypeName="LibraryDb.EvaluationTemplate">
               <MappingFragment StoreEntitySet="EVALUATION_TEMPLATES">
+                <ScalarProperty Name="Name" ColumnName="NAME" />
                 <ScalarProperty Name="Id" ColumnName="ID" />
                 <ScalarProperty Name="QualificationId" ColumnName="QUALIFICATION_ID" />
                 <ScalarProperty Name="ExcelTemplate" ColumnName="EXCEL_TEMPLATE" />

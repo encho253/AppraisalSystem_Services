@@ -23,7 +23,7 @@ namespace DB
             this.Results = new HashSet<Result>();
             this.EvaluationTemplates = new HashSet<EvaluationTemplate>();
         }
-
+    
         [DataMember]
         public int Id { get; set; }
 
@@ -35,7 +35,7 @@ namespace DB
 
         [DataMember]
         public Nullable<int> PositionId { get; set; }
-
+    
         [IgnoreDataMember]
         public virtual Competence Competence { get; set; }
 
@@ -46,6 +46,8 @@ namespace DB
         [IgnoreDataMember]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EvaluationTemplate> EvaluationTemplates { get; set; }
+
+        [IgnoreDataMember]
         public virtual Position Position { get; set; }
     }
 }

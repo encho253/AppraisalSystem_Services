@@ -35,7 +35,7 @@ namespace DB
 
         [DataMember]
         public Nullable<System.DateTime> EvalDate { get; set; }
-    
+        
         [IgnoreDataMember]
         public virtual EvaluationTemplate EvaluationTemplates { get; set; }
 

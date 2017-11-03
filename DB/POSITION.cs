@@ -23,7 +23,7 @@ namespace DB
             this.EvaluationTemplates = new HashSet<EvaluationTemplate>();
             this.Questions = new HashSet<Question>();
         }
-
+    
         [DataMember]
         public int Id { get; set; }
 

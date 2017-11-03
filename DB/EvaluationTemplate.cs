@@ -35,12 +35,15 @@ namespace DB
 
         [DataMember]
         public byte[] ExcelDataMapping { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
     
         [IgnoreDataMember]
         public virtual Position Position { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
         [IgnoreDataMember]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Evaluation> Evaluations { get; set; }
 
         [IgnoreDataMember]
