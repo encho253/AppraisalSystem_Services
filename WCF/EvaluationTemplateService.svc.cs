@@ -35,5 +35,19 @@ namespace WCF
                 unitOfWork.SaveChanges();
             }
         }
+
+        public void DeleteEvaluationTemplate(int templateId)
+        {
+            using (UnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IEvaluationTemplateService evaluationTemplate = dataContainer.Resolve<IEvaluationTemplateService>();
+
+                evaluationTemplate.DeleteEvaluationTemplate(templateId);
+
+                UnitOfWork unitOfWork = new UnitOfWork();
+                unitOfWork.SaveChanges();
+            }
+        }
     }
 }

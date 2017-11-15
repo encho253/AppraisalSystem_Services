@@ -9,5 +9,6 @@ namespace Interfaces.BS
         EvaluationTemplate GetEvaluationTemplateByPosition(string position);
         IEnumerable<EvaluationTemplate> GetAllTemplates();
         void CreateEvaluationTemplate(int positionId, string templateName, List<int> questionsId);
+        void DeleteEvaluationTemplate(int templateId);
     }
 }

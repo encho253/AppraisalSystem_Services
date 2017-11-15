@@ -54,5 +54,12 @@ namespace BS
                 Questions = questions
             });
         }
+
+        public void DeleteEvaluationTemplate(int templateId)
+        {
+            EvaluationTemplate evalTemplate = this.EvaluationTemplateRepository.GetFirstOrDefault(templateId);
+
+            this.EvaluationTemplateRepository.Delete(evalTemplate);
+        }
     }
 }

@@ -12,5 +12,8 @@ namespace Interfaces.WCF
 
         [OperationContract]
         void CreateEvaluationTemplate(int positionId, string templateName, List<int> questionsId);
+
+        [OperationContract]
+        void DeleteEvaluationTemplate(int templateId);
     }
 }
