@@ -22,14 +22,14 @@ namespace WCF
             }
         }
 
-        public void CreateEvaluationTemplate(int positionId, string templateName)
+        public void CreateEvaluationTemplate(int positionId, string templateName, List<int> questionsId)
         {
             using (UnityManagerModule dataContainer = new UnityManagerModule())
             {
                 dataContainer.Init();
                 IEvaluationTemplateService evaluationTemplate = dataContainer.Resolve<IEvaluationTemplateService>();
 
-                evaluationTemplate.CreateEvaluationTemplate(positionId, templateName);
+                evaluationTemplate.CreateEvaluationTemplate(positionId, templateName, questionsId);
 
                 UnitOfWork unitOfWork = new UnitOfWork();
                 unitOfWork.SaveChanges();

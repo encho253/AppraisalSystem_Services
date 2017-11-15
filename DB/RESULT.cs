@@ -11,19 +11,40 @@ namespace DB
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
+    [Serializable]
+    [DataContract]
     public partial class Result
     {
+        [DataMember]
         public int EvaluationId { get; set; }
+
+        [DataMember]
         public int QuestionId { get; set; }
+
+        [DataMember]
         public int EvaluatorId { get; set; }
+
+        [DataMember]
         public int RatingId { get; set; }
+
+        [DataMember]
         public int Id { get; set; }
+
+        [DataMember]
         public Nullable<bool> IsFinal { get; set; }
     
+        [IgnoreDataMember]
         public virtual Evaluation Evaluation { get; set; }
+
+        [IgnoreDataMember]
         public virtual Question Question { get; set; }
+
+        [IgnoreDataMember]
         public virtual Rating Rating { get; set; }
+
+        [IgnoreDataMember]
         public virtual User User { get; set; }
     }
 }

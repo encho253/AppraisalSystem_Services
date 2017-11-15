@@ -12,9 +12,11 @@ namespace BS
         public EvaluationTemplateService(IUnityManagerModule unityManager) : base(unityManager)
         {
             this.EvaluationTemplateRepository = this.UnityManager.Resolve<IEvaluationTemplateRepository>();
+            this.QuestionService = this.UnityManager.Resolve<IQuestionService>();
         }
 
         public IEvaluationTemplateRepository EvaluationTemplateRepository { get; set; }
+        public IQuestionService QuestionService { get; set; }
 
         public void CreateEvaluationTemplate(int id, int positionId)
         {
@@ -31,16 +33,25 @@ namespace BS
             return this.EvaluationTemplateRepository.GetAllRecords();
         }
 
-        public void CreateEvaluationTemplate(int positionId, string templateName)
+        public void CreateEvaluationTemplate(int positionId, string templateName, List<int> questionsId)
         {
             var random = new Random();
             int testId = random.Next(0, 5000) + random.Next(0, 5000);
+
+            ICollection<Question> questions = new List<Question>();
+
+            foreach (var questionId in questionsId)
+            {
+                Question question = this.QuestionService.GetById(questionId);
+                questions.Add(question);
+            }
 
             this.EvaluationTemplateRepository.Add(new EvaluationTemplate
             {
                 Id = testId,
                 QualificationId = positionId,
-                Name = templateName
+                Name = templateName,
+                Questions = questions
             });
         }
     }

@@ -9,5 +9,8 @@ namespace Interfaces.WCF
     {
         [OperationContract]
         IEnumerable<EvaluationTemplate> GetAllTemplates();
+
+        [OperationContract]
+        void CreateEvaluationTemplate(int positionId, string templateName, List<int> questionsId);
     }
 }

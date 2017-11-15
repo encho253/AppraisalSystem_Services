@@ -8,6 +8,6 @@ namespace Interfaces.BS
         void CreateEvaluationTemplate(int id, int positionId);
         EvaluationTemplate GetEvaluationTemplateByPosition(string position);
         IEnumerable<EvaluationTemplate> GetAllTemplates();
-        void CreateEvaluationTemplate(int positionId, string templateName);
+        void CreateEvaluationTemplate(int positionId, string templateName, List<int> questionsId);
     }
 }

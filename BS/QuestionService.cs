@@ -88,6 +88,11 @@ namespace BS
             return this.QuestionRepository.GetByPosition(position);
         }
 
+        public Question GetById(int id)
+        {
+            return this.QuestionRepository.GetFirstOrDefault(id);        
+        }
+
         public IEnumerable<Question> GetAllQuestionsByEvaluationTemplate(int evaluationTemplateId)
         {
             IEnumerable<Question> questions = this.QuestionRepository.GetQuestionsByEvaluationTemplate(evaluationTemplateId);
