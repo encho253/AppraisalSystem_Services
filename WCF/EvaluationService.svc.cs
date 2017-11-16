@@ -23,14 +23,14 @@ namespace WCF
             }
         }
 
-        public IEnumerable<User> GetAllEvaluatorsForEvaluation(string username)
+        public IEnumerable<User> GetAllEvaluatorsForEvaluation(int evaluationId)
         {
             using (UnityManagerModule dataContainer = new UnityManagerModule())
             {
                 dataContainer.Init();
                 IEvaluationService evaluationService = dataContainer.Resolve<IEvaluationService>();
 
-                IEnumerable<User> users = evaluationService.GetAllEvaluatorsForEvaluation(username);
+                IEnumerable<User> users = evaluationService.GetAllEvaluatorsForEvaluation(evaluationId);
 
                 return users;
             }
@@ -59,6 +59,17 @@ namespace WCF
                 IEvaluationService evaluationService = dataContainer.Resolve<IEvaluationService>();
 
                 return evaluationService.GetAllEvaluationsForUser(username);
+            }
+        }
+
+        public Evaluation GetEvaluationById(int evaluationId)
+        {
+            using (UnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IEvaluationService evaluationService = dataContainer.Resolve<IEvaluationService>();
+
+                return evaluationService.GetEvaluationById(evaluationId);
             }
         }
 

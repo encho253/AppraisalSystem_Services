@@ -14,9 +14,12 @@ namespace Interfaces.WCF
         void AddEvaluatorToEvaluation(string username, string usernameEvaluator);
 
         [OperationContract]
-        IEnumerable<User> GetAllEvaluatorsForEvaluation(string username);
+        IEnumerable<User> GetAllEvaluatorsForEvaluation(int evaluationId);
 
         [OperationContract]
         IEnumerable<Evaluation> GetAllEvaluationsForUser(string username);
+
+        [OperationContract]
+        Evaluation GetEvaluationById(int evaluationId);
     }
 }

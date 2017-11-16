@@ -49,5 +49,16 @@ namespace WCF
                 unitOfWork.SaveChanges();
             }
         }
+
+        public EvaluationTemplate GetEvaluationTemplateById(int evaluationId)
+        {
+            using (UnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
+                IEvaluationTemplateService evaluationTemplateService = dataContainer.Resolve<IEvaluationTemplateService>();
+
+                return evaluationTemplateService.GetEvaluationTemplateById(evaluationId);
+            }
+        }
     }
 }

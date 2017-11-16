@@ -15,5 +15,8 @@ namespace Interfaces.WCF
 
         [OperationContract]
         void DeleteEvaluationTemplate(int templateId);
+
+        [OperationContract]
+        EvaluationTemplate GetEvaluationTemplateById(int evaluationId);
     }
 }

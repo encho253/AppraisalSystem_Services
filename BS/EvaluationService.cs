@@ -39,9 +39,9 @@ namespace BS
             this.EvaluationRepository.AddEvaluatorToEvaluation(evaluation, evaluator);
         }
 
-        public IEnumerable<User> GetAllEvaluatorsForEvaluation(string username)
+        public IEnumerable<User> GetAllEvaluatorsForEvaluation(int evaluationId)
         {
-            Evaluation evaluation = GetEvaluation(username);
+            Evaluation evaluation = this.EvaluationRepository.GetFirstOrDefault(evaluationId);
             IEnumerable<User> users = new List<User>();
 
             if (evaluation != null)
@@ -59,6 +59,11 @@ namespace BS
             Evaluation evaluation = this.EvaluationRepository.GetUserEvaluation(username);
 
             return evaluation;
+        }
+
+        public Evaluation GetEvaluationById(int evaluationId)
+        {
+            return this.EvaluationRepository.GetFirstOrDefault(evaluationId);
         }
 
         public IEnumerable<Evaluation> GetAllEvaluationsForUser(string username)

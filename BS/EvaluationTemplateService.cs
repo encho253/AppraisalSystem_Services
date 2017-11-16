@@ -28,6 +28,11 @@ namespace BS
             return this.EvaluationTemplateRepository.GetEvaluationTemplateByPosition(position);
         }
 
+        public EvaluationTemplate GetEvaluationTemplateById(int evaluationId)
+        {
+            return this.EvaluationTemplateRepository.GetFirstOrDefault(evaluationId);
+        }
+
         public IEnumerable<EvaluationTemplate> GetAllTemplates()
         {
             return this.EvaluationTemplateRepository.GetAllRecords();

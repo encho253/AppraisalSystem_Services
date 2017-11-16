@@ -10,5 +10,6 @@ namespace Interfaces.BS
         IEnumerable<EvaluationTemplate> GetAllTemplates();
         void CreateEvaluationTemplate(int positionId, string templateName, List<int> questionsId);
         void DeleteEvaluationTemplate(int templateId);
+        EvaluationTemplate GetEvaluationTemplateById(int evaluationId);
     }
 }

@@ -11,8 +11,9 @@ namespace Interfaces.BS
 
         void CreateEvaluation(int userId, int evaluationTemplateId);
         void AddEvaluatorToEvaluation(string username, string usernameEvaluator);
-        IEnumerable<User> GetAllEvaluatorsForEvaluation(string username);
+        IEnumerable<User> GetAllEvaluatorsForEvaluation(int evaluationId);
         Evaluation GetEvaluation(string username);
         IEnumerable<Evaluation> GetAllEvaluationsForUser(string username);
+        Evaluation GetEvaluationById(int evaluationId);
     }
 }
