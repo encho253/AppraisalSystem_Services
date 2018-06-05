@@ -25,5 +25,8 @@ namespace Interfaces.DTO.Response
 
         [DataMember]
         public int QuestionsCount { get; set; }
+
+        [DataMember]
+        public IEnumerable<Question> Questions { get; set; }
     }
 }

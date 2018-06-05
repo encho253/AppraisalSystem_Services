@@ -29,6 +29,11 @@ namespace BS
             return this.PositionRepository.GetFirstOrDefault(id);
         }
 
+        public Position GetPositionByName(string positionName)
+        {
+            return this.PositionRepository.GetPositionByName(positionName);
+        }
+
         public void UpdatePosition(int id, string positionName)
         {
             Position position = FindPositon(id);

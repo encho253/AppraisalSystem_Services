@@ -75,6 +75,7 @@ namespace BS
             {
                 listCompetenceDto.Add(new CompetenceDto(competence));
                 IEnumerable<Question> questions = this.QuestionService.GetQuestionByPositionAndCompetence(position.Name, competence.Key);
+                listCompetenceDto.Last().Questions = questions;
 
                 if (questions != null)
                 {

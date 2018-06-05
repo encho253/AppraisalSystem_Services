@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BS.Configs;
 using DB;
 using Interfaces.BS;
@@ -21,16 +20,16 @@ namespace WCF
             }
         }
 
-        //public IEnumerable<> GetAllPositionsByName()
-        //{
-        //    using (IUnityManagerModule dataContainer = new UnityManagerModule())
-        //    {
-        //        dataContainer.Init();
+         public Position GetPositionByName(string positionName)
+        {
+            using (IUnityManagerModule dataContainer = new UnityManagerModule())
+            {
+                dataContainer.Init();
 
-        //        IPositionService positionService = dataContainer.Resolve<IPositionService>();
-        //        return positionService.GetAllPositionsByName();
-        //    }
-        //}
+                IPositionService positionService = dataContainer.Resolve<IPositionService>();
+                return positionService.GetPositionByName(positionName);
+            }
+        }
 
         public void UpdatePosition(int id, string positionName)
         {

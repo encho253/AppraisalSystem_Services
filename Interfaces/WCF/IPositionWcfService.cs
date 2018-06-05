@@ -7,11 +7,11 @@ namespace WCF.Interfaces.WCF
     [ServiceContract]
     public interface IPositionWcfService
     {
-        //[OperationContract]
-        //IEnumerable<string> GetAllPositionsByName();
-
         [OperationContract]
         IEnumerable<Position> GetAllPositions();
+
+        [OperationContract]
+        Position GetPositionByName(string positionName);
 
         [OperationContract]
         void UpdatePosition(int id, string positionName);
